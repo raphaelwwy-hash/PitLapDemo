@@ -278,6 +278,33 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .btn-cancel{background:#F0F0F0;color:#888}
 .btn-submit{background:#E60012;color:#fff}
 .btn-submit:disabled{opacity:.4}
+
+/* FAB Menu */
+.fab-menu{position:fixed;bottom:136px;right:calc(50% - 210px + 16px);display:none;flex-direction:column;gap:8px;z-index:11}
+.fab-menu.show{display:flex}
+@media(max-width:420px){.fab-menu{right:16px}}
+.fab-menu-item{display:flex;align-items:center;gap:8px;padding:10px 16px;border-radius:24px;border:none;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 3px 12px rgba(0,0,0,.15);transition:.15s;background:#fff;color:#1A1A1A}
+.fab-menu-item:active{transform:scale(.94)}
+.fab-menu-item .fab-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
+.fab-icon.vehicle{background:#1A1A1A;color:#fff}
+.fab-icon.mod{background:#E60012;color:#fff}
+.fab-overlay{position:fixed;inset:0;z-index:10;display:none}
+.fab-overlay.show{display:block}
+
+/* Mod Modal */
+#mod-modal .form-select, #mod-modal .form-input{width:100%;padding:10px 12px;border:1px solid #DDD;border-radius:8px;font-size:14px;background:#FAFAFA;color:#1A1A1A;outline:none}
+#mod-modal .form-select:focus, #mod-modal .form-input:focus{border-color:#E60012;background:#fff}
+.modal-delete{width:100%;margin-top:20px;border-top:1px solid #F0F0F0;padding-top:16px;display:none}
+.modal-delete .btn-danger{width:100%;padding:10px;border-radius:10px;border:none;font-size:14px;font-weight:600;cursor:pointer;background:#FFF0F0;color:#E60012;transition:.15s}
+
+/* Vehicle Add Modal */
+#veh-modal .form-select, #veh-modal .form-input{width:100%;padding:10px 12px;border:1px solid #DDD;border-radius:8px;font-size:14px;background:#FAFAFA;color:#1A1A1A;outline:none}
+#veh-modal .form-select:focus, #veh-modal .form-input:focus{border-color:#E60012;background:#fff}
+
+/* Expense filter */
+.expense-filter{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px}
+.expense-filter-btn{padding:5px 14px;border-radius:14px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid #DDD;background:#fff;color:#888;white-space:nowrap;transition:.15s}
+.expense-filter-btn.active{background:#E60012;color:#fff;border-color:#E60012}
 </style>
 </head>
 <body>
@@ -385,54 +412,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
   <!-- ========== 鑺遍攢 ========== -->
   <div class="page" id="page-expenses">
-    <div class="card">
-      <div class="expense-summary">
-        <div class="expense-stat"><div class="num">楼14,400</div><div class="label">鎬昏姳閿€</div></div>
-        <div class="expense-stat"><div class="num">楼2,880</div><div class="label">鏈堝潎</div></div>
-        <div class="expense-stat"><div class="num">6</div><div class="label">绗旀暟</div></div>
-      </div>
+    <div class="card" id="expense-summary-card">
+      <div class="expense-summary" id="expense-summary"></div>
     </div>
     <div class="card">
       <div class="section-title">鍒嗙被鍗犳瘮</div>
       <div style="display:flex;align-items:center;gap:16px">
-        <div class="pie-placeholder"></div>
-        <div style="flex:1">
-          <div style="font-size:12px;margin-bottom:6px"><span style="color:#E60012">鈼?/span> 鏀硅 <strong>55%</strong></div>
-          <div style="font-size:12px;margin-bottom:6px"><span style="color:#1A1A1A">鈼?/span> 璧涢亾 <strong>20%</strong></div>
-          <div style="font-size:12px;margin-bottom:6px"><span style="color:#FF6B00">鈼?/span> 杞儙 <strong>15%</strong></div>
-          <div style="font-size:12px"><span style="color:#555">鈼?/span> 淇濆吇 <strong>10%</strong></div>
-        </div>
+        <div class="pie-placeholder" id="expense-pie"></div>
+        <div style="flex:1" id="expense-legend"></div>
       </div>
     </div>
     <div class="card">
-      <div class="expense-item">
-        <div class="expense-left">
-          <div class="expense-icon">馃敡</div>
-          <div><div class="expense-name">SC Project 鎺掓皵绠?/div><div class="expense-date">2026-04-01</div></div>
-        </div>
-        <div class="expense-amount">楼3,800</div>
-      </div>
-      <div class="expense-item">
-        <div class="expense-left">
-          <div class="expense-icon">馃帿</div>
-          <div><div class="expense-name">璧涢亾鏃ラ棬绁?Pit鎴?/div><div class="expense-date">2026-05-15</div></div>
-        </div>
-        <div class="expense-amount">楼800</div>
-      </div>
-      <div class="expense-item">
-        <div class="expense-left">
-          <div class="expense-icon">鉀?/div>
-          <div><div class="expense-name">姹芥补+杞儙鎹熻€?/div><div class="expense-date">2026-05-15</div></div>
-        </div>
-        <div class="expense-amount">楼600</div>
-      </div>
-      <div class="expense-item">
-        <div class="expense-left">
-          <div class="expense-icon">馃洖</div>
-          <div><div class="expense-name">Diablo Rosso IV 鎹㈣儙</div><div class="expense-date">2026-02-20</div></div>
-        </div>
-        <div class="expense-amount">楼2,200</div>
-      </div>
+      <div class="expense-filter" id="expense-filter"></div>
+      <div id="expense-list"></div>
     </div>
   </div>
 
@@ -486,6 +478,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 </div>
 
 <button class="fab" id="fab">+</button>
+
+<!-- FAB Menu -->
+<div class="fab-overlay" id="fab-overlay"></div>
+<div class="fab-menu" id="fab-menu">
+  <button class="fab-menu-item" id="fab-add-vehicle"><span class="fab-icon vehicle">馃弽锔?/span>娣诲姞杞﹁締</button>
+  <button class="fab-menu-item" id="fab-add-mod"><span class="fab-icon mod">馃敡</span>娣诲姞鏀硅浠?/button>
+</div>
 
 <!-- ========== Modal ========== -->
 <div class="modal-overlay" id="modal">
@@ -562,6 +561,81 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
     <div id="modal-delete-area" style="display:none;margin-top:20px;border-top:1px solid #F0F0F0;padding-top:16px">
       <button class="btn" style="flex:none;width:100%;background:#FFF0F0;color:#E60012;font-weight:600" id="modal-delete-btn">鍒犻櫎姝ゅ湀閫熻褰?/button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== Mod Modal ========== -->
+<div class="modal-overlay" id="mod-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title" id="mod-modal-title">鏂板鏀硅浠?/div>
+    <div class="form-group">
+      <label class="form-label">杞﹁締</label>
+      <select class="form-select" id="m-vehicle"></select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">绫诲埆</label>
+      <select class="form-select" id="m-category">
+        <option value="鍔ㄥ姏">鍔ㄥ姏</option>
+        <option value="鍒硅溅">鍒硅溅</option>
+        <option value="杞儙">杞儙</option>
+        <option value="鎮寕">鎮寕</option>
+        <option value="澶栬">澶栬</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">鍚嶇О</label>
+      <input class="form-input" id="m-name" type="text" placeholder="渚嬪锛歋C Project 鍏ㄦ鎺掓皵">
+    </div>
+    <div class="form-group">
+      <label class="form-label">浠锋牸锛埪ワ級</label>
+      <input class="form-input" id="m-price" type="number" placeholder="0" inputmode="numeric">
+    </div>
+    <div class="form-group">
+      <label class="form-label">鏃ユ湡</label>
+      <input class="form-input" id="m-date" type="date">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-cancel" id="mod-cancel">鍙栨秷</button>
+      <button class="btn btn-submit" id="mod-submit">鎻愪氦</button>
+    </div>
+    <div class="modal-delete" id="mod-delete-area">
+      <button class="btn-danger" id="mod-delete-btn">鍒犻櫎姝ゆ敼瑁呬欢</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== Vehicle Add Modal ========== -->
+<div class="modal-overlay" id="veh-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">娣诲姞杞﹁締</div>
+    <div class="form-group">
+      <label class="form-label">鍝佺墝</label>
+      <select class="form-select" id="v-brand" onchange="onBrandChange()">
+        <option value="">閫夋嫨鍝佺墝</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">杞﹀瀷</label>
+      <select class="form-select" id="v-model"><option value="">鍏堥€夋嫨鍝佺墝</option></select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">骞翠唤</label>
+      <input class="form-input" id="v-year" type="text" placeholder="渚嬪锛?023" inputmode="numeric">
+    </div>
+    <div class="form-group">
+      <label class="form-label">杞﹁締鍚嶇О</label>
+      <input class="form-input" id="v-name" type="text" placeholder="鑷姩鐢熸垚锛屽彲淇敼">
+    </div>
+    <div class="form-group">
+      <label class="form-label">鐓х墖閾炬帴 <span style="color:#999;font-weight:400;font-size:11px">闈炲繀濉?/span></label>
+      <input class="form-input" id="v-photo" type="text" placeholder="鍥剧墖 URL锛堟寮忕増鏀寔鐩稿唽涓婁紶锛?>
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-cancel" id="veh-cancel">鍙栨秷</button>
+      <button class="btn btn-submit" id="veh-submit">娣诲姞</button>
     </div>
   </div>
 </div>
@@ -870,7 +944,16 @@ function openModal(recId){
 
 function closeModal(){ modal.classList.remove('show'); editingId=null; }
 
-fabBtn.addEventListener('click',()=>openModal(null));
+fab.addEventListener('click', ()=>{
+  const activeTab = document.querySelector('.tab.active');
+  if(activeTab && activeTab.dataset.page === 'mods'){
+    fabMenuOpen ? hideFabMenu() : showFabMenu();
+  } else if(activeTab && activeTab.dataset.page === 'expenses'){
+    openModModal(null);
+  } else {
+    openModal(null);
+  }
+});
 document.getElementById('modal-cancel').addEventListener('click',closeModal);
 document.getElementById('modal-delete-btn').addEventListener('click',function(){
   if(editingId){ showConfirm(editingId); closeModal(); }
@@ -954,6 +1037,129 @@ document.getElementById('modal-submit').addEventListener('click',function(){
   renderLeaderboard();
 });
 
+// ====== MOD CRUD ======
+let modEditingId = null;
+const modModal = document.getElementById('mod-modal');
+
+function populateModVehicleSelect(selId, selectedId){
+  const sel = document.getElementById(selId);
+  sel.innerHTML = vehicles.map(v => '<option value="'+v.id+'">'+v.name+'</option>').join('');
+  if(selectedId) sel.value = selectedId;
+  else if(vehicles.length) sel.value = vehicles[mvSelectedIdx]?.id || vehicles[0].id;
+}
+
+function openModModal(modId){
+  modEditingId = modId || null;
+  document.getElementById('mod-modal-title').textContent = modId ? '缂栬緫鏀硅浠? : '鏂板鏀硅浠?;
+  document.getElementById('mod-delete-area').style.display = modId ? 'block' : 'none';
+  document.getElementById('mod-submit').textContent = modId ? '淇濆瓨淇敼' : '鎻愪氦';
+
+  if(modId){
+    const m = mods.find(x => x.id === modId);
+    if(!m) return;
+    populateModVehicleSelect('m-vehicle', m.vehicleId);
+    document.getElementById('m-category').value = m.category;
+    document.getElementById('m-name').value = m.name;
+    document.getElementById('m-price').value = m.price;
+    document.getElementById('m-date').value = m.date;
+  } else {
+    populateModVehicleSelect('m-vehicle', null);
+    document.getElementById('m-category').value = '鍔ㄥ姏';
+    document.getElementById('m-name').value = '';
+    document.getElementById('m-price').value = '';
+    document.getElementById('m-date').value = today();
+  }
+  modModal.classList.add('show');
+}
+
+function closeModModal(){ modModal.classList.remove('show'); modEditingId = null; }
+
+document.getElementById('mod-cancel').addEventListener('click', closeModModal);
+modModal.addEventListener('click', e => { if(e.target === modModal) closeModModal(); });
+
+document.getElementById('mod-submit').addEventListener('click', ()=>{
+  const vehicleId = +document.getElementById('m-vehicle').value;
+  const category = document.getElementById('m-category').value;
+  const name = document.getElementById('m-name').value.trim();
+  const price = +document.getElementById('m-price').value;
+  const date = document.getElementById('m-date').value || today();
+
+  if(!vehicleId || !name || !price){ alert('璇峰～鍐欏畬鏁翠俊鎭?); return; }
+  if(price <= 0){ alert('浠锋牸蹇呴』澶т簬0'); return; }
+
+  if(modEditingId){
+    const idx = mods.findIndex(x => x.id === modEditingId);
+    if(idx !== -1){ mods[idx] = { ...mods[idx], vehicleId, category, name, price, date }; }
+  } else {
+    mods.push({ id: ++nextModId, vehicleId, category, name, price, date });
+  }
+  closeModModal();
+  renderMyVehicles();
+  renderExpenses();
+});
+
+document.getElementById('mod-delete-btn').addEventListener('click', ()=>{
+  if(modEditingId && confirm('纭畾鍒犻櫎璇ユ敼瑁呬欢锛?)){
+    mods = mods.filter(x => x.id !== modEditingId);
+    closeModModal();
+    renderMyVehicles();
+    renderExpenses();
+  }
+});
+
+// ====== VEHICLE ADD MODAL ======
+const vehModal = document.getElementById('veh-modal');
+
+function openVehicleAddModal(){
+  const brandSel = document.getElementById('v-brand');
+  brandSel.innerHTML = '<option value="">閫夋嫨鍝佺墝</option>' + BRAND_LIST.map(b => '<option value="'+b+'">'+b+'</option>').join('');
+  brandSel.value = '';
+  document.getElementById('v-model').innerHTML = '<option value="">鍏堥€夋嫨鍝佺墝</option>';
+  document.getElementById('v-year').value = '';
+  document.getElementById('v-name').value = '';
+  document.getElementById('v-photo').value = '';
+  vehModal.classList.add('show');
+}
+
+function onBrandChange(){
+  const brand = document.getElementById('v-brand').value;
+  const modelSel = document.getElementById('v-model');
+  if(!brand){ modelSel.innerHTML = '<option value="">鍏堥€夋嫨鍝佺墝</option>'; return; }
+  const models = BRAND_DB[brand] || [];
+  modelSel.innerHTML = '<option value="">閫夋嫨杞﹀瀷</option>' + models.map(m => '<option value="'+m+'">'+m+'</option>').join('');
+  autoFillVehicleName();
+}
+document.getElementById('v-model').addEventListener('change', autoFillVehicleName);
+document.getElementById('v-year').addEventListener('input', autoFillVehicleName);
+
+function autoFillVehicleName(){
+  const brand = document.getElementById('v-brand').value;
+  const model = document.getElementById('v-model').value;
+  const year = document.getElementById('v-year').value.trim();
+  if(brand && model){
+    document.getElementById('v-name').value = brand + ' ' + model + (year ? ' ('+year+')' : '');
+  }
+}
+
+document.getElementById('veh-cancel').addEventListener('click', ()=>{ vehModal.classList.remove('show'); });
+vehModal.addEventListener('click', e => { if(e.target === vehModal) vehModal.classList.remove('show'); });
+
+document.getElementById('veh-submit').addEventListener('click', ()=>{
+  const brand = document.getElementById('v-brand').value;
+  const model = document.getElementById('v-model').value;
+  const year = document.getElementById('v-year').value.trim();
+  let name = document.getElementById('v-name').value.trim();
+  const photo = document.getElementById('v-photo').value.trim();
+
+  if(!brand || !model){ alert('璇烽€夋嫨鍝佺墝鍜岃溅鍨?); return; }
+  if(!name) name = brand + ' ' + model;
+
+  vehicles.push({ id: ++nextVehId, name, brand, model, year, photo });
+  vehModal.classList.remove('show');
+  renderMyVehicles();
+  renderVehicleMgmt();
+});
+
 // ====== CONFIRM DIALOG ======
 let confirmCallback=null;
 const confirmEl=document.getElementById('confirm');
@@ -1016,13 +1222,7 @@ function deleteVehicle(idx){
   render(); renderHome(); renderRecent();
 }
 function addVehicle(){
-  const name=prompt('杈撳叆鏂拌溅鍚嶇О锛?);
-  if(name && name.trim() && !vehicles.some(x=>x.name===name.trim())){
-    vehicles.push({id:++nextVehId, name:name.trim(), brand:'', model:'', year:'', photo:''});
-    renderVehicleMgmt();
-  } else if(name && vehicles.some(x=>x.name===name.trim())){
-    alert('璇ヨ溅杈嗗凡瀛樺湪');
-  }
+  openVehicleAddModal();
 }
 
 // ====== MY VEHICLES PAGE ======
@@ -1073,9 +1273,24 @@ function renderMyVehicles(){
       +'<div class="mv-mod-icon">'+(catIcon[m.category]||'馃摝')+'</div>'
       +'<div><div class="mv-mod-name">'+m.name+'</div><div class="mv-mod-date">'+m.date+'</div></div>'
       +'</div>'
-      +'<div class="mv-mod-right"><span class="mv-mod-cat">'+m.category+'</span><span class="mv-mod-price">楼'+m.price.toLocaleString()+'</span></div>'
+      +'<div class="mv-mod-right"><span class="mv-mod-cat">'+m.category+'</span><span class="mv-mod-price">楼'+m.price.toLocaleString()+'</span>'
+      +'<div class="mv-mod-actions"><button class="mv-mod-btn edit" data-mid="'+m.id+'">鉁?/button><button class="mv-mod-btn" data-mid="'+m.id+'" style="color:#E60012">鉁?/button></div>'
+      +'</div>'
       +'</div>';
   });
+  list.querySelectorAll('.mv-mod-btn.edit').forEach(b => b.addEventListener('click', (e) => {
+    e.stopPropagation();
+    openModModal(+b.dataset.mid);
+  }));
+  list.querySelectorAll('.mv-mod-btn[style]').forEach(b => b.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const mid = +b.dataset.mid;
+    if(confirm('纭畾鍒犻櫎璇ユ敼瑁呬欢锛?)){
+      mods = mods.filter(x => x.id !== mid);
+      renderMyVehicles();
+      renderExpenses();
+    }
+  }));
 }
 
 // ====== LEADERBOARD ======
@@ -1119,15 +1334,120 @@ function renderLeaderboard(){
   });
 }
 
+function renderExpenses(){
+  const filterEl = document.getElementById('expense-filter');
+  const activePeriod = filterEl.dataset.period || 'all';
+  const periods = ['all','2026','2025'];
+  filterEl.innerHTML = periods.map(p => {
+    const label = p === 'all' ? '鍏ㄩ儴' : p + '骞?;
+    return '<button class="expense-filter-btn' + (p === activePeriod ? ' active' : '') + '" data-period="'+p+'">'+label+'</button>';
+  }).join('');
+  filterEl.querySelectorAll('.expense-filter-btn').forEach(b => b.addEventListener('click', () => {
+    filterEl.dataset.period = b.dataset.period;
+    renderExpenses();
+  }));
+
+  let filtered = [...mods];
+  if(activePeriod !== 'all'){
+    filtered = filtered.filter(m => m.date.startsWith(activePeriod));
+  }
+  filtered.sort((a,b) => b.date.localeCompare(a.date));
+
+  // Summary
+  const total = filtered.reduce((s,m) => s + m.price, 0);
+  const count = filtered.length;
+  const months = [...new Set(filtered.map(m => m.date.substring(0,7)))];
+  const avg = months.length ? Math.round(total / months.length) : 0;
+
+  document.getElementById('expense-summary').innerHTML =
+    '<div class="expense-stat"><div class="num">楼'+total.toLocaleString()+'</div><div class="label">鎬昏姳閿€</div></div>' +
+    '<div class="expense-stat"><div class="num">楼'+avg.toLocaleString()+'</div><div class="label">鏈堝潎</div></div>' +
+    '<div class="expense-stat"><div class="num">'+count+'</div><div class="label">绗旀暟</div></div>';
+
+  // Category breakdown
+  const catTotal = {};
+  filtered.forEach(m => { catTotal[m.category] = (catTotal[m.category] || 0) + m.price; });
+  const catOrder = ['鍔ㄥ姏','鍒硅溅','杞儙','鎮寕','澶栬'];
+  const catColors = { '鍔ㄥ姏':'#E60012', '鍒硅溅':'#1A1A1A', '杞儙':'#FF6B00', '鎮寕':'#4A90D9', '澶栬':'#888' };
+  const catIcon2 = { '鍔ㄥ姏':'鈿?, '鍒硅溅':'馃洃', '杞儙':'馃洖', '鎮寕':'馃敡', '澶栬':'馃帹' };
+
+  // Pie
+  let pieParts = '';
+  let cum = 0;
+  const entries = catOrder.filter(c => catTotal[c]).map(c => {
+    const pct = total ? catTotal[c] / total : 0;
+    const start = cum;
+    cum += pct;
+    return { cat: c, start, end: cum, color: catColors[c] };
+  });
+  if(entries.length){
+    pieParts = entries.map(e => e.color+' '+Math.round(e.start*360)+'deg '+Math.round(e.end*360)+'deg').join(', ');
+  } else {
+    pieParts = '#EEE 0% 100%';
+  }
+  document.getElementById('expense-pie').style.background = 'conic-gradient('+pieParts+')';
+
+  // Legend
+  document.getElementById('expense-legend').innerHTML = entries.length ?
+    entries.map(e => '<div style="font-size:12px;margin-bottom:6px"><span style="color:'+e.color+'">鈼?/span> '+e.cat+' <strong>'+Math.round((e.end-e.start)*100)+'%</strong></div>').join('') :
+    '<div style="font-size:12px;color:#CCC">鏆傛棤鏀硅鑺遍攢</div>';
+
+  // List
+  const listEl = document.getElementById('expense-list');
+  if(!filtered.length){
+    listEl.innerHTML = '<div style="text-align:center;padding:20px;color:#CCC;font-size:13px">鏆傛棤璁板綍</div>';
+  } else {
+    listEl.innerHTML = filtered.map(m =>
+      '<div class="expense-item">' +
+      '<div class="expense-left">' +
+      '<div class="expense-icon">'+(catIcon2[m.category]||'馃摝')+'</div>' +
+      '<div><div class="expense-name">'+m.name+'</div><div class="expense-date">'+m.date+'</div></div>' +
+      '</div>' +
+      '<div class="expense-amount">楼'+m.price.toLocaleString()+'</div>' +
+      '</div>'
+    ).join('');
+  }
+}
+
 // ====== INIT ======
 renderHome();
 render();
 renderRecent();
 renderMyVehicles();
 renderLeaderboard();
+renderExpenses();
 
 const tabs = document.querySelectorAll('.tab');
 const fab = document.getElementById('fab');
+const fabMenu = document.getElementById('fab-menu');
+const fabOverlay = document.getElementById('fab-overlay');
+let fabMenuOpen = false;
+
+function showFabMenu(){
+  fabMenu.classList.add('show');
+  fabOverlay.classList.add('show');
+  fab.textContent = '鉁?;
+  fab.style.transform = 'rotate(45deg)';
+  fabMenuOpen = true;
+}
+function hideFabMenu(){
+  fabMenu.classList.remove('show');
+  fabOverlay.classList.remove('show');
+  fab.textContent = '+';
+  fab.style.transform = '';
+  fabMenuOpen = false;
+}
+
+fabOverlay.addEventListener('click', hideFabMenu);
+document.getElementById('fab-add-vehicle').addEventListener('click', ()=>{
+  hideFabMenu();
+  openVehicleAddModal();
+});
+document.getElementById('fab-add-mod').addEventListener('click', ()=>{
+  hideFabMenu();
+  openModModal(null);
+});
+
 fab.style.display = 'none';
 const fabPages = ['laps', 'mods', 'expenses'];
 const pages = {
@@ -1142,6 +1462,7 @@ const pages = {
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
     if(inVehicleMgmt)hideVehicleMgmt();
+    if(fabMenuOpen)hideFabMenu();
     tabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     Object.values(pages).forEach(p => p.classList.remove('active'));
@@ -1152,6 +1473,7 @@ tabs.forEach(tab => {
     if(tab.dataset.page==='home'){ renderHome(); renderRecent(); }
     if(tab.dataset.page==='leaderboard')renderLeaderboard();
     if(tab.dataset.page==='mods')renderMyVehicles();
+    if(tab.dataset.page==='expenses')renderExpenses();
   });
 });
 </script>
