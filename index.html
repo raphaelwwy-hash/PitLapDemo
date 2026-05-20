@@ -548,6 +548,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <button class="btn btn-cancel" id="modal-cancel">鍙栨秷</button>
       <button class="btn btn-submit" id="modal-submit">鎻愪氦</button>
     </div>
+
+    <div id="modal-delete-area" style="display:none;margin-top:20px;border-top:1px solid #F0F0F0;padding-top:16px">
+      <button class="btn" style="flex:none;width:100%;background:#FFF0F0;color:#E60012;font-weight:600" id="modal-delete-btn">鍒犻櫎姝ゅ湀閫熻褰?/button>
+    </div>
   </div>
 </div>
 
@@ -612,7 +616,8 @@ let records = [
 // ====== UTILS ======
 function timeToMs(t){ const p=t.split(/[:.]/); return +p[0]*60000+ +p[1]*1000+ +p[2]; }
 function msToTime(ms){ const m=Math.floor(ms/60000); const s=Math.floor((ms%60000)/1000); const ms3=ms%1000; return m+':'+String(s).padStart(2,'0')+'.'+String(ms3).padStart(3,'0'); }
-function diffStr(t1,t2){ if(!t1||!t2)return''; const d=timeToMs(t2)-timeToMs(t1); const abs=Math.abs(d); return msToTime(abs); }
+function msToSecStr(ms){ const s=Math.floor(ms/1000); const ms3=ms%1000; return s+'.'+String(ms3).padStart(3,'0'); }
+function diffStr(t1,t2){ if(!t1||!t2)return''; const d=timeToMs(t2)-timeToMs(t1); const abs=Math.abs(d); return msToSecStr(abs); }
 function today(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 function sorted(r){ return [...r].sort((a,b)=>b.date.localeCompare(a.date)||timeToMs(a.time)-timeToMs(b.time)); }
 function getPB(track){ const r=records.filter(x=>x.track===track); if(!r.length)return null; return r.reduce((a,b)=>timeToMs(a.time)<timeToMs(b.time)?a:b); }
@@ -739,16 +744,12 @@ function render(){
       +'</div>'
       +'<div class="lap-list-right">'
       +'<div class="lli-time">'+rec.time+'</div>'
-      +'<div class="lli-actions">'
-      +'<button class="lli-btn edit" data-id="'+rec.id+'" title="缂栬緫">鉁?/button>'
-      +'<button class="lli-btn del" data-id="'+rec.id+'" title="鍒犻櫎">鉁?/button>'
-      +'</div>'
+      +'<button class="lli-btn edit" data-id="'+rec.id+'" title="缂栬緫" style="margin-left:6px">鉁?/button>'
       +'</div>'
       +'</div>';
   });
-  // Attach edit/del events
+  // Attach edit events
   listDiv.querySelectorAll('.lli-btn.edit').forEach(b=>b.addEventListener('click',()=>openModal(+b.dataset.id)));
-  listDiv.querySelectorAll('.lli-btn.del').forEach(b=>b.addEventListener('click',()=>showConfirm(+b.dataset.id)));
 }
 
 // ====== MODAL ======
@@ -815,9 +816,11 @@ function openModal(recId){
       if(tag){ tag.classList.add('active'); selectedCond.push(c); }
     });
     document.getElementById('modal-submit').textContent='淇濆瓨淇敼';
+    document.getElementById('modal-delete-area').style.display='block';
   } else {
     // New mode
     document.getElementById('modal-title').textContent='鏂板鍦堥€?;
+    document.getElementById('modal-delete-area').style.display='none';
     document.getElementById('f-date').value=today();
     document.getElementById('f-min').value=''; document.getElementById('f-sec').value=''; document.getElementById('f-ms').value='';
     document.getElementById('t-min').value=''; document.getElementById('t-sec').value=''; document.getElementById('t-ms').value='';
@@ -834,6 +837,9 @@ function closeModal(){ modal.classList.remove('show'); editingId=null; }
 
 fabBtn.addEventListener('click',()=>openModal(null));
 document.getElementById('modal-cancel').addEventListener('click',closeModal);
+document.getElementById('modal-delete-btn').addEventListener('click',function(){
+  if(editingId){ showConfirm(editingId); closeModal(); }
+});
 modal.addEventListener('click',e=>{ if(e.target===modal)closeModal(); });
 
 // Track selection auto-fills target
