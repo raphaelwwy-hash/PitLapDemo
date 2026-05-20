@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>PitLap - 赛车圈速助手</title>
+<title>PitLap - 璧涜溅鍦堥€熷姪鎵?/title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#F5F5F5;color:#1A1A1A;max-width:420px;margin:0 auto;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
@@ -35,7 +35,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 /* Vehicle Card */
 .vehicle-card{background:#fff;border-left:4px solid #E60012;position:relative;overflow:hidden}
-.vehicle-card::after{content:'🏁';position:absolute;right:12px;top:12px;font-size:24px;opacity:.3}
+.vehicle-card::after{content:'馃弫';position:absolute;right:12px;top:12px;font-size:24px;opacity:.3}
 .vehicle-card .racing-line{position:absolute;bottom:0;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,#E60012 0,#E60012 8px,transparent 8px,transparent 16px)}
 .vehicle-name{font-size:22px;font-weight:800;color:#1A1A1A;margin-bottom:4px}
 .vehicle-sub{font-size:12px;color:#888;margin-bottom:12px}
@@ -159,7 +159,61 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .lli-date{font-size:11px;color:#999;font-weight:500}
 .lli-track{font-size:14px;font-weight:700;color:#1A1A1A}
 .lli-vehicle{font-size:11px;color:#999}
-.lli-time{font-size:18px;font-weight:800;color:#E60012}
+.lli-time{font-size:18px;font-weight:800;color:#E60012;margin-right:6px}
+.lli-actions{display:flex;gap:6px;align-items:center}
+.lli-btn{width:28px;height:28px;border-radius:6px;border:none;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;transition:.1s;background:transparent;color:#999}
+.lli-btn:hover{background:#F0F0F0}
+.lli-btn.edit{color:#1A1A1A}
+.lli-btn.del{color:#E60012}
+.lap-list-main{display:flex;align-items:center;flex:1}
+.lap-list-right{display:flex;align-items:center;gap:4px;flex-shrink:0}
+
+/* === Leaderboard === */
+.leaderboard-page{padding:20px;padding-bottom:80px}
+.lb-header{text-align:center;margin-bottom:20px}
+.lb-track-select{display:flex;gap:8px;margin-bottom:16px;overflow-x:auto;padding-bottom:4px}
+.lb-track-btn{padding:6px 16px;border-radius:20px;border:1.5px solid #DDD;background:#fff;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;color:#666;transition:.15s}
+.lb-track-btn.active{background:#1A1A1A;color:#fff;border-color:#1A1A1A}
+.lb-card{background:#fff;border-radius:12px;padding:14px;margin-bottom:10px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.lb-rank{width:28px;text-align:center;font-weight:800;font-size:16px;flex-shrink:0}
+.lb-rank.gold{color:#FFD700}
+.lb-rank.silver{color:#C0C0C0}
+.lb-rank.bronze{color:#CD7F32}
+.lb-rank.other{color:#999}
+.lb-avatar{width:40px;height:40px;border-radius:50%;background:#F0F0F0;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#1A1A1A;flex-shrink:0}
+.lb-info{flex:1;min-width:0}
+.lb-name{font-size:14px;font-weight:700;color:#1A1A1A}
+.lb-vehicle{font-size:11px;color:#999;margin-top:1px}
+.lb-right{text-align:right;flex-shrink:0}
+.lb-time{font-size:18px;font-weight:800;color:#E60012}
+.lb-gap{font-size:11px;color:#999;margin-top:1px}
+
+/* === Vehicle Management === */
+.vm-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.vm-title{font-size:18px;font-weight:800;color:#1A1A1A}
+.vm-add-btn{width:32px;height:32px;border-radius:8px;border:none;background:#E60012;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.vm-list{display:flex;flex-direction:column;gap:8px}
+.vm-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#fff;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.vm-item-name{font-size:14px;font-weight:600;color:#1A1A1A}
+.vm-item-actions{display:flex;gap:8px}
+.vm-item-btn{width:30px;height:30px;border-radius:6px;border:none;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;background:transparent;color:#999;transition:.1s}
+.vm-item-btn:hover{background:#F0F0F0}
+.vm-item-btn.rename{color:#1A1A1A}
+.vm-item-btn.delete{color:#E60012}
+
+/* === Confirm Dialog === */
+.confirm-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:2000;display:none;align-items:center;justify-content:center}
+.confirm-overlay.show{display:flex}
+.confirm-box{background:#fff;border-radius:16px;padding:24px;width:280px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.12)}
+.confirm-msg{font-size:15px;color:#1A1A1A;margin-bottom:20px;line-height:1.5}
+.confirm-actions{display:flex;gap:10px;justify-content:center}
+.confirm-btn{padding:8px 24px;border-radius:10px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:.15s}
+.confirm-btn.cancel{background:#F0F0F0;color:#666}
+.confirm-btn.danger{background:#E60012;color:#fff}
+
+/* === Back Button === */
+.back-btn{display:inline-flex;align-items:center;gap:4px;color:#1A1A1A;font-size:14px;font-weight:600;cursor:pointer;border:none;background:none;padding:8px 0;margin-bottom:8px}
+.back-btn:hover{opacity:.7}
 
 /* === Modal === */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:flex-end;animation:fadeIn .2s ease}
@@ -202,56 +256,56 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 <div class="content" id="content">
 
-  <!-- ========== 首页 ========== -->
+  <!-- ========== 棣栭〉 ========== -->
   <div class="page active" id="page-home">
     <div class="card vehicle-card">
       <div style="display:flex;gap:16px;align-items:center">
         <div style="flex:1">
           <div class="vehicle-name">Yamaha R3</div>
-          <div class="vehicle-sub">321cc · 42hp</div>
+          <div class="vehicle-sub">321cc 路 42hp</div>
           <div class="vehicle-stats" style="justify-content:center">
             <div class="vehicle-stat" style="flex:none;padding:8px 20px">
               <div class="num" style="font-size:22px">ZIC 1:52.34</div>
-              <div class="label">最佳圈速</div>
+              <div class="label">鏈€浣冲湀閫?/div>
             </div>
           </div>
         </div>
         <div style="flex-shrink:0;width:120px;height:80px;border-radius:8px;overflow:hidden;background:#F5F5F5;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center">
-          <img src="https://imgd.aeplcdn.com/1056x594/bw/models/yamaha-yzf-r3.jpg?20190103151915&q=80" alt="Yamaha R3" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=font-size:32px>🏍️</div>'">
+          <img src="https://imgd.aeplcdn.com/1056x594/bw/models/yamaha-yzf-r3.jpg?20190103151915&q=80" alt="Yamaha R3" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=font-size:32px>馃弽锔?/div>'">
         </div>
       </div>
       <div class="racing-line"></div>
     </div>
 
     <div class="card">
-      <div class="card-title"><span class="dot dot-red"></span>轮胎状态</div>
+      <div class="card-title"><span class="dot dot-red"></span>杞儙鐘舵€?/div>
       <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600">
         <span>Pirelli Diablo Rosso IV</span>
         <span style="color:#E60012">80%</span>
       </div>
       <div class="tire-info" style="margin-top:0">
-        <span>后轮：65%</span>
-        <span>更换预警：15 节</span>
+        <span>鍚庤疆锛?5%</span>
+        <span>鏇存崲棰勮锛?5 鑺?/span>
       </div>
       <div style="margin-top:10px">
         <div style="display:flex;justify-content:space-between;font-size:12px;color:#888;margin-bottom:3px">
-          <span>已使用</span>
-          <span style="font-weight:600;color:#1A1A1A">4 / 15 节</span>
+          <span>宸蹭娇鐢?/span>
+          <span style="font-weight:600;color:#1A1A1A">4 / 15 鑺?/span>
         </div>
         <div class="tire-bar"><div class="tire-fill good" style="width:27%"></div></div>
         <div style="display:flex;justify-content:space-between;font-size:11px;margin-top:4px">
-          <span style="color:#1A1A1A;font-weight:600">● 正常</span>
-          <span style="color:#E60012;font-size:10px">接近更换（剩余 11 节）</span>
+          <span style="color:#1A1A1A;font-weight:600">鈼?姝ｅ父</span>
+          <span style="color:#E60012;font-size:10px">鎺ヨ繎鏇存崲锛堝墿浣?11 鑺傦級</span>
         </div>
       </div>
     </div>
 
     <div class="card" id="recent-session">
-      <div class="card-title"><span class="dot dot-black"></span>最近赛道日</div>
+      <div class="card-title"><span class="dot dot-black"></span>鏈€杩戣禌閬撴棩</div>
     </div>
 
     <div class="card">
-      <div class="card-title"><span class="dot dot-red"></span>圈速趋势 · ZIC</div>
+      <div class="card-title"><span class="dot dot-red"></span>鍦堥€熻秼鍔?路 ZIC</div>
       <div class="chart-bars">
         <div class="chart-bar" style="height:80px"><span class="val">1:56.2</span></div>
         <div class="chart-bar" style="height:72px"><span class="val">1:54.8</span></div>
@@ -266,136 +320,156 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
   </div>
 
-  <!-- ========== 圈速 ========== -->
+  <!-- ========== 鍦堥€?========== -->
   <div class="page" id="page-laps">
     <div class="card" style="padding:12px 16px">
       <div class="lap-tags" style="display:flex;gap:8px;overflow-x:auto">
-        <span class="lap-tag active" data-track="">全部</span>
+        <span class="lap-tag active" data-track="">鍏ㄩ儴</span>
       </div>
     </div>
 
     <div id="pb-cards"></div>
 
     <div class="card" style="padding:12px 16px">
-      <div class="card-title"><span class="dot dot-red"></span>记录</div>
+      <div class="card-title"><span class="dot dot-red"></span>璁板綍</div>
       <div id="lap-list"></div>
     </div>
   </div>
 
-  <!-- ========== 改装 ========== -->
+  <!-- ========== 鏀硅 ========== -->
   <div class="page" id="page-mods">
     <div class="card" style="padding:12px 16px">
       <div class="mod-tags">
-        <button class="mod-tag active">全部</button>
-        <button class="mod-tag">动力</button>
-        <button class="mod-tag">刹车</button>
-        <button class="mod-tag">轮胎</button>
-        <button class="mod-tag">悬挂</button>
-        <button class="mod-tag">外观</button>
+        <button class="mod-tag active">鍏ㄩ儴</button>
+        <button class="mod-tag">鍔ㄥ姏</button>
+        <button class="mod-tag">鍒硅溅</button>
+        <button class="mod-tag">杞儙</button>
+        <button class="mod-tag">鎮寕</button>
+        <button class="mod-tag">澶栬</button>
       </div>
     </div>
     <div class="card">
       <div class="mod-item">
-        <div><div class="mod-name">SC Project 全段排气</div><span class="mod-cat">动力</span></div>
-        <div><div class="mod-price">¥3,800</div><div class="mod-date">2026-04-01</div></div>
+        <div><div class="mod-name">SC Project 鍏ㄦ鎺掓皵</div><span class="mod-cat">鍔ㄥ姏</span></div>
+        <div><div class="mod-price">楼3,800</div><div class="mod-date">2026-04-01</div></div>
       </div>
       <div class="mod-item">
-        <div><div class="mod-name">BREMBO M50 卡钳</div><span class="mod-cat">刹车</span></div>
-        <div><div class="mod-price">¥2,500</div><div class="mod-date">2026-03-15</div></div>
+        <div><div class="mod-name">BREMBO M50 鍗￠挸</div><span class="mod-cat">鍒硅溅</span></div>
+        <div><div class="mod-price">楼2,500</div><div class="mod-date">2026-03-15</div></div>
       </div>
       <div class="mod-item">
-        <div><div class="mod-name">Pirelli Diablo Rosso IV</div><span class="mod-cat">轮胎</span></div>
-        <div><div class="mod-price">¥2,200</div><div class="mod-date">2026-02-20</div></div>
+        <div><div class="mod-name">Pirelli Diablo Rosso IV</div><span class="mod-cat">杞儙</span></div>
+        <div><div class="mod-price">楼2,200</div><div class="mod-date">2026-02-20</div></div>
       </div>
       <div class="mod-item">
-        <div><div class="mod-name">Öhlins 后避震</div><span class="mod-cat">悬挂</span></div>
-        <div><div class="mod-price">¥4,500</div><div class="mod-date">2026-01-10</div></div>
+        <div><div class="mod-name">脰hlins 鍚庨伩闇?/div><span class="mod-cat">鎮寕</span></div>
+        <div><div class="mod-price">楼4,500</div><div class="mod-date">2026-01-10</div></div>
       </div>
       <div class="mod-item">
-        <div><div class="mod-name">碳纤维定风翼套件</div><span class="mod-cat">外观</span></div>
-        <div><div class="mod-price">¥680</div><div class="mod-date">2025-12-05</div></div>
+        <div><div class="mod-name">纰崇氦缁村畾椋庣考濂椾欢</div><span class="mod-cat">澶栬</span></div>
+        <div><div class="mod-price">楼680</div><div class="mod-date">2025-12-05</div></div>
       </div>
     </div>
   </div>
 
-  <!-- ========== 花销 ========== -->
+  <!-- ========== 鑺遍攢 ========== -->
   <div class="page" id="page-expenses">
     <div class="card">
       <div class="expense-summary">
-        <div class="expense-stat"><div class="num">¥14,400</div><div class="label">总花销</div></div>
-        <div class="expense-stat"><div class="num">¥2,880</div><div class="label">月均</div></div>
-        <div class="expense-stat"><div class="num">6</div><div class="label">笔数</div></div>
+        <div class="expense-stat"><div class="num">楼14,400</div><div class="label">鎬昏姳閿€</div></div>
+        <div class="expense-stat"><div class="num">楼2,880</div><div class="label">鏈堝潎</div></div>
+        <div class="expense-stat"><div class="num">6</div><div class="label">绗旀暟</div></div>
       </div>
     </div>
     <div class="card">
-      <div class="section-title">分类占比</div>
+      <div class="section-title">鍒嗙被鍗犳瘮</div>
       <div style="display:flex;align-items:center;gap:16px">
         <div class="pie-placeholder"></div>
         <div style="flex:1">
-          <div style="font-size:12px;margin-bottom:6px"><span style="color:#E60012">●</span> 改装 <strong>55%</strong></div>
-          <div style="font-size:12px;margin-bottom:6px"><span style="color:#1A1A1A">●</span> 赛道 <strong>20%</strong></div>
-          <div style="font-size:12px;margin-bottom:6px"><span style="color:#FF6B00">●</span> 轮胎 <strong>15%</strong></div>
-          <div style="font-size:12px"><span style="color:#555">●</span> 保养 <strong>10%</strong></div>
+          <div style="font-size:12px;margin-bottom:6px"><span style="color:#E60012">鈼?/span> 鏀硅 <strong>55%</strong></div>
+          <div style="font-size:12px;margin-bottom:6px"><span style="color:#1A1A1A">鈼?/span> 璧涢亾 <strong>20%</strong></div>
+          <div style="font-size:12px;margin-bottom:6px"><span style="color:#FF6B00">鈼?/span> 杞儙 <strong>15%</strong></div>
+          <div style="font-size:12px"><span style="color:#555">鈼?/span> 淇濆吇 <strong>10%</strong></div>
         </div>
       </div>
     </div>
     <div class="card">
       <div class="expense-item">
         <div class="expense-left">
-          <div class="expense-icon">🔧</div>
-          <div><div class="expense-name">SC Project 排气管</div><div class="expense-date">2026-04-01</div></div>
+          <div class="expense-icon">馃敡</div>
+          <div><div class="expense-name">SC Project 鎺掓皵绠?/div><div class="expense-date">2026-04-01</div></div>
         </div>
-        <div class="expense-amount">¥3,800</div>
+        <div class="expense-amount">楼3,800</div>
       </div>
       <div class="expense-item">
         <div class="expense-left">
-          <div class="expense-icon">🎫</div>
-          <div><div class="expense-name">赛道日门票+Pit房</div><div class="expense-date">2026-05-15</div></div>
+          <div class="expense-icon">馃帿</div>
+          <div><div class="expense-name">璧涢亾鏃ラ棬绁?Pit鎴?/div><div class="expense-date">2026-05-15</div></div>
         </div>
-        <div class="expense-amount">¥800</div>
+        <div class="expense-amount">楼800</div>
       </div>
       <div class="expense-item">
         <div class="expense-left">
-          <div class="expense-icon">⛽</div>
-          <div><div class="expense-name">汽油+轮胎损耗</div><div class="expense-date">2026-05-15</div></div>
+          <div class="expense-icon">鉀?/div>
+          <div><div class="expense-name">姹芥补+杞儙鎹熻€?/div><div class="expense-date">2026-05-15</div></div>
         </div>
-        <div class="expense-amount">¥600</div>
+        <div class="expense-amount">楼600</div>
       </div>
       <div class="expense-item">
         <div class="expense-left">
-          <div class="expense-icon">🛞</div>
-          <div><div class="expense-name">Diablo Rosso IV 换胎</div><div class="expense-date">2026-02-20</div></div>
+          <div class="expense-icon">馃洖</div>
+          <div><div class="expense-name">Diablo Rosso IV 鎹㈣儙</div><div class="expense-date">2026-02-20</div></div>
         </div>
-        <div class="expense-amount">¥2,200</div>
+        <div class="expense-amount">楼2,200</div>
       </div>
     </div>
   </div>
 
-  <!-- ========== 我的 ========== -->
+  <!-- ========== 鎺掕 ========== -->
+  <div class="page leaderboard-page" id="page-leaderboard">
+    <div class="lb-header">
+      <div style="font-size:18px;font-weight:800;color:#1A1A1A">馃弫 鎺掕姒?/div>
+      <div style="font-size:12px;color:#888;margin-top:4px">铏氭嫙鏁版嵁灞曠ず 路 姝ｅ紡鐗堝皢鎺ュ叆寰俊濂藉弸鎺掑悕</div>
+    </div>
+    <div class="lb-track-select" id="lb-tracks"></div>
+    <div id="lb-list"></div>
+  </div>
+
+  <!-- ========== 鎴戠殑 ========== -->
   <div class="page" id="page-mine">
     <div class="card">
       <div class="profile-header">
-        <div class="avatar">🏁</div>
+        <div class="avatar">馃弫</div>
         <div>
           <div class="profile-name">Racer R3</div>
-          <div class="profile-sub">Yamaha R3 (2023) · 浙江杭州</div>
+          <div class="profile-sub">Yamaha R3 (2023) 路 娴欐睙鏉窞</div>
         </div>
       </div>
       <div class="stats-grid">
-        <div class="stat-box"><div class="num">47</div><div class="label">总圈数</div></div>
-        <div class="stat-box"><div class="num blue">1:52.34</div><div class="label">最佳圈速</div></div>
-        <div class="stat-box"><div class="num">¥14,400</div><div class="label">总花销</div></div>
-        <div class="stat-box"><div class="num">5</div><div class="label">改装件</div></div>
+        <div class="stat-box"><div class="num">47</div><div class="label">鎬诲湀鏁?/div></div>
+        <div class="stat-box"><div class="num blue">1:52.34</div><div class="label">鏈€浣冲湀閫?/div></div>
+        <div class="stat-box"><div class="num">楼14,400</div><div class="label">鎬昏姳閿€</div></div>
+        <div class="stat-box"><div class="num">5</div><div class="label">鏀硅浠?/div></div>
       </div>
     </div>
     <div class="card">
-      <div class="menu-item">🏍️ 车辆管理 <span class="arrow">›</span></div>
-      <div class="menu-item">📊 数据导出 <span class="arrow">›</span></div>
-      <div class="menu-item">🔔 推送设置 <span class="badge">NEW</span></div>
-      <div class="menu-item">🌙 深色模式 <span class="arrow">›</span></div>
-      <div class="menu-item">ℹ️ 关于 PitLap <span class="arrow">›</span></div>
+      <div class="menu-item" onclick="showVehicleMgmt()">馃弽锔?杞﹁締绠＄悊 <span class="arrow">鈥?/span></div>
+      <div class="menu-item">馃搳 鏁版嵁瀵煎嚭 <span class="arrow">鈥?/span></div>
+      <div class="menu-item">馃敂 鎺ㄩ€佽缃?<span class="badge">NEW</span></div>
+      <div class="menu-item">馃寵 娣辫壊妯″紡 <span class="arrow">鈥?/span></div>
+      <div class="menu-item">鈩癸笍 鍏充簬 PitLap <span class="arrow">鈥?/span></div>
     </div>
-    <div style="text-align:center;padding:20px 0 10px;font-size:11px;color:#ccc;font-weight:500">PitLap Demo · v0.2 亮色版</div>
+    <div style="text-align:center;padding:20px 0 10px;font-size:11px;color:#ccc;font-weight:500">PitLap Demo 路 v0.2 浜壊鐗?/div>
+  </div>
+
+  <!-- ========== 杞﹁締绠＄悊 ========== -->
+  <div class="page" id="page-vehicle-mgmt">
+    <button class="back-btn" onclick="hideVehicleMgmt()">鈥?杩斿洖</button>
+    <div class="vm-header">
+      <div class="vm-title">杞﹁締绠＄悊</div>
+      <button class="vm-add-btn" onclick="addVehicle()">+</button>
+    </div>
+    <div class="vm-list" id="vm-list"></div>
   </div>
 
 </div>
@@ -406,65 +480,84 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div class="modal-overlay" id="modal">
   <div class="modal-sheet">
     <div class="modal-handle"></div>
-    <div class="modal-title">新增圈速</div>
+    <div class="modal-title" id="modal-title">鏂板鍦堥€?/div>
 
     <div class="form-group">
-      <label class="form-label">赛道</label>
-      <select class="form-select" id="f-track"><option value="">请选择赛道</option></select>
+      <label class="form-label">璧涢亾</label>
+      <select class="form-select" id="f-track"><option value="">璇烽€夋嫨璧涢亾</option></select>
     </div>
 
     <div class="form-group">
-      <label class="form-label">日期</label>
+      <label class="form-label">鏃ユ湡</label>
       <input class="form-input" id="f-date" type="date">
     </div>
 
     <div class="form-group">
-      <label class="form-label">圈速</label>
+      <label class="form-label">杞﹁締</label>
       <div class="form-row">
-        <div class="form-group"><input class="form-input form-input-sm" id="f-min" type="number" min="0" max="9" placeholder="分" inputmode="numeric"></div>
-        <span style="font-size:18px;font-weight:700;color:#1A1A1A">:</span>
-        <div class="form-group"><input class="form-input form-input-sm" id="f-sec" type="number" min="0" max="59" placeholder="秒" inputmode="numeric"></div>
-        <span style="font-size:18px;font-weight:700;color:#1A1A1A">.</span>
-        <div class="form-group"><input class="form-input form-input-sm" id="f-ms" type="number" min="0" max="999" placeholder="毫秒" inputmode="numeric"></div>
+        <select class="form-select" id="f-vehicle" style="flex:1"></select>
+        <input class="form-input" id="f-vehicle-other" style="flex:1;display:none" placeholder="杈撳叆杞﹁締鍚嶇О">
       </div>
     </div>
 
     <div class="form-group">
-      <label class="form-label">目标圈速 <span style="color:#E60012;font-weight:400;font-size:11px" id="target-hint"></span></label>
+      <label class="form-label">鍦堥€?/label>
       <div class="form-row">
-        <div class="form-group"><input class="form-input form-input-sm" id="t-min" type="number" min="0" max="9" placeholder="分" inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="f-min" type="number" min="0" max="9" placeholder="鍒? inputmode="numeric"></div>
         <span style="font-size:18px;font-weight:700;color:#1A1A1A">:</span>
-        <div class="form-group"><input class="form-input form-input-sm" id="t-sec" type="number" min="0" max="59" placeholder="秒" inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="f-sec" type="number" min="0" max="59" placeholder="绉? inputmode="numeric"></div>
         <span style="font-size:18px;font-weight:700;color:#1A1A1A">.</span>
-        <div class="form-group"><input class="form-input form-input-sm" id="t-ms" type="number" min="0" max="999" placeholder="毫秒" inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="f-ms" type="number" min="0" max="999" placeholder="姣" inputmode="numeric"></div>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="form-label">温度（℃） <span style="color:#999;font-weight:400;font-size:11px">非必填</span></label>
+      <label class="form-label">鐩爣鍦堥€?<span style="color:#E60012;font-weight:400;font-size:11px" id="target-hint"></span></label>
       <div class="form-row">
-        <div class="form-group"><input class="form-input form-input-sm" id="f-temp-min" type="number" placeholder="最低温" inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="t-min" type="number" min="0" max="9" placeholder="鍒? inputmode="numeric"></div>
+        <span style="font-size:18px;font-weight:700;color:#1A1A1A">:</span>
+        <div class="form-group"><input class="form-input form-input-sm" id="t-sec" type="number" min="0" max="59" placeholder="绉? inputmode="numeric"></div>
+        <span style="font-size:18px;font-weight:700;color:#1A1A1A">.</span>
+        <div class="form-group"><input class="form-input form-input-sm" id="t-ms" type="number" min="0" max="999" placeholder="姣" inputmode="numeric"></div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">娓╁害锛堚剝锛?<span style="color:#999;font-weight:400;font-size:11px">闈炲繀濉?/span></label>
+      <div class="form-row">
+        <div class="form-group"><input class="form-input form-input-sm" id="f-temp-min" type="number" placeholder="鏈€浣庢俯" inputmode="numeric"></div>
         <span style="font-size:13px;color:#999">~</span>
-        <div class="form-group"><input class="form-input form-input-sm" id="f-temp-max" type="number" placeholder="最高温" inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="f-temp-max" type="number" placeholder="鏈€楂樻俯" inputmode="numeric"></div>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="form-label">赛道状况 <span style="color:#999;font-weight:400;font-size:11px">可多选 · 非必填</span></label>
+      <label class="form-label">璧涢亾鐘跺喌 <span style="color:#999;font-weight:400;font-size:11px">鍙閫?路 闈炲繀濉?/span></label>
       <div class="tag-grid" id="f-conditions">
-        <button class="tag-opt" data-val="干地">干地</button>
-        <button class="tag-opt" data-val="湿地">湿地</button>
-        <button class="tag-opt" data-val="半干">半干</button>
-        <button class="tag-opt" data-val="雨后">雨后</button>
-        <button class="tag-opt" data-val="无风">无风</button>
-        <button class="tag-opt" data-val="微风">微风</button>
-        <button class="tag-opt" data-val="大风">大风</button>
+        <button class="tag-opt" data-val="骞插湴">骞插湴</button>
+        <button class="tag-opt" data-val="婀垮湴">婀垮湴</button>
+        <button class="tag-opt" data-val="鍗婂共">鍗婂共</button>
+        <button class="tag-opt" data-val="闆ㄥ悗">闆ㄥ悗</button>
+        <button class="tag-opt" data-val="鏃犻">鏃犻</button>
+        <button class="tag-opt" data-val="寰">寰</button>
+        <button class="tag-opt" data-val="澶ч">澶ч</button>
       </div>
     </div>
 
     <div class="modal-actions">
-      <button class="btn btn-cancel" id="modal-cancel">取消</button>
-      <button class="btn btn-submit" id="modal-submit">提交</button>
+      <button class="btn btn-cancel" id="modal-cancel">鍙栨秷</button>
+      <button class="btn btn-submit" id="modal-submit">鎻愪氦</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== Confirm Dialog ========== -->
+<div class="confirm-overlay" id="confirm">
+  <div class="confirm-box">
+    <div class="confirm-msg" id="confirm-msg">纭畾鍒犻櫎璇ヨ褰曪紵</div>
+    <div class="confirm-actions">
+      <button class="confirm-btn cancel" id="confirm-cancel">鍙栨秷</button>
+      <button class="confirm-btn danger" id="confirm-ok">鍒犻櫎</button>
     </div>
   </div>
 </div>
@@ -472,52 +565,57 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div class="tabs">
   <button class="tab active" data-page="home">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2l7-7 7 7h2"/><path d="M5 12v7h5v-5h4v5h5v-7"/></svg>
-    <span>首页</span>
+    <span>棣栭〉</span>
   </button>
   <button class="tab" data-page="laps">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    <span>圈速</span>
+    <span>鍦堥€?/span>
   </button>
   <button class="tab" data-page="mods">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-    <span>改装</span>
+    <span>鏀硅</span>
   </button>
   <button class="tab" data-page="expenses">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/><path d="M12 18V6"/></svg>
-    <span>花销</span>
+    <span>鑺遍攢</span>
+  </button>
+  <button class="tab" data-page="leaderboard">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 9 5.5 9 8v1"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 15 5.5 15 8v1"/><path d="M4 15h16"/><path d="M10 9v6a2 2 0 0 0 4 0V9"/></svg>
+    <span>鎺掕</span>
   </button>
   <button class="tab" data-page="mine">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    <span>我的</span>
+    <span>鎴戠殑</span>
   </button>
 </div>
 
 <script>
 // ====== DATA ======
-const TARGETS = { 'ZIC': '1:50.000', '宁波': '1:53.000', '天府': '2:00.000', '天马': '' };
-const TRACK_SHORT = { 'ZIC':'ZIC','宁波':'宁波','天马':'天马','天府':'天府' };
-const TRACK_FULL = { 'ZIC':'珠海国际赛车场','宁波':'宁波国际赛道','天马':'上海天马赛车场','天府':'成都天府国际赛道' };
-
+const TARGETS = { 'ZIC': '1:50.000', '瀹佹尝': '1:53.000', '澶╁簻': '2:00.000', '澶╅┈': '' };
+const TRACK_SHORT = { 'ZIC':'ZIC','瀹佹尝':'瀹佹尝','澶╅┈':'澶╅┈','澶╁簻':'澶╁簻' };
+const TRACK_FULL = { 'ZIC':'鐝犳捣鍥介檯璧涜溅鍦?,'瀹佹尝':'瀹佹尝鍥介檯璧涢亾','澶╅┈':'涓婃捣澶╅┈璧涜溅鍦?,'澶╁簻':'鎴愰兘澶╁簻鍥介檯璧涢亾' };
+let vehicles = ['Yamaha R3'];
+let nextId = 100;
 let records = [
-  { date:'2026-06-16',track:'ZIC',time:'1:53.800',temp:'',cond:[] },
-  { date:'2026-06-02',track:'宁波',time:'1:55.142',temp:'',cond:[] },
-  { date:'2026-05-20',track:'宁波',time:'1:56.300',temp:'',cond:[] },
-  { date:'2026-05-15',track:'ZIC',time:'1:52.345',temp:'',cond:[] },
-  { date:'2026-04-20',track:'宁波',time:'1:58.672',temp:'',cond:[] },
-  { date:'2026-03-28',track:'ZIC',time:'1:53.100',temp:'',cond:[] },
-  { date:'2026-03-10',track:'天马',time:'1:28.456',temp:'',cond:[] },
-  { date:'2026-02-20',track:'ZIC',time:'1:54.800',temp:'',cond:[] },
-  { date:'2026-02-14',track:'天府',time:'2:05.890',temp:'',cond:[] },
-  { date:'2026-01-12',track:'ZIC',time:'1:56.200',temp:'',cond:[] },
+  { id:1, date:'2026-06-16',track:'ZIC',time:'1:53.800',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:2, date:'2026-06-02',track:'瀹佹尝',time:'1:55.142',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:3, date:'2026-05-20',track:'瀹佹尝',time:'1:56.300',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:4, date:'2026-05-15',track:'ZIC',time:'1:52.345',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:5, date:'2026-04-20',track:'瀹佹尝',time:'1:58.672',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:6, date:'2026-03-28',track:'ZIC',time:'1:53.100',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:7, date:'2026-03-10',track:'澶╅┈',time:'1:28.456',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:8, date:'2026-02-20',track:'ZIC',time:'1:54.800',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:9, date:'2026-02-14',track:'澶╁簻',time:'2:05.890',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:10, date:'2026-01-12',track:'ZIC',time:'1:56.200',temp:'',cond:[],vehicle:'Yamaha R3' },
 ];
 
 // ====== UTILS ======
 function timeToMs(t){ const p=t.split(/[:.]/); return +p[0]*60000+ +p[1]*1000+ +p[2]; }
 function msToTime(ms){ const m=Math.floor(ms/60000); const s=Math.floor((ms%60000)/1000); const ms3=ms%1000; return m+':'+String(s).padStart(2,'0')+'.'+String(ms3).padStart(3,'0'); }
-function diffStr(t1,t2){ const d=timeToMs(t2)-timeToMs(t1); const abs=Math.abs(d); const a=msToTime(abs); return a; }
+function diffStr(t1,t2){ if(!t1||!t2)return''; const d=timeToMs(t2)-timeToMs(t1); const abs=Math.abs(d); return msToTime(abs); }
 function today(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 function sorted(r){ return [...r].sort((a,b)=>b.date.localeCompare(a.date)||timeToMs(a.time)-timeToMs(b.time)); }
-function getPB(track){ const r=records.filter(x=>x.track===track); if(!r.length)return null; const pb=r.reduce((a,b)=>timeToMs(a.time)<timeToMs(b.time)?a:b); return pb; }
+function getPB(track){ const r=records.filter(x=>x.track===track); if(!r.length)return null; return r.reduce((a,b)=>timeToMs(a.time)<timeToMs(b.time)?a:b); }
 function getTarget(t){ return TARGETS[t]||''; }
 
 // ====== COMPUTE PB CARDS ======
@@ -527,16 +625,10 @@ function computeCards(){
   s.forEach((r,i)=>{ trackCount[r.track]=(trackCount[r.track]||0)+1; if(i<5)last5.push(r.track); });
   const recent5={}; last5.forEach(t=>recent5[t]=(recent5[t]||0)+1);
   const tracks=Object.keys(trackCount);
-
-  // 征战最多
   let mostTrack=null,mostN=0;
   for(const t of tracks){ if(trackCount[t]>mostN){ mostN=trackCount[t]; mostTrack=t; } }
-
-  // 最近常去
   let hotTrack=null,hotN=0;
   for(const t of tracks){ if(t!==mostTrack&&recent5[t]&&recent5[t]>=3&&recent5[t]>hotN){ hotN=recent5[t]; hotTrack=t; } }
-
-  // 首次征服 - 按首次记录时间倒序找到最近的新赛道
   let firstTrack=null,firstDate='';
   const firstTimes={};
   tracks.forEach(t=>{ const fr=s.filter(x=>x.track===t).pop(); if(fr){ firstTimes[t]=fr.date; } });
@@ -545,34 +637,44 @@ function computeCards(){
     if(!firstDate||firstTimes[t]>firstDate){ firstDate=firstTimes[t]; firstTrack=t; }
     else if(!firstTrack){ firstTrack=t; firstDate=firstTimes[t]; }
   }
-
   const cards=[];
-  if(mostTrack) cards.push({ type:'most', track:mostTrack, label:'🏆 征战最多', badge:'most', count:trackCount[mostTrack] });
-  if(hotTrack)  cards.push({ type:'hot',  track:hotTrack,  label:'🔥 最近常去', badge:'hot',  count:'最近'+(recent5[hotTrack])+'次' });
-  if(firstTrack)cards.push({ type:'new',  track:firstTrack,label:'🆕 首次征服', badge:'newb',count:'首次' });
+  if(mostTrack) cards.push({ type:'most', track:mostTrack, label:'馃弳 寰佹垬鏈€澶?, badge:'most', count:trackCount[mostTrack] });
+  if(hotTrack)  cards.push({ type:'hot',  track:hotTrack,  label:'馃敟 鏈€杩戝父鍘?, badge:'hot',  count:'鏈€杩?+(recent5[hotTrack])+'娆? });
+  if(firstTrack)cards.push({ type:'new',  track:firstTrack,label:'馃啎 棣栨寰佹湇', badge:'newb',count:'棣栨' });
   return cards;
 }
 
-// ====== RENDER RECENT (首页) ======
+// ====== RENDER HOME (棣栭〉) ======
+function renderHome(){
+  const v=vehicles[0]||'Yamaha R3';
+  const pbAll=records.length?records.reduce((a,b)=>timeToMs(a.time)<timeToMs(b.time)?a:b):null;
+  const pbLabel=pbAll?pbAll.track+' '+pbAll.time:'--:--.---';
+  document.querySelector('.vehicle-name').textContent=v;
+  document.querySelector('.vehicle-stat .num').textContent=pbLabel;
+  const img=document.querySelector('.vehicle-card img');
+  if(img) img.alt=v;
+}
+
+// ====== RENDER RECENT (棣栭〉) ======
 function renderRecent(){
   const div=document.getElementById('recent-session');
   const s=sorted(records);
-  if(!s.length){ div.innerHTML='<div class="card-title"><span class="dot dot-black"></span>最近赛道日</div><div style="text-align:center;padding:20px;color:#CCC;font-size:13px">暂无记录</div>'; return; }
+  if(!s.length){ div.innerHTML='<div class="card-title"><span class="dot dot-black"></span>鏈€杩戣禌閬撴棩</div><div style="text-align:center;padding:20px;color:#CCC;font-size:13px">鏆傛棤璁板綍</div>'; return; }
   const last=s[0];
   const pb=getPB(last.track);
   const target=getTarget(last.track);
   const tMs=target?timeToMs(target):0;
   const gap=tMs?diffStr(pb.time,target):'';
   const achieved=tMs?timeToMs(pb.time)<=tMs:false;
-  const gapLabel=achieved?'✓ '+gap+'s':'+'+gap+'s';
-  div.innerHTML='<div class="card-title"><span class="dot dot-black"></span>最近赛道日</div>'
+  const gapLabel=achieved?'鉁?'+gap+'s':'+'+gap+'s';
+  div.innerHTML='<div class="card-title"><span class="dot dot-black"></span>鏈€杩戣禌閬撴棩</div>'
     +'<div class="pb-track" style="font-size:16px;margin-bottom:8px">'+last.track+'</div>'
     +'<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">'
-    +'<div><span style="font-size:12px;color:#888">最快圈</span><div style="font-size:20px;font-weight:800;color:#E60012">'+(pb?pb.time:'--')+'</div></div>'
-    +(target?'<div><span style="font-size:12px;color:#888">目标</span><div style="font-size:16px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
-    +(gap?'<div><span style="font-size:12px;color:#888">差距</span><div style="font-size:22px;font-weight:800;color:'+(achieved?'#00AA55':'#E60012')+'">'+gapLabel+'s</div></div>':'')
+    +'<div><span style="font-size:12px;color:#888">鏈€蹇湀</span><div style="font-size:20px;font-weight:800;color:#E60012">'+(pb?pb.time:'--')+'</div></div>'
+    +(target?'<div><span style="font-size:12px;color:#888">鐩爣</span><div style="font-size:16px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
+    +(gap?'<div><span style="font-size:12px;color:#888">宸窛</span><div style="font-size:22px;font-weight:800;color:'+(achieved?'#00AA55':'#E60012')+'">'+gapLabel+'s</div></div>':'')
     +'</div>'
-    +'<div style="margin-top:10px;font-size:11px;color:#999;border-top:1px solid #F0F0F0;padding-top:10px">'+last.date+' · Yamaha R3'+(last.temp?' · '+last.temp+'℃':'')+(last.cond.length?' · '+last.cond.join('/'):'')+'</div>'
+    +'<div style="margin-top:10px;font-size:11px;color:#999;border-top:1px solid #F0F0F0;padding-top:10px">'+last.date+' 路 '+(last.vehicle||(vehicles[0]||''))+(last.temp?' 路 '+last.temp+'鈩?:'')+(last.cond.length?' 路 '+last.cond.join('/'):'')+'</div>'
     +'<div class="racing-stripe" style="margin-top:8px"></div>';
 }
 
@@ -584,7 +686,7 @@ function render(){
   // Filters
   const ftags=document.querySelector('#page-laps .lap-tags');
   const uq=[...new Set(records.map(x=>x.track))].sort();
-  ftags.innerHTML='<span class="lap-tag active" data-track="">全部</span>'+uq.map(t=>'<span class="lap-tag" data-track="'+t+'">'+t+'</span>').join('');
+  ftags.innerHTML='<span class="lap-tag active" data-track="">鍏ㄩ儴</span>'+uq.map(t=>'<span class="lap-tag" data-track="'+t+'">'+t+'</span>').join('');
   ftags.querySelectorAll('.lap-tag').forEach(el=>{
     el.addEventListener('click',()=>{
       ftags.querySelectorAll('.lap-tag').forEach(x=>x.classList.remove('active'));
@@ -592,7 +694,6 @@ function render(){
       render();
     });
   });
-  // Re-apply active
   if(filter){
     const a=ftags.querySelector('[data-track="'+filter+'"]');
     if(a){ ftags.querySelectorAll('.lap-tag').forEach(x=>x.classList.remove('active')); a.classList.add('active'); }
@@ -609,65 +710,129 @@ function render(){
     const tMs=target?timeToMs(target):0;
     const gap=tMs?diffStr(pb.time,target):'';
     const achieved=tMs?timeToMs(pb.time)<=timeToMs(target):false;
-    const gapLabel=achieved?'✓ '+gap+'s':'+'+gap+'s';
+    const gapLabel=achieved?'鉁?'+gap+'s':'+'+gap+'s';
     pbDiv.innerHTML+='<div class="pb-card">'
-      +'<div class="pb-badge '+c.badge+'">'+c.label+' · '+c.count+'</div>'
+      +'<div class="pb-badge '+c.badge+'">'+c.label+' 路 '+c.count+'</div>'
       +'<div style="display:flex;align-items:center;gap:12px">'
       +'<div style="flex:1">'
       +'<div class="pb-track">'+c.track+'</div>'
       +'<div class="pb-time">'+(pb?pb.time:'--:--.---')+'</div>'
       +'</div>'
-      +(target?'<div style="text-align:right"><div style="font-size:12px;color:#888;font-weight:500">目标</div><div style="font-size:15px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
+      +(target?'<div style="text-align:right"><div style="font-size:12px;color:#888;font-weight:500">鐩爣</div><div style="font-size:15px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
       +'</div>'
       +(gap?'<div style="display:flex;align-items:center;margin-top:4px;gap:6px">'
         +'<span class="pb-gap '+(achieved?'green':'red')+'">'+gapLabel+'s</span>'
-        +'<span style="font-size:11px;color:#888;font-weight:500">'+(achieved?'🎉 已达成目标！建议设定新目标':'距目标')+'</span>'
+        +'<span style="font-size:11px;color:#888;font-weight:500">'+(achieved?'馃帀 宸茶揪鎴愮洰鏍囷紒寤鸿璁惧畾鏂扮洰鏍?:'璺濈洰鏍?)+'</span>'
         +'</div>':'')
-      +(c.type==='new' && !target?'<div style="margin-top:4px;font-size:11px;color:#E60012;font-weight:600">💡 建议设定目标圈速</div>':'')
+      +(c.type==='new' && !target?'<div style="margin-top:4px;font-size:11px;color:#E60012;font-weight:600">馃挕 寤鸿璁惧畾鐩爣鍦堥€?/div>':'')
       +'</div>';
   });
 
   // Lap List
   const listDiv=document.getElementById('lap-list');
   listDiv.innerHTML='';
-  if(!r.length){ listDiv.innerHTML='<div style="text-align:center;padding:20px;color:#CCC;font-size:13px">暂无记录</div>'; return; }
+  if(!r.length){ listDiv.innerHTML='<div style="text-align:center;padding:20px;color:#CCC;font-size:13px">鏆傛棤璁板綍</div>'; return; }
   r.forEach(rec=>{
-    listDiv.innerHTML+='<div class="lap-list-item"><div class="lli-left"><span class="lli-date">'+rec.date+'</span><span class="lli-track">'+rec.track+'</span><span class="lli-vehicle">Yamaha R3'+(rec.temp?' · '+rec.temp+'℃':'')+(rec.cond.length?' · '+rec.cond.join('/'):'')+'</span></div><div class="lli-time">'+rec.time+'</div></div>';
+    listDiv.innerHTML+='<div class="lap-list-item">'
+      +'<div class="lap-list-main">'
+      +'<div class="lli-left"><span class="lli-date">'+rec.date+'</span><span class="lli-track">'+rec.track+'</span><span class="lli-vehicle">'+(rec.vehicle||(vehicles[0]||''))+(rec.temp?' 路 '+rec.temp+'鈩?:'')+(rec.cond.length?' 路 '+rec.cond.join('/'):'')+'</span></div>'
+      +'</div>'
+      +'<div class="lap-list-right">'
+      +'<div class="lli-time">'+rec.time+'</div>'
+      +'<div class="lli-actions">'
+      +'<button class="lli-btn edit" data-id="'+rec.id+'" title="缂栬緫">鉁?/button>'
+      +'<button class="lli-btn del" data-id="'+rec.id+'" title="鍒犻櫎">鉁?/button>'
+      +'</div>'
+      +'</div>'
+      +'</div>';
   });
+  // Attach edit/del events
+  listDiv.querySelectorAll('.lli-btn.edit').forEach(b=>b.addEventListener('click',()=>openModal(+b.dataset.id)));
+  listDiv.querySelectorAll('.lli-btn.del').forEach(b=>b.addEventListener('click',()=>showConfirm(+b.dataset.id)));
 }
 
 // ====== MODAL ======
 const modal=document.getElementById('modal');
 const fabBtn=document.getElementById('fab');
 let selectedCond=[];
+let editingId=null;
 
-function openModal(){
+function populateVehicleSelect(selId, selectedVal){
+  const sel=document.getElementById(selId);
+  sel.innerHTML='<option value="">閫夋嫨杞﹁締</option>'+vehicles.map(v=>'<option value="'+v+'">'+v+'</option>').join('')+'<option value="__other__">鍏朵粬锛堟墜鍔ㄥ～鍐欙級</option>';
+  if(selectedVal && vehicles.includes(selectedVal)){ sel.value=selectedVal; document.getElementById('f-vehicle-other').style.display='none'; }
+  else if(selectedVal){ sel.value='__other__'; document.getElementById('f-vehicle-other').style.display='block'; document.getElementById('f-vehicle-other').value=selectedVal; }
+  else{ sel.value=''; document.getElementById('f-vehicle-other').style.display='none'; }
+}
+
+document.getElementById('f-vehicle').addEventListener('change',function(){
+  if(this.value==='__other__'){ document.getElementById('f-vehicle-other').style.display='block'; }
+  else{ document.getElementById('f-vehicle-other').style.display='none'; }
+});
+
+function openModal(recId){
+  editingId=recId||null;
   selectedCond=[];
-  document.getElementById('f-track').value='';
-  document.getElementById('f-date').value=today();
-  document.getElementById('f-min').value='';
-  document.getElementById('f-sec').value='';
-  document.getElementById('f-ms').value='';
-  document.getElementById('t-min').value='';
-  document.getElementById('t-sec').value='';
-  document.getElementById('t-ms').value='';
-  document.getElementById('f-temp-min').value='';
-  document.getElementById('f-temp-max').value='';
-  document.getElementById('target-hint').textContent='';
   document.querySelectorAll('#f-conditions .tag-opt').forEach(x=>x.classList.remove('active'));
 
-  // Populate track dropdown
   const sel=document.getElementById('f-track');
-  const uq=[...new Set(records.map(x=>x.track))].sort();
-  const fullList=['ZIC','宁波','天马','天府'];
-  sel.innerHTML='<option value="">请选择赛道</option>'+fullList.map(t=>'<option value="'+t+'">'+TRACK_FULL[t]+'</option>').join('');
+  const fullList=['ZIC','瀹佹尝','澶╅┈','澶╁簻'];
+  sel.innerHTML='<option value="">璇烽€夋嫨璧涢亾</option>'+fullList.map(t=>'<option value="'+t+'">'+TRACK_FULL[t]+'</option>').join('');
+
+  document.getElementById('target-hint').textContent='';
+
+  if(recId){
+    // Edit mode
+    const rec=records.find(x=>x.id===recId);
+    if(!rec)return;
+    document.getElementById('modal-title').textContent='缂栬緫鍦堥€?;
+    sel.value=rec.track;
+    document.getElementById('f-date').value=rec.date;
+    populateVehicleSelect('f-vehicle', rec.vehicle);
+    const tp=rec.time.split(/[:.]/);
+    document.getElementById('f-min').value=tp[0];
+    document.getElementById('f-sec').value=tp[1];
+    document.getElementById('f-ms').value=tp[2];
+    const target=getTarget(rec.track);
+    if(target){
+      const tparts=target.split(/[:.]/);
+      document.getElementById('t-min').value=tparts[0];
+      document.getElementById('t-sec').value=tparts[1];
+      document.getElementById('t-ms').value=tparts[2];
+      document.getElementById('target-hint').textContent='褰撳墠鐩爣 '+target;
+    } else {
+      document.getElementById('t-min').value=''; document.getElementById('t-sec').value=''; document.getElementById('t-ms').value='';
+    }
+    if(rec.temp){
+      const tempParts=rec.temp.split('~');
+      document.getElementById('f-temp-min').value=tempParts[0]!=='?'?tempParts[0]:'';
+      document.getElementById('f-temp-max').value=tempParts[1]!=='?'?tempParts[1]:'';
+    } else {
+      document.getElementById('f-temp-min').value=''; document.getElementById('f-temp-max').value='';
+    }
+    (rec.cond||[]).forEach(c=>{
+      const tag=document.querySelector('#f-conditions .tag-opt[data-val="'+c+'"]');
+      if(tag){ tag.classList.add('active'); selectedCond.push(c); }
+    });
+    document.getElementById('modal-submit').textContent='淇濆瓨淇敼';
+  } else {
+    // New mode
+    document.getElementById('modal-title').textContent='鏂板鍦堥€?;
+    document.getElementById('f-date').value=today();
+    document.getElementById('f-min').value=''; document.getElementById('f-sec').value=''; document.getElementById('f-ms').value='';
+    document.getElementById('t-min').value=''; document.getElementById('t-sec').value=''; document.getElementById('t-ms').value='';
+    document.getElementById('f-temp-min').value=''; document.getElementById('f-temp-max').value='';
+    populateVehicleSelect('f-vehicle', vehicles[0]||'');
+    document.getElementById('modal-submit').textContent='鎻愪氦';
+    document.getElementById('f-track').value='';
+  }
 
   modal.classList.add('show');
 }
 
-function closeModal(){ modal.classList.remove('show'); }
+function closeModal(){ modal.classList.remove('show'); editingId=null; }
 
-fabBtn.addEventListener('click',openModal);
+fabBtn.addEventListener('click',()=>openModal(null));
 document.getElementById('modal-cancel').addEventListener('click',closeModal);
 modal.addEventListener('click',e=>{ if(e.target===modal)closeModal(); });
 
@@ -680,12 +845,10 @@ document.getElementById('f-track').addEventListener('change',function(){
     document.getElementById('t-min').value=parts[0];
     document.getElementById('t-sec').value=parts[1];
     document.getElementById('t-ms').value=parts[2];
-    hint.textContent='沿用上次目标 '+TARGETS[t];
+    hint.textContent='娌跨敤涓婃鐩爣 '+TARGETS[t];
   } else if(t && !TARGETS[t]){
-    hint.textContent='建议设定目标圈速';
-    document.getElementById('t-min').value='';
-    document.getElementById('t-sec').value='';
-    document.getElementById('t-ms').value='';
+    hint.textContent='寤鸿璁惧畾鐩爣鍦堥€?;
+    document.getElementById('t-min').value=''; document.getElementById('t-sec').value=''; document.getElementById('t-ms').value='';
   } else {
     hint.textContent='';
   }
@@ -712,11 +875,17 @@ document.getElementById('modal-submit').addEventListener('click',function(){
   const tempMin=document.getElementById('f-temp-min').value;
   const tempMax=document.getElementById('f-temp-max').value;
 
-  if(!track||!min||sec===''||ms===''){ alert('请填写赛道和圈速'); return; }
+  if(!track||!min||sec===''||ms===''){ alert('璇峰～鍐欒禌閬撳拰鍦堥€?); return; }
   const secNum=+sec; const msNum=+ms;
-  if(secNum>59||msNum>999){ alert('秒数不能超过59，毫秒不能超过999'); return; }
+  if(secNum>59||msNum>999){ alert('绉掓暟涓嶈兘瓒呰繃59锛屾绉掍笉鑳借秴杩?99'); return; }
 
   const time=min+':'+String(secNum).padStart(2,'0')+'.'+String(msNum).padStart(3,'0');
+
+  // Vehicle
+  let vehicle=document.getElementById('f-vehicle').value;
+  if(vehicle==='__other__'){ vehicle=document.getElementById('f-vehicle-other').value.trim(); }
+  if(!vehicle){ alert('璇烽€夋嫨鎴栬緭鍏ヨ溅杈?); return; }
+  if(!vehicles.includes(vehicle)){ vehicles.push(vehicle); }
 
   // Target
   if(tMin!==''&&tSec!==''&&tMs!==''){
@@ -727,15 +896,138 @@ document.getElementById('modal-submit').addEventListener('click',function(){
   const cond=[...selectedCond];
   const date=document.getElementById('f-date').value||today();
 
-  records.push({ date, track, time, temp, cond });
+  if(editingId){
+    const idx=records.findIndex(x=>x.id===editingId);
+    if(idx!==-1){
+      records[idx]={ ...records[idx], date, track, time, temp, cond, vehicle };
+    }
+  } else {
+    records.push({ id:++nextId, date, track, time, temp, cond, vehicle });
+  }
+
   closeModal();
   render();
+  renderHome();
   renderRecent();
+  renderLeaderboard();
 });
 
+// ====== CONFIRM DIALOG ======
+let confirmCallback=null;
+const confirmEl=document.getElementById('confirm');
+function showConfirm(id){
+  document.getElementById('confirm-msg').textContent='纭畾鍒犻櫎璇ュ湀閫熻褰曪紵';
+  confirmEl.classList.add('show');
+  confirmCallback=()=>{ deleteRecord(id); };
+}
+document.getElementById('confirm-cancel').addEventListener('click',()=>{ confirmEl.classList.remove('show'); confirmCallback=null; });
+document.getElementById('confirm-ok').addEventListener('click',()=>{ if(confirmCallback)confirmCallback(); confirmEl.classList.remove('show'); confirmCallback=null; });
+
+function deleteRecord(id){
+  records=records.filter(x=>x.id!==id);
+  render();
+  renderHome();
+  renderRecent();
+  renderLeaderboard();
+}
+
+// ====== VEHICLE MANAGEMENT ======
+let inVehicleMgmt=false;
+function showVehicleMgmt(){
+  inVehicleMgmt=true;
+  document.getElementById('page-mine').classList.remove('active');
+  document.getElementById('page-vehicle-mgmt').classList.add('active');
+  renderVehicleMgmt();
+}
+function hideVehicleMgmt(){
+  inVehicleMgmt=false;
+  document.getElementById('page-vehicle-mgmt').classList.remove('active');
+  document.getElementById('page-mine').classList.add('active');
+}
+function renderVehicleMgmt(){
+  const list=document.getElementById('vm-list');
+  list.innerHTML='';
+  vehicles.forEach((v,i)=>{
+    list.innerHTML+='<div class="vm-item"><span class="vm-item-name">'+v+'</span><div class="vm-item-actions"><button class="vm-item-btn rename" data-idx="'+i+'">鉁?/button><button class="vm-item-btn delete" data-idx="'+i+'">鉁?/button></div></div>';
+  });
+  list.querySelectorAll('.vm-item-btn.rename').forEach(b=>b.addEventListener('click',()=>renameVehicle(+b.dataset.idx)));
+  list.querySelectorAll('.vm-item-btn.delete').forEach(b=>b.addEventListener('click',()=>deleteVehicle(+b.dataset.idx)));
+}
+function renameVehicle(idx){
+  const newName=prompt('杈撳叆鏂板悕绉帮細', vehicles[idx]);
+  if(newName && newName.trim() && newName.trim()!==vehicles[idx]){
+    const oldName=vehicles[idx];
+    vehicles[idx]=newName.trim();
+    records.forEach(r=>{ if(r.vehicle===oldName)r.vehicle=newName.trim(); });
+    renderVehicleMgmt();
+    render(); renderHome(); renderRecent();
+  }
+}
+function deleteVehicle(idx){
+  if(vehicles.length<=1){ alert('鑷冲皯淇濈暀涓€杈嗚溅'); return; }
+  if(!confirm('纭畾鍒犻櫎 "'+vehicles[idx]+'"锛熷湀閫熻褰曚腑鐨勮溅杈嗕俊鎭皢琚竻绌恒€?))return;
+  const oldName=vehicles[idx];
+  vehicles.splice(idx,1);
+  records.forEach(r=>{ if(r.vehicle===oldName)r.vehicle=''; });
+  renderVehicleMgmt();
+  render(); renderHome(); renderRecent();
+}
+function addVehicle(){
+  const name=prompt('杈撳叆鏂拌溅鍚嶇О锛?);
+  if(name && name.trim() && !vehicles.includes(name.trim())){
+    vehicles.push(name.trim());
+    renderVehicleMgmt();
+  } else if(name && vehicles.includes(name.trim())){
+    alert('璇ヨ溅杈嗗凡瀛樺湪');
+  }
+}
+
+// ====== LEADERBOARD ======
+const LB_RIDERS = [
+  { name:'馃弫 閽㈤搧渚?, avatar:'鈿?, vehicle:'Yamaha R6' },
+  { name:'馃弫 闂數渚?, avatar:'馃敟', vehicle:'Kawasaki ZX-6R' },
+  { name:'馃弫 杩介鑰?, avatar:'馃尓', vehicle:'Honda CBR600RR' },
+  { name:'馃弫 鏋侀€熺媯', avatar:'馃憫', vehicle:'Suzuki GSX-R600' },
+  { name:'馃弫 寮亾鐜?, avatar:'馃挮', vehicle:'Yamaha R6' },
+  { name:'馃弫 鏃犲奖鎵?, avatar:'馃挜', vehicle:'Kawasaki ZX-6R' },
+  { name:'馃弫 婕傜Щ甯?, avatar:'馃寑', vehicle:'Honda CBR600RR' },
+  { name:'馃弫 璧涜溅榄?, avatar:'馃弾', vehicle:'Yamaha R6' },
+];
+function renderLeaderboard(){
+  const trackSel=document.getElementById('lb-tracks');
+  const trackNames=['ZIC','瀹佹尝','澶╅┈','澶╁簻'];
+  const lbTrack=trackSel.dataset.selected||'ZIC';
+  trackSel.innerHTML=trackNames.map(t=>'<button class="lb-track-btn'+(t===lbTrack?' active':'')+'" data-track="'+t+'">'+t+'</button>').join('');
+  trackSel.querySelectorAll('.lb-track-btn').forEach(b=>b.addEventListener('click',()=>{
+    trackSel.dataset.selected=b.dataset.track;
+    renderLeaderboard();
+  }));
+
+  const list=document.getElementById('lb-list');
+  list.innerHTML='';
+  // Generate virtual leaderboard data
+  const base=timeToMs('1:55.000');
+  const data=LB_RIDERS.map((r,i)=>{
+    const diff=i*350+Math.floor(Math.random()*200);
+    const t=base+diff;
+    return { ...r, time:msToTime(t), gap:i===0?'--':msToTime(base-(base+diff)) };
+  });
+  data.forEach((r,i)=>{
+    const rankClass=i===0?'gold':i===1?'silver':i===2?'bronze':'other';
+    list.innerHTML+='<div class="lb-card">'
+      +'<div class="lb-rank '+rankClass+'">'+(i+1)+'</div>'
+      +'<div class="lb-avatar">'+r.avatar+'</div>'
+      +'<div class="lb-info"><div class="lb-name">'+r.name+'</div><div class="lb-vehicle">'+r.vehicle+'</div></div>'
+      +'<div class="lb-right"><div class="lb-time">'+r.time+'</div><div class="lb-gap">'+(i===0?'PB':'+'+r.gap+'s')+'</div></div>'
+      +'</div>';
+  });
+}
+
 // ====== INIT ======
+renderHome();
 render();
 renderRecent();
+renderLeaderboard();
 
 const tabs = document.querySelectorAll('.tab');
 const fab = document.getElementById('fab');
@@ -746,11 +1038,13 @@ const pages = {
   laps: document.getElementById('page-laps'),
   mods: document.getElementById('page-mods'),
   expenses: document.getElementById('page-expenses'),
+  leaderboard: document.getElementById('page-leaderboard'),
   mine: document.getElementById('page-mine'),
 };
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
+    if(inVehicleMgmt)hideVehicleMgmt();
     tabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
     Object.values(pages).forEach(p => p.classList.remove('active'));
@@ -758,7 +1052,8 @@ tabs.forEach(tab => {
     document.getElementById('content').scrollTop = 0;
     fab.style.display = fabPages.includes(tab.dataset.page) ? 'flex' : 'none';
     if(tab.dataset.page==='laps')render();
-    if(tab.dataset.page==='home')renderRecent();
+    if(tab.dataset.page==='home'){ renderHome(); renderRecent(); }
+    if(tab.dataset.page==='leaderboard')renderLeaderboard();
   });
 });
 
