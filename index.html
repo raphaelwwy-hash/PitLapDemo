@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>PitLap - 赛车圈速助手</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#F5F5F5;color:#1A1A1A;max-width:420px;margin:0 auto;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
+::-webkit-scrollbar{display:none}
+
+/* Header */
+.header{background:#fff;padding:12px 16px;border-bottom:1px solid #E5E5E5;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:relative;overflow:hidden}
+.header::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#E60012,#FF3333,#E60012,#1A1A1A)}
+.header::after{content:'';position:absolute;bottom:0;right:20px;width:80px;height:20px;opacity:.06;background:repeating-linear-gradient(45deg,#000 0,#000 2px,transparent 2px,transparent 4px)}
+.header h1{font-size:20px;font-weight:800;color:#1A1A1A;letter-spacing:1px}
+.header h1 span{color:#E60012}
+.header-badge{font-size:11px;color:#999;background:#F0F0F0;padding:3px 8px;border-radius:10px;font-weight:600}
+
+/* Checkered accent bar */
+.checkered{height:4px;background:repeating-linear-gradient(90deg,#1A1A1A 0,#1A1A1A 6px,#fff 6px,#fff 12px);flex-shrink:0}
+
+/* Content */
+.content{flex:1;overflow-y:auto;padding:16px;padding-bottom:8px;display:flex;flex-direction:column;gap:14px}
+.page{display:none;animation:fadeIn .25s ease}
+.page.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* Cards */
+.card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);border:1px solid #EEEEEE;position:relative}
+.card-title{font-size:13px;color:#888;margin-bottom:10px;display:flex;align-items:center;gap:6px;font-weight:600}
+.card-title .dot{width:7px;height:7px;border-radius:50%;display:inline-block}
+.dot-red{background:#E60012}
+.dot-black{background:#1A1A1A}
+
+/* Vehicle Card */
+.vehicle-card{background:#fff;border-left:4px solid #E60012;position:relative;overflow:hidden}
+.vehicle-card::after{content:'🏁';position:absolute;right:12px;top:12px;font-size:24px;opacity:.3}
+.vehicle-card .racing-line{position:absolute;bottom:0;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,#E60012 0,#E60012 8px,transparent 8px,transparent 16px)}
+.vehicle-name{font-size:22px;font-weight:800;color:#1A1A1A;margin-bottom:4px}
+.vehicle-sub{font-size:12px;color:#888;margin-bottom:12px}
+.vehicle-stats{display:flex;gap:16px}
+.vehicle-stat{text-align:center;flex:1;background:#F8F8F8;border-radius:8px;padding:8px 6px}
+.vehicle-stat .num{font-size:18px;font-weight:800;color:#E60012}
+.vehicle-stat .label{font-size:11px;color:#888;margin-top:2px;font-weight:500}
+
+/* Tire */
+.tire-bar{height:6px;background:#E8E8E8;border-radius:3px;margin-top:8px;overflow:hidden}
+.tire-fill{height:100%;border-radius:3px}
+.tire-fill.good{background:linear-gradient(90deg,#E60012,#FF6B00)}
+.tire-fill.warn{background:linear-gradient(90deg,#CC0000,#E60012)}
+.tire-info{display:flex;justify-content:space-between;font-size:12px;color:#888;margin-top:4px}
+
+/* Lap */
+.lap-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #F0F0F0}
+.lap-item:last-child{border-bottom:none}
+.lap-track{font-size:14px;font-weight:700;color:#1A1A1A}
+.lap-track-sub{font-size:11px;color:#999;margin-top:2px}
+.lap-time{font-size:18px;font-weight:800;color:#E60012;font-variant-numeric:tabular-nums}
+.lap-time.best{color:#1A1A1A}
+.lap-time.best::after{content:' PB';font-size:10px;color:#1A1A1A;font-weight:700;background:#F0F0F0;padding:1px 5px;border-radius:4px;margin-left:4px}
+
+/* Chart */
+.chart-bars{display:flex;align-items:flex-end;gap:4px;height:100px;padding-top:14px;border-bottom:2px solid #E5E5E5}
+.chart-bar{flex:1;border-radius:4px 4px 0 0;min-height:8px;position:relative;background:linear-gradient(180deg,#E60012,#FF5555)}
+.chart-bar.best{background:linear-gradient(180deg,#1A1A1A,#444)}
+.chart-bar .val{position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:8px;color:#888;white-space:nowrap;font-weight:600}
+.chart-labels{display:flex;gap:4px;margin-top:6px}
+.chart-labels span{flex:1;font-size:8px;color:#999;text-align:center;font-weight:500}
+
+/* Tabs */
+.tabs{display:flex;background:#fff;border-top:2px solid #E5E5E5;flex-shrink:0;padding:4px 0 env(safe-area-inset-bottom,6px) 0;position:relative}
+.tabs::before{content:'';position:absolute;top:-2px;left:10%;right:10%;height:2px;background:repeating-linear-gradient(90deg,#E60012 0,#E60012 8px,transparent 8px,transparent 16px)}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 0 4px;cursor:pointer;transition:.15s;border:none;background:none;color:#999}
+.tab svg{width:22px;height:22px}
+.tab span{font-size:10px;font-weight:600}
+.tab.active{color:#E60012}
+.tab.active svg{color:#E60012;fill:#E60012}
+
+/* Mods */
+.mod-tags{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.mod-tag{padding:6px 14px;border-radius:16px;font-size:12px;background:#F0F0F0;color:#888;white-space:nowrap;cursor:pointer;transition:.15s;border:none;font-weight:600}
+.mod-tag.active{background:#E60012;color:#fff}
+.lap-tag{padding:6px 14px;border-radius:16px;font-size:12px;background:#F0F0F0;color:#888;white-space:nowrap;cursor:pointer;transition:.15s;border:none;font-weight:600}
+.lap-tag.active{background:#E60012;color:#fff}
+.mod-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #F0F0F0}
+.mod-item:last-child{border-bottom:none}
+.mod-name{font-size:14px;font-weight:700;color:#1A1A1A}
+.mod-cat{font-size:10px;color:#E60012;background:#FFF0F0;padding:2px 8px;border-radius:8px;display:inline-block;margin-top:3px;font-weight:600}
+.mod-price{font-size:15px;font-weight:700;color:#E60012}
+.mod-date{font-size:10px;color:#999;text-align:right}
+
+/* Expenses */
+.expense-summary{display:flex;gap:12px;margin-bottom:4px}
+.expense-stat{flex:1;text-align:center;background:#F8F8F8;border-radius:10px;padding:12px;border:1px solid #EEEEEE}
+.expense-stat .num{font-size:20px;font-weight:800;color:#E60012}
+.expense-stat .label{font-size:11px;color:#888;margin-top:2px;font-weight:500}
+.expense-item{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #F0F0F0}
+.expense-item:last-child{border-bottom:none}
+.expense-left{display:flex;align-items:center;gap:10px}
+.expense-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;background:#F8F8F8}
+.expense-name{font-size:14px;font-weight:600}
+.expense-date{font-size:11px;color:#999}
+.expense-amount{font-size:15px;font-weight:700;color:#E60012}
+
+/* Pie */
+.pie-placeholder{width:100px;height:100px;border-radius:50%;margin:0 auto;background:conic-gradient(#E60012 0% 35%,#1A1A1A 35% 55%,#FF6B00 55% 70%,#CCC 70% 85%,#555 85% 100%);position:relative;flex-shrink:0}
+.pie-placeholder::after{content:'';position:absolute;inset:20px;border-radius:50%;background:#fff}
+
+/* My */
+.profile-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#E60012,#1A1A1A);display:flex;align-items:center;justify-content:center;font-size:22px;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.profile-name{font-size:18px;font-weight:800;color:#1A1A1A}
+.profile-sub{font-size:12px;color:#888}
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat-box{background:#F8F8F8;border-radius:10px;padding:14px;text-align:center;border:1px solid #EEE}
+.stat-box .num{font-size:20px;font-weight:800;color:#E60012}
+.stat-box .num.blue{color:#1A1A1A}
+.stat-box .label{font-size:11px;color:#888;margin-top:3px;font-weight:500}
+.menu-item{display:flex;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid #F0F0F0;color:#555;font-size:14px;font-weight:500;cursor:pointer}
+.menu-item:last-child{border-bottom:none}
+.menu-item .arrow{margin-left:auto;color:#ccc;font-weight:700}
+.menu-item .badge{background:#E60012;color:#fff;font-size:10px;padding:1px 6px;border-radius:8px;margin-left:auto}
+
+/* FAB */
+.fab{position:fixed;bottom:76px;right:calc(50% - 210px + 16px);width:48px;height:48px;border-radius:50%;background:#E60012;color:#fff;border:none;font-size:22px;cursor:pointer;box-shadow:0 4px 15px rgba(230,0,18,.35);display:flex;align-items:center;justify-content:center;z-index:10;transition:.15s;font-weight:700}
+.fab:active{transform:scale(.92)}
+@media(max-width:420px){.fab{right:16px}}
+
+/* Misc */
+.divider{height:1px;background:#F0F0F0;margin:4px 0}
+.section-title{font-size:13px;color:#888;margin-bottom:8px;display:flex;align-items:center;gap:6px;font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;justify-content:center}
+.legend span{font-size:11px;color:#888;font-weight:500}
+.legend span em{font-style:normal;display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:3px}
+
+/* Racing stripe decoration */
+.racing-stripe{height:3px;background:repeating-linear-gradient(90deg,#1A1A1A 0,#1A1A1A 6px,#fff 6px,#fff 12px);margin:8px 0 4px;border-radius:1px}
+
+/* === PB Cards === */
+.pb-card{background:#fff;border-radius:12px;padding:14px 16px;box-shadow:0 2px 8px rgba(0,0,0,.06);border:1px solid #EEEEEE;position:relative;overflow:hidden}
+.pb-card:not(:last-child){margin-bottom:10px}
+.pb-card .pb-badge{font-size:11px;font-weight:700;display:inline-block;padding:2px 10px;border-radius:10px;margin-bottom:6px}
+.pb-badge.most{background:#1A1A1A;color:#fff}
+.pb-badge.hot{background:#E60012;color:#fff}
+.pb-badge.newb{background:#FFF0F0;color:#E60012;border:1px solid #E60012}
+.pb-card .pb-track{font-size:18px;font-weight:800;color:#1A1A1A}
+.pb-card .pb-time{font-size:20px;font-weight:800;color:#E60012;margin:2px 0}
+.pb-card .pb-target{display:flex;align-items:baseline;gap:6px;font-size:13px;color:#888}
+.pb-card .pb-gap{font-size:24px;font-weight:800;margin-left:auto}
+.pb-card .pb-gap.red{color:#E60012}
+.pb-card .pb-gap.green{color:#00AA55}
+.pb-gap-unit{font-size:13px;font-weight:600}
+
+/* === Lap List === */
+.lap-list-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #F0F0F0}
+.lap-list-item:last-child{border-bottom:none}
+.lli-left{display:flex;flex-direction:column;gap:2px}
+.lli-date{font-size:11px;color:#999;font-weight:500}
+.lli-track{font-size:14px;font-weight:700;color:#1A1A1A}
+.lli-vehicle{font-size:11px;color:#999}
+.lli-time{font-size:18px;font-weight:800;color:#E60012}
+
+/* === Modal === */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:flex-end;animation:fadeIn .2s ease}
+.modal-overlay.show{display:flex}
+.modal-sheet{background:#fff;border-radius:16px 16px 0 0;width:100%;max-width:420px;max-height:85vh;overflow-y:auto;padding:20px 20px calc(20px + env(safe-area-inset-bottom,10px));animation:slideUp .25s ease}
+@keyframes slideUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-handle{width:36px;height:4px;background:#DDD;border-radius:2px;margin:0 auto 16px}
+.modal-title{font-size:18px;font-weight:800;margin-bottom:16px;color:#1A1A1A}
+.form-group{margin-bottom:14px}
+.form-label{font-size:12px;font-weight:600;color:#888;margin-bottom:5px;display:block}
+.form-row{display:flex;gap:8px;align-items:center}
+.form-row .form-group{flex:1;margin-bottom:0}
+.form-input,.form-select{width:100%;padding:10px 12px;border:1px solid #DDD;border-radius:8px;font-size:14px;background:#FAFAFA;color:#1A1A1A;outline:none;transition:.15s}
+.form-input:focus,.form-select:focus{border-color:#E60012;background:#fff}
+.form-input-sm{padding:8px 10px;font-size:14px;text-align:center}
+.unit-label{font-size:12px;color:#999;font-weight:500;white-space:nowrap}
+
+/* Multi-select tags */
+.tag-grid{display:flex;flex-wrap:wrap;gap:6px}
+.tag-opt{padding:6px 14px;border-radius:16px;font-size:12px;background:#F0F0F0;color:#888;cursor:pointer;border:none;font-weight:600;transition:.15s}
+.tag-opt.active{background:#E60012;color:#fff}
+.tag-opt:active{transform:scale(.95)}
+
+/* Modal buttons */
+.modal-actions{display:flex;gap:10px;margin-top:18px}
+.btn{flex:1;padding:12px;border-radius:10px;font-size:15px;font-weight:700;border:none;cursor:pointer;transition:.15s}
+.btn:active{transform:scale(.97)}
+.btn-cancel{background:#F0F0F0;color:#888}
+.btn-submit{background:#E60012;color:#fff}
+.btn-submit:disabled{opacity:.4}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><span>Pit</span>Lap</h1>
+  <span class="header-badge">DEMO</span>
+</div>
+<div class="checkered"></div>
+
+<div class="content" id="content">
+
+  <!-- ========== 首页 ========== -->
+  <div class="page active" id="page-home">
+    <div class="card vehicle-card">
+      <div style="display:flex;gap:16px;align-items:center">
+        <div style="flex:1">
+          <div class="vehicle-name">Yamaha R3</div>
+          <div class="vehicle-sub">321cc · 42hp</div>
+          <div class="vehicle-stats" style="justify-content:center">
+            <div class="vehicle-stat" style="flex:none;padding:8px 20px">
+              <div class="num" style="font-size:22px">ZIC 1:52.34</div>
+              <div class="label">最佳圈速</div>
+            </div>
+          </div>
+        </div>
+        <div style="flex-shrink:0;width:120px;height:80px;border-radius:8px;overflow:hidden;background:#F5F5F5;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center">
+          <img src="https://imgd.aeplcdn.com/1056x594/bw/models/yamaha-yzf-r3.jpg?20190103151915&q=80" alt="Yamaha R3" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=font-size:32px>🏍️</div>'">
+        </div>
+      </div>
+      <div class="racing-line"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="dot dot-red"></span>轮胎状态</div>
+      <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600">
+        <span>Pirelli Diablo Rosso IV</span>
+        <span style="color:#E60012">80%</span>
+      </div>
+      <div class="tire-info" style="margin-top:0">
+        <span>后轮：65%</span>
+        <span>更换预警：15 节</span>
+      </div>
+      <div style="margin-top:10px">
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:#888;margin-bottom:3px">
+          <span>已使用</span>
+          <span style="font-weight:600;color:#1A1A1A">4 / 15 节</span>
+        </div>
+        <div class="tire-bar"><div class="tire-fill good" style="width:27%"></div></div>
+        <div style="display:flex;justify-content:space-between;font-size:11px;margin-top:4px">
+          <span style="color:#1A1A1A;font-weight:600">● 正常</span>
+          <span style="color:#E60012;font-size:10px">接近更换（剩余 11 节）</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="recent-session">
+      <div class="card-title"><span class="dot dot-black"></span>最近赛道日</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><span class="dot dot-red"></span>圈速趋势 · ZIC</div>
+      <div class="chart-bars">
+        <div class="chart-bar" style="height:80px"><span class="val">1:56.2</span></div>
+        <div class="chart-bar" style="height:72px"><span class="val">1:54.8</span></div>
+        <div class="chart-bar" style="height:64px"><span class="val">1:53.1</span></div>
+        <div class="chart-bar best" style="height:55px"><span class="val">1:52.3</span></div>
+        <div class="chart-bar" style="height:58px"><span class="val">1:52.8</span></div>
+        <div class="chart-bar" style="height:63px"><span class="val">1:53.8</span></div>
+      </div>
+      <div class="chart-labels">
+        <span>01-12</span><span>02-20</span><span>03-28</span><span>05-15</span><span>06-02</span><span>06-16</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 圈速 ========== -->
+  <div class="page" id="page-laps">
+    <div class="card" style="padding:12px 16px">
+      <div class="lap-tags" style="display:flex;gap:8px;overflow-x:auto">
+        <span class="lap-tag active" data-track="">全部</span>
+      </div>
+    </div>
+
+    <div id="pb-cards"></div>
+
+    <div class="card" style="padding:12px 16px">
+      <div class="card-title"><span class="dot dot-red"></span>记录</div>
+      <div id="lap-list"></div>
+    </div>
+  </div>
+
+  <!-- ========== 改装 ========== -->
+  <div class="page" id="page-mods">
+    <div class="card" style="padding:12px 16px">
+      <div class="mod-tags">
+        <button class="mod-tag active">全部</button>
+        <button class="mod-tag">动力</button>
+        <button class="mod-tag">刹车</button>
+        <button class="mod-tag">轮胎</button>
+        <button class="mod-tag">悬挂</button>
+        <button class="mod-tag">外观</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="mod-item">
+        <div><div class="mod-name">SC Project 全段排气</div><span class="mod-cat">动力</span></div>
+        <div><div class="mod-price">¥3,800</div><div class="mod-date">2026-04-01</div></div>
+      </div>
+      <div class="mod-item">
+        <div><div class="mod-name">BREMBO M50 卡钳</div><span class="mod-cat">刹车</span></div>
+        <div><div class="mod-price">¥2,500</div><div class="mod-date">2026-03-15</div></div>
+      </div>
+      <div class="mod-item">
+        <div><div class="mod-name">Pirelli Diablo Rosso IV</div><span class="mod-cat">轮胎</span></div>
+        <div><div class="mod-price">¥2,200</div><div class="mod-date">2026-02-20</div></div>
+      </div>
+      <div class="mod-item">
+        <div><div class="mod-name">Öhlins 后避震</div><span class="mod-cat">悬挂</span></div>
+        <div><div class="mod-price">¥4,500</div><div class="mod-date">2026-01-10</div></div>
+      </div>
+      <div class="mod-item">
+        <div><div class="mod-name">碳纤维定风翼套件</div><span class="mod-cat">外观</span></div>
+        <div><div class="mod-price">¥680</div><div class="mod-date">2025-12-05</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 花销 ========== -->
+  <div class="page" id="page-expenses">
+    <div class="card">
+      <div class="expense-summary">
+        <div class="expense-stat"><div class="num">¥14,400</div><div class="label">总花销</div></div>
+        <div class="expense-stat"><div class="num">¥2,880</div><div class="label">月均</div></div>
+        <div class="expense-stat"><div class="num">6</div><div class="label">笔数</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="section-title">分类占比</div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <div class="pie-placeholder"></div>
+        <div style="flex:1">
+          <div style="font-size:12px;margin-bottom:6px"><span style="color:#E60012">●</span> 改装 <strong>55%</strong></div>
+          <div style="font-size:12px;margin-bottom:6px"><span style="color:#1A1A1A">●</span> 赛道 <strong>20%</strong></div>
+          <div style="font-size:12px;margin-bottom:6px"><span style="color:#FF6B00">●</span> 轮胎 <strong>15%</strong></div>
+          <div style="font-size:12px"><span style="color:#555">●</span> 保养 <strong>10%</strong></div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="expense-item">
+        <div class="expense-left">
+          <div class="expense-icon">🔧</div>
+          <div><div class="expense-name">SC Project 排气管</div><div class="expense-date">2026-04-01</div></div>
+        </div>
+        <div class="expense-amount">¥3,800</div>
+      </div>
+      <div class="expense-item">
+        <div class="expense-left">
+          <div class="expense-icon">🎫</div>
+          <div><div class="expense-name">赛道日门票+Pit房</div><div class="expense-date">2026-05-15</div></div>
+        </div>
+        <div class="expense-amount">¥800</div>
+      </div>
+      <div class="expense-item">
+        <div class="expense-left">
+          <div class="expense-icon">⛽</div>
+          <div><div class="expense-name">汽油+轮胎损耗</div><div class="expense-date">2026-05-15</div></div>
+        </div>
+        <div class="expense-amount">¥600</div>
+      </div>
+      <div class="expense-item">
+        <div class="expense-left">
+          <div class="expense-icon">🛞</div>
+          <div><div class="expense-name">Diablo Rosso IV 换胎</div><div class="expense-date">2026-02-20</div></div>
+        </div>
+        <div class="expense-amount">¥2,200</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 我的 ========== -->
+  <div class="page" id="page-mine">
+    <div class="card">
+      <div class="profile-header">
+        <div class="avatar">🏁</div>
+        <div>
+          <div class="profile-name">Racer R3</div>
+          <div class="profile-sub">Yamaha R3 (2023) · 浙江杭州</div>
+        </div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-box"><div class="num">47</div><div class="label">总圈数</div></div>
+        <div class="stat-box"><div class="num blue">1:52.34</div><div class="label">最佳圈速</div></div>
+        <div class="stat-box"><div class="num">¥14,400</div><div class="label">总花销</div></div>
+        <div class="stat-box"><div class="num">5</div><div class="label">改装件</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="menu-item">🏍️ 车辆管理 <span class="arrow">›</span></div>
+      <div class="menu-item">📊 数据导出 <span class="arrow">›</span></div>
+      <div class="menu-item">🔔 推送设置 <span class="badge">NEW</span></div>
+      <div class="menu-item">🌙 深色模式 <span class="arrow">›</span></div>
+      <div class="menu-item">ℹ️ 关于 PitLap <span class="arrow">›</span></div>
+    </div>
+    <div style="text-align:center;padding:20px 0 10px;font-size:11px;color:#ccc;font-weight:500">PitLap Demo · v0.2 亮色版</div>
+  </div>
+
+</div>
+
+<button class="fab" id="fab">+</button>
+
+<!-- ========== Modal ========== -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">新增圈速</div>
+
+    <div class="form-group">
+      <label class="form-label">赛道</label>
+      <select class="form-select" id="f-track"><option value="">请选择赛道</option></select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">日期</label>
+      <input class="form-input" id="f-date" type="date">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">圈速</label>
+      <div class="form-row">
+        <div class="form-group"><input class="form-input form-input-sm" id="f-min" type="number" min="0" max="9" placeholder="分" inputmode="numeric"></div>
+        <span style="font-size:18px;font-weight:700;color:#1A1A1A">:</span>
+        <div class="form-group"><input class="form-input form-input-sm" id="f-sec" type="number" min="0" max="59" placeholder="秒" inputmode="numeric"></div>
+        <span style="font-size:18px;font-weight:700;color:#1A1A1A">.</span>
+        <div class="form-group"><input class="form-input form-input-sm" id="f-ms" type="number" min="0" max="999" placeholder="毫秒" inputmode="numeric"></div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">目标圈速 <span style="color:#E60012;font-weight:400;font-size:11px" id="target-hint"></span></label>
+      <div class="form-row">
+        <div class="form-group"><input class="form-input form-input-sm" id="t-min" type="number" min="0" max="9" placeholder="分" inputmode="numeric"></div>
+        <span style="font-size:18px;font-weight:700;color:#1A1A1A">:</span>
+        <div class="form-group"><input class="form-input form-input-sm" id="t-sec" type="number" min="0" max="59" placeholder="秒" inputmode="numeric"></div>
+        <span style="font-size:18px;font-weight:700;color:#1A1A1A">.</span>
+        <div class="form-group"><input class="form-input form-input-sm" id="t-ms" type="number" min="0" max="999" placeholder="毫秒" inputmode="numeric"></div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">温度（℃） <span style="color:#999;font-weight:400;font-size:11px">非必填</span></label>
+      <div class="form-row">
+        <div class="form-group"><input class="form-input form-input-sm" id="f-temp-min" type="number" placeholder="最低温" inputmode="numeric"></div>
+        <span style="font-size:13px;color:#999">~</span>
+        <div class="form-group"><input class="form-input form-input-sm" id="f-temp-max" type="number" placeholder="最高温" inputmode="numeric"></div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">赛道状况 <span style="color:#999;font-weight:400;font-size:11px">可多选 · 非必填</span></label>
+      <div class="tag-grid" id="f-conditions">
+        <button class="tag-opt" data-val="干地">干地</button>
+        <button class="tag-opt" data-val="湿地">湿地</button>
+        <button class="tag-opt" data-val="半干">半干</button>
+        <button class="tag-opt" data-val="雨后">雨后</button>
+        <button class="tag-opt" data-val="无风">无风</button>
+        <button class="tag-opt" data-val="微风">微风</button>
+        <button class="tag-opt" data-val="大风">大风</button>
+      </div>
+    </div>
+
+    <div class="modal-actions">
+      <button class="btn btn-cancel" id="modal-cancel">取消</button>
+      <button class="btn btn-submit" id="modal-submit">提交</button>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-page="home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2l7-7 7 7h2"/><path d="M5 12v7h5v-5h4v5h5v-7"/></svg>
+    <span>首页</span>
+  </button>
+  <button class="tab" data-page="laps">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span>圈速</span>
+  </button>
+  <button class="tab" data-page="mods">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    <span>改装</span>
+  </button>
+  <button class="tab" data-page="expenses">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/><path d="M12 18V6"/></svg>
+    <span>花销</span>
+  </button>
+  <button class="tab" data-page="mine">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span>我的</span>
+  </button>
+</div>
+
+<script>
+// ====== DATA ======
+const TARGETS = { 'ZIC': '1:50.000', '宁波': '1:53.000', '天府': '2:00.000', '天马': '' };
+const TRACK_SHORT = { 'ZIC':'ZIC','宁波':'宁波','天马':'天马','天府':'天府' };
+const TRACK_FULL = { 'ZIC':'珠海国际赛车场','宁波':'宁波国际赛道','天马':'上海天马赛车场','天府':'成都天府国际赛道' };
+
+let records = [
+  { date:'2026-06-16',track:'ZIC',time:'1:53.800',temp:'',cond:[] },
+  { date:'2026-06-02',track:'宁波',time:'1:55.142',temp:'',cond:[] },
+  { date:'2026-05-20',track:'宁波',time:'1:56.300',temp:'',cond:[] },
+  { date:'2026-05-15',track:'ZIC',time:'1:52.345',temp:'',cond:[] },
+  { date:'2026-04-20',track:'宁波',time:'1:58.672',temp:'',cond:[] },
+  { date:'2026-03-28',track:'ZIC',time:'1:53.100',temp:'',cond:[] },
+  { date:'2026-03-10',track:'天马',time:'1:28.456',temp:'',cond:[] },
+  { date:'2026-02-20',track:'ZIC',time:'1:54.800',temp:'',cond:[] },
+  { date:'2026-02-14',track:'天府',time:'2:05.890',temp:'',cond:[] },
+  { date:'2026-01-12',track:'ZIC',time:'1:56.200',temp:'',cond:[] },
+];
+
+// ====== UTILS ======
+function timeToMs(t){ const p=t.split(/[:.]/); return +p[0]*60000+ +p[1]*1000+ +p[2]; }
+function msToTime(ms){ const m=Math.floor(ms/60000); const s=Math.floor((ms%60000)/1000); const ms3=ms%1000; return m+':'+String(s).padStart(2,'0')+'.'+String(ms3).padStart(3,'0'); }
+function diffStr(t1,t2){ const d=timeToMs(t2)-timeToMs(t1); const abs=Math.abs(d); const a=msToTime(abs); return a; }
+function today(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+function sorted(r){ return [...r].sort((a,b)=>b.date.localeCompare(a.date)||timeToMs(a.time)-timeToMs(b.time)); }
+function getPB(track){ const r=records.filter(x=>x.track===track); if(!r.length)return null; const pb=r.reduce((a,b)=>timeToMs(a.time)<timeToMs(b.time)?a:b); return pb; }
+function getTarget(t){ return TARGETS[t]||''; }
+
+// ====== COMPUTE PB CARDS ======
+function computeCards(){
+  const trackCount={}; const last5=[];
+  const s=sorted(records);
+  s.forEach((r,i)=>{ trackCount[r.track]=(trackCount[r.track]||0)+1; if(i<5)last5.push(r.track); });
+  const recent5={}; last5.forEach(t=>recent5[t]=(recent5[t]||0)+1);
+  const tracks=Object.keys(trackCount);
+
+  // 征战最多
+  let mostTrack=null,mostN=0;
+  for(const t of tracks){ if(trackCount[t]>mostN){ mostN=trackCount[t]; mostTrack=t; } }
+
+  // 最近常去
+  let hotTrack=null,hotN=0;
+  for(const t of tracks){ if(t!==mostTrack&&recent5[t]&&recent5[t]>=3&&recent5[t]>hotN){ hotN=recent5[t]; hotTrack=t; } }
+
+  // 首次征服 - 按首次记录时间倒序找到最近的新赛道
+  let firstTrack=null,firstDate='';
+  const firstTimes={};
+  tracks.forEach(t=>{ const fr=s.filter(x=>x.track===t).pop(); if(fr){ firstTimes[t]=fr.date; } });
+  for(const t of tracks){
+    if(t===mostTrack||t===hotTrack)continue;
+    if(!firstDate||firstTimes[t]>firstDate){ firstDate=firstTimes[t]; firstTrack=t; }
+    else if(!firstTrack){ firstTrack=t; firstDate=firstTimes[t]; }
+  }
+
+  const cards=[];
+  if(mostTrack) cards.push({ type:'most', track:mostTrack, label:'🏆 征战最多', badge:'most', count:trackCount[mostTrack] });
+  if(hotTrack)  cards.push({ type:'hot',  track:hotTrack,  label:'🔥 最近常去', badge:'hot',  count:'最近'+(recent5[hotTrack])+'次' });
+  if(firstTrack)cards.push({ type:'new',  track:firstTrack,label:'🆕 首次征服', badge:'newb',count:'首次' });
+  return cards;
+}
+
+// ====== RENDER RECENT (首页) ======
+function renderRecent(){
+  const div=document.getElementById('recent-session');
+  const s=sorted(records);
+  if(!s.length){ div.innerHTML='<div class="card-title"><span class="dot dot-black"></span>最近赛道日</div><div style="text-align:center;padding:20px;color:#CCC;font-size:13px">暂无记录</div>'; return; }
+  const last=s[0];
+  const pb=getPB(last.track);
+  const target=getTarget(last.track);
+  const tMs=target?timeToMs(target):0;
+  const gap=tMs?diffStr(pb.time,target):'';
+  const achieved=tMs?timeToMs(pb.time)<=tMs:false;
+  const gapLabel=achieved?'✓ '+gap+'s':'+'+gap+'s';
+  div.innerHTML='<div class="card-title"><span class="dot dot-black"></span>最近赛道日</div>'
+    +'<div class="pb-track" style="font-size:16px;margin-bottom:8px">'+last.track+'</div>'
+    +'<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">'
+    +'<div><span style="font-size:12px;color:#888">最快圈</span><div style="font-size:20px;font-weight:800;color:#E60012">'+(pb?pb.time:'--')+'</div></div>'
+    +(target?'<div><span style="font-size:12px;color:#888">目标</span><div style="font-size:16px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
+    +(gap?'<div><span style="font-size:12px;color:#888">差距</span><div style="font-size:22px;font-weight:800;color:'+(achieved?'#00AA55':'#E60012')+'">'+gapLabel+'s</div></div>':'')
+    +'</div>'
+    +'<div style="margin-top:10px;font-size:11px;color:#999;border-top:1px solid #F0F0F0;padding-top:10px">'+last.date+' · Yamaha R3'+(last.temp?' · '+last.temp+'℃':'')+(last.cond.length?' · '+last.cond.join('/'):'')+'</div>'
+    +'<div class="racing-stripe" style="margin-top:8px"></div>';
+}
+
+// ====== RENDER ======
+function render(){
+  const filter=document.querySelector('#page-laps .lap-tag.active')?.dataset?.track||'';
+  const r=filter?sorted(records.filter(x=>x.track===filter)):sorted(records);
+
+  // Filters
+  const ftags=document.querySelector('#page-laps .lap-tags');
+  const uq=[...new Set(records.map(x=>x.track))].sort();
+  ftags.innerHTML='<span class="lap-tag active" data-track="">全部</span>'+uq.map(t=>'<span class="lap-tag" data-track="'+t+'">'+t+'</span>').join('');
+  ftags.querySelectorAll('.lap-tag').forEach(el=>{
+    el.addEventListener('click',()=>{
+      ftags.querySelectorAll('.lap-tag').forEach(x=>x.classList.remove('active'));
+      el.classList.add('active');
+      render();
+    });
+  });
+  // Re-apply active
+  if(filter){
+    const a=ftags.querySelector('[data-track="'+filter+'"]');
+    if(a){ ftags.querySelectorAll('.lap-tag').forEach(x=>x.classList.remove('active')); a.classList.add('active'); }
+  }
+
+  // PB Cards
+  const pbDiv=document.getElementById('pb-cards');
+  pbDiv.innerHTML='';
+  const cards=computeCards();
+  cards.forEach(c=>{
+    const pb=getPB(c.track);
+    const target=getTarget(c.track);
+    const pbMs=pb?timeToMs(pb.time):0;
+    const tMs=target?timeToMs(target):0;
+    const gap=tMs?diffStr(pb.time,target):'';
+    const achieved=tMs?timeToMs(pb.time)<=timeToMs(target):false;
+    const gapLabel=achieved?'✓ '+gap+'s':'+'+gap+'s';
+    pbDiv.innerHTML+='<div class="pb-card">'
+      +'<div class="pb-badge '+c.badge+'">'+c.label+' · '+c.count+'</div>'
+      +'<div style="display:flex;align-items:center;gap:12px">'
+      +'<div style="flex:1">'
+      +'<div class="pb-track">'+c.track+'</div>'
+      +'<div class="pb-time">'+(pb?pb.time:'--:--.---')+'</div>'
+      +'</div>'
+      +(target?'<div style="text-align:right"><div style="font-size:12px;color:#888;font-weight:500">目标</div><div style="font-size:15px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
+      +'</div>'
+      +(gap?'<div style="display:flex;align-items:center;margin-top:4px;gap:6px">'
+        +'<span class="pb-gap '+(achieved?'green':'red')+'">'+gapLabel+'s</span>'
+        +'<span style="font-size:11px;color:#888;font-weight:500">'+(achieved?'🎉 已达成目标！建议设定新目标':'距目标')+'</span>'
+        +'</div>':'')
+      +(c.type==='new' && !target?'<div style="margin-top:4px;font-size:11px;color:#E60012;font-weight:600">💡 建议设定目标圈速</div>':'')
+      +'</div>';
+  });
+
+  // Lap List
+  const listDiv=document.getElementById('lap-list');
+  listDiv.innerHTML='';
+  if(!r.length){ listDiv.innerHTML='<div style="text-align:center;padding:20px;color:#CCC;font-size:13px">暂无记录</div>'; return; }
+  r.forEach(rec=>{
+    listDiv.innerHTML+='<div class="lap-list-item"><div class="lli-left"><span class="lli-date">'+rec.date+'</span><span class="lli-track">'+rec.track+'</span><span class="lli-vehicle">Yamaha R3'+(rec.temp?' · '+rec.temp+'℃':'')+(rec.cond.length?' · '+rec.cond.join('/'):'')+'</span></div><div class="lli-time">'+rec.time+'</div></div>';
+  });
+}
+
+// ====== MODAL ======
+const modal=document.getElementById('modal');
+const fabBtn=document.getElementById('fab');
+let selectedCond=[];
+
+function openModal(){
+  selectedCond=[];
+  document.getElementById('f-track').value='';
+  document.getElementById('f-date').value=today();
+  document.getElementById('f-min').value='';
+  document.getElementById('f-sec').value='';
+  document.getElementById('f-ms').value='';
+  document.getElementById('t-min').value='';
+  document.getElementById('t-sec').value='';
+  document.getElementById('t-ms').value='';
+  document.getElementById('f-temp-min').value='';
+  document.getElementById('f-temp-max').value='';
+  document.getElementById('target-hint').textContent='';
+  document.querySelectorAll('#f-conditions .tag-opt').forEach(x=>x.classList.remove('active'));
+
+  // Populate track dropdown
+  const sel=document.getElementById('f-track');
+  const uq=[...new Set(records.map(x=>x.track))].sort();
+  const fullList=['ZIC','宁波','天马','天府'];
+  sel.innerHTML='<option value="">请选择赛道</option>'+fullList.map(t=>'<option value="'+t+'">'+TRACK_FULL[t]+'</option>').join('');
+
+  modal.classList.add('show');
+}
+
+function closeModal(){ modal.classList.remove('show'); }
+
+fabBtn.addEventListener('click',openModal);
+document.getElementById('modal-cancel').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{ if(e.target===modal)closeModal(); });
+
+// Track selection auto-fills target
+document.getElementById('f-track').addEventListener('change',function(){
+  const t=this.value;
+  const hint=document.getElementById('target-hint');
+  if(t && TARGETS[t]){
+    const parts=TARGETS[t].split(/[:.]/);
+    document.getElementById('t-min').value=parts[0];
+    document.getElementById('t-sec').value=parts[1];
+    document.getElementById('t-ms').value=parts[2];
+    hint.textContent='沿用上次目标 '+TARGETS[t];
+  } else if(t && !TARGETS[t]){
+    hint.textContent='建议设定目标圈速';
+    document.getElementById('t-min').value='';
+    document.getElementById('t-sec').value='';
+    document.getElementById('t-ms').value='';
+  } else {
+    hint.textContent='';
+  }
+});
+
+// Condition multi-select
+document.querySelectorAll('#f-conditions .tag-opt').forEach(el=>{
+  el.addEventListener('click',()=>{
+    const v=el.dataset.val;
+    if(el.classList.contains('active')){ el.classList.remove('active'); selectedCond=selectedCond.filter(x=>x!==v); }
+    else { el.classList.add('active'); selectedCond.push(v); }
+  });
+});
+
+// Submit
+document.getElementById('modal-submit').addEventListener('click',function(){
+  const track=document.getElementById('f-track').value;
+  const min=document.getElementById('f-min').value;
+  const sec=document.getElementById('f-sec').value;
+  const ms=document.getElementById('f-ms').value;
+  const tMin=document.getElementById('t-min').value;
+  const tSec=document.getElementById('t-sec').value;
+  const tMs=document.getElementById('t-ms').value;
+  const tempMin=document.getElementById('f-temp-min').value;
+  const tempMax=document.getElementById('f-temp-max').value;
+
+  if(!track||!min||sec===''||ms===''){ alert('请填写赛道和圈速'); return; }
+  const secNum=+sec; const msNum=+ms;
+  if(secNum>59||msNum>999){ alert('秒数不能超过59，毫秒不能超过999'); return; }
+
+  const time=min+':'+String(secNum).padStart(2,'0')+'.'+String(msNum).padStart(3,'0');
+
+  // Target
+  if(tMin!==''&&tSec!==''&&tMs!==''){
+    TARGETS[track]=tMin+':'+String(+tSec).padStart(2,'0')+'.'+String(+tMs).padStart(3,'0');
+  }
+
+  const temp=tempMin||tempMax?(tempMin||'?')+'~'+(tempMax||'?'):'';
+  const cond=[...selectedCond];
+  const date=document.getElementById('f-date').value||today();
+
+  records.push({ date, track, time, temp, cond });
+  closeModal();
+  render();
+  renderRecent();
+});
+
+// ====== INIT ======
+render();
+renderRecent();
+
+const tabs = document.querySelectorAll('.tab');
+const fab = document.getElementById('fab');
+fab.style.display = 'none';
+const fabPages = ['laps', 'mods', 'expenses'];
+const pages = {
+  home: document.getElementById('page-home'),
+  laps: document.getElementById('page-laps'),
+  mods: document.getElementById('page-mods'),
+  expenses: document.getElementById('page-expenses'),
+  mine: document.getElementById('page-mine'),
+};
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    Object.values(pages).forEach(p => p.classList.remove('active'));
+    pages[tab.dataset.page].classList.add('active');
+    document.getElementById('content').scrollTop = 0;
+    fab.style.display = fabPages.includes(tab.dataset.page) ? 'flex' : 'none';
+    if(tab.dataset.page==='laps')render();
+    if(tab.dataset.page==='home')renderRecent();
+  });
+});
+
+document.querySelectorAll('.mod-tag').forEach(tag => {
+  tag.addEventListener('click', () => {
+    tag.parentElement.querySelectorAll('.mod-tag').forEach(t => t.classList.remove('active'));
+    tag.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
