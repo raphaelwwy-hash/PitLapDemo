@@ -229,8 +229,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .mv-vehicle-detail{font-size:12px;color:#888;font-weight:500}
 .mv-vehicle-detail span{color:#E60012;font-weight:700}
 .mv-mod-section{border-top:1px solid #F0F0F0}
-.mv-mod-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 8px}
-.mv-mod-title{font-size:14px;font-weight:700;color:#1A1A1A}
+.mv-mod-header{display:flex;flex-direction:column;gap:6px;padding:14px 16px 8px}
+.mv-mod-title{font-size:14px;font-weight:700;color:#1A1A1A;white-space:nowrap}
 .mv-mod-tags{display:flex;gap:6px;overflow-x:auto}
 .mv-mod-tag{padding:4px 12px;border-radius:12px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid #DDD;background:#fff;color:#888;white-space:nowrap;transition:.15s}
 .mv-mod-tag.active{background:#1A1A1A;color:#fff;border-color:#1A1A1A}
@@ -305,6 +305,63 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .expense-filter{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px}
 .expense-filter-btn{padding:5px 14px;border-radius:14px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid #DDD;background:#fff;color:#888;white-space:nowrap;transition:.15s}
 .expense-filter-btn.active{background:#E60012;color:#fff;border-color:#E60012}
+
+/* Mod Search Dropdown */
+.mod-search-dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #DDD;border-radius:8px;max-height:180px;overflow-y:auto;z-index:20;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+.mod-search-dd-item{padding:10px 12px;cursor:pointer;font-size:13px;border-bottom:1px solid #F5F5F5}
+.mod-search-dd-item:last-child{border-bottom:none}
+.mod-search-dd-item:hover{background:#FFF0F0}
+.mod-search-dd-item .dd-main{font-weight:700;color:#1A1A1A}
+.mod-search-dd-item .dd-path{font-size:11px;color:#999}
+
+/* Consumable Filter Tag */
+.mv-mod-tag.consumable{background:#FFF3EB;color:#D35400;border-color:#FF6B00}
+.mv-mod-tag.consumable.active{background:#FF6B00;color:#fff}
+
+/* Mod History Expand */
+.mod-expand-btn{display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:10px;border:1px solid #DDD;background:#fff;font-size:11px;font-weight:600;color:#888;cursor:pointer;transition:.1s}
+.mod-expand-btn:hover{background:#F5F5F5}
+.mod-expand-btn .count{color:#E60012}
+
+/* Mod History List */
+.mod-history-item{padding:8px 12px 8px 24px;background:#FBFBFB;border-bottom:1px solid #F0F0F0;font-size:12px;display:flex;justify-content:space-between;align-items:center}
+.mod-history-item.latest{border-left:3px solid #E60012;background:#FFFBFB}
+.mod-history-item .mod-history-left{flex:1;min-width:0}
+.mod-history-item .mod-history-right{display:flex;align-items:center;gap:6px;flex-shrink:0}
+
+/* Consumable Badge */
+.mod-consumable-badge{font-size:10px;background:#E60012;color:#fff;padding:1px 5px;border-radius:4px;font-weight:700;margin-left:4px;vertical-align:middle}
+
+/* Install Date Row */
+#m-install-group{border-left:3px solid #E60012;padding-left:12px;border-radius:2px}
+
+/* Usage Progress Bar */
+.mod-usage{display:flex;align-items:center;gap:8px;padding:6px 0;font-size:11px}
+.mod-usage-bar{flex:1;height:6px;background:#E8E8E8;border-radius:3px;overflow:hidden;min-width:40px}
+.mod-usage-fill{height:100%;border-radius:3px;transition:width .3s}
+.mod-usage-fill.low{background:#E60012}
+.mod-usage-fill.mid{background:#FF6B00}
+.mod-usage-fill.high{background:linear-gradient(90deg,#FF6B00,#E60012)}
+.mod-usage-clickable{color:#E60012;cursor:pointer;font-weight:700;border-bottom:1px dashed #E60012}
+.mod-usage-clickable:hover{color:#CC0000}
+
+/* History usage row */
+.mod-history-usage{font-size:10px;color:#888;padding:2px 12px 2px 24px;background:#FBFBFB;border-bottom:1px solid #F0F0F0}
+
+/* Session Edit Modal */
+#session-modal .form-group-sm{margin-bottom:10px}
+#session-modal .form-label-sm{font-size:12px;font-weight:600;color:#888;margin-bottom:4px;display:block}
+#session-modal .form-input-sm{padding:8px 10px;border:1px solid #DDD;border-radius:8px;font-size:14px;background:#FAFAFA;color:#1A1A1A;outline:none;width:100%}
+#session-modal .form-input-sm:focus{border-color:#E60012;background:#fff}
+
+/* My Vehicle Card Actions */
+.mv-vehicle-actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.mv-vehicle-btn{padding:4px 12px;border-radius:6px;border:none;font-size:11px;font-weight:600;cursor:pointer;transition:.1s}
+.mv-vehicle-btn:active{transform:scale(.94)}
+.mv-vehicle-btn.default{background:#F0F0F0;color:#1A1A1A}
+.mv-vehicle-btn.default:hover{background:#E60012;color:#fff}
+.mv-vehicle-btn.danger{background:#FFF0F0;color:#E60012}
+.mv-vehicle-btn.danger:hover{background:#E60012;color:#fff}
 </style>
 </head>
 <body>
@@ -403,7 +460,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="mv-vehicle-card" id="mv-vehicle-card"></div>
     <div class="mv-mod-section">
       <div class="mv-mod-header">
-        <span class="mv-mod-title">鏀硅璁板綍</span>
+        <span class="mv-mod-title">鏀硅鏄庣粏</span>
         <div class="mv-mod-tags" id="mv-mod-tags"></div>
       </div>
       <div class="mv-mod-list" id="mv-mod-list"></div>
@@ -570,31 +627,62 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <div class="modal-sheet">
     <div class="modal-handle"></div>
     <div class="modal-title" id="mod-modal-title">鏂板鏀硅浠?/div>
+    <div class="form-group" style="position:relative">
+      <label class="form-label">鎼滅储鏀逛欢 <span style="color:#999;font-weight:400;font-size:11px">杈撳叆缁嗗垎鎴栦骇鍝佸悕蹇€熷畾浣?/span></label>
+      <input class="form-input" id="m-search" type="text" placeholder="渚嬪锛氳疆姣傘€丅rembo..." autocomplete="off">
+      <div class="mod-search-dropdown" id="m-search-dd" style="display:none"></div>
+    </div>
     <div class="form-group">
       <label class="form-label">杞﹁締</label>
       <select class="form-select" id="m-vehicle"></select>
     </div>
     <div class="form-group">
-      <label class="form-label">绫诲埆</label>
-      <select class="form-select" id="m-category">
-        <option value="鍔ㄥ姏">鍔ㄥ姏</option>
-        <option value="鍒硅溅">鍒硅溅</option>
-        <option value="杞儙">杞儙</option>
-        <option value="鎮寕">鎮寕</option>
-        <option value="澶栬">澶栬</option>
+      <label class="form-label">澶х被</label>
+      <select class="form-select" id="m-major"></select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">缁嗗垎</label>
+      <select class="form-select" id="m-sub"><option value="">鍏堥€夋嫨澶х被</option></select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">鍝佺墝</label>
+      <select class="form-select" id="m-product"></select>
+      <input class="form-input" id="m-product-other" style="display:none;margin-top:6px" placeholder="鎵嬪～鍝佺墝鍚嶇О">
+    </div>
+    <div class="form-group">
+      <label class="form-label">鍨嬪彿/瑙勬牸 <span style="color:#999;font-weight:400;font-size:11px">閫夊～</span></label>
+      <input class="form-input" id="m-spec" type="text" placeholder="渚嬪锛歁50銆丆R-T...">
+    </div>
+    <div class="form-group" id="m-engine-group" style="display:none;border-left:3px solid #FF6B00;padding-left:12px;border-radius:2px">
+      <label class="form-label">寮哄寲鍐呭 <span style="color:#999;font-weight:400;font-size:11px">閫夊～</span></label>
+      <input class="form-input" id="m-engine-work" type="text" placeholder="渚嬪锛氶珮鍘嬬缉姣旀椿濉炪€侀敾閫犺繛鏉?..">
+    </div>
+    <div class="form-group" id="m-pos-group" style="display:none">
+      <label class="form-label">浣嶇疆</label>
+      <select class="form-select" id="m-position">
+        <option value="鍓嶈疆">鍓嶈疆</option>
+        <option value="鍚庤疆">鍚庤疆</option>
       </select>
     </div>
     <div class="form-group">
-      <label class="form-label">鍚嶇О</label>
-      <input class="form-input" id="m-name" type="text" placeholder="渚嬪锛歋C Project 鍏ㄦ鎺掓皵">
-    </div>
-    <div class="form-group">
-      <label class="form-label">浠锋牸锛埪ワ級</label>
+      <label class="form-label">浠锋牸锛埪ワ級 <span style="color:#999;font-weight:400;font-size:11px">閫夊～</span></label>
       <input class="form-input" id="m-price" type="number" placeholder="0" inputmode="numeric">
     </div>
     <div class="form-group">
-      <label class="form-label">鏃ユ湡</label>
+      <label class="form-label">璁板綍鏃ユ湡</label>
       <input class="form-input" id="m-date" type="date">
+    </div>
+    <div class="form-group" style="display:flex;align-items:center;gap:8px">
+      <input type="checkbox" id="m-consumable" style="width:18px;height:18px;accent-color:#E60012" onchange="onConsumableChange()">
+      <label for="m-consumable" style="font-size:14px;font-weight:600;color:#E60012;cursor:pointer">璁句负娑堣€楀搧</label>
+    </div>
+    <div class="form-group" id="m-install-group" style="display:none">
+      <label class="form-label">瀹夎鏃ユ湡 <span style="color:#999;font-weight:400;font-size:11px">閫夊～</span></label>
+      <input class="form-input" id="m-install-date" type="date">
+      <div style="margin-top:10px;display:flex;gap:8px">
+        <div style="flex:1"><label class="form-label" style="font-size:11px">宸蹭娇鐢ㄨ妭鏁?/label><input class="form-input" id="m-sessions" type="number" min="0" placeholder="0" inputmode="numeric"></div>
+        <div style="flex:1"><label class="form-label" style="font-size:11px">鐩爣鑺傛暟 <span style="color:#999;font-weight:400">閫夊～</span></label><input class="form-input" id="m-target-sessions" type="number" min="0" placeholder="" inputmode="numeric"></div>
+      </div>
     </div>
     <div class="modal-actions">
       <button class="btn btn-cancel" id="mod-cancel">鍙栨秷</button>
@@ -602,6 +690,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
     <div class="modal-delete" id="mod-delete-area">
       <button class="btn-danger" id="mod-delete-btn">鍒犻櫎姝ゆ敼瑁呬欢</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== Session Edit Modal ========== -->
+<div class="modal-overlay" id="session-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">淇敼鑺傛暟</div>
+    <div class="form-group-sm">
+      <label class="form-label-sm">宸蹭娇鐢ㄨ妭鏁?/label>
+      <input class="form-input-sm" id="s-used" type="number" min="0" inputmode="numeric">
+    </div>
+    <div class="form-group-sm">
+      <label class="form-label-sm">鐩爣浣跨敤鑺傛暟</label>
+      <input class="form-input-sm" id="s-target" type="number" min="0" placeholder="鏈瀹? inputmode="numeric">
+    </div>
+    <div class="modal-actions">
+      <button class="btn btn-cancel" id="session-cancel">鍙栨秷</button>
+      <button class="btn btn-submit" id="session-submit">淇濆瓨</button>
     </div>
   </div>
 </div>
@@ -632,6 +740,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="form-group">
       <label class="form-label">鐓х墖閾炬帴 <span style="color:#999;font-weight:400;font-size:11px">闈炲繀濉?/span></label>
       <input class="form-input" id="v-photo" type="text" placeholder="鍥剧墖 URL锛堟寮忕増鏀寔鐩稿唽涓婁紶锛?>
+    </div>
+    <div class="form-group" style="display:flex;align-items:center;gap:8px">
+      <input type="checkbox" id="v-default" style="width:18px;height:18px;accent-color:#E60012">
+      <label for="v-default" style="font-size:14px;font-weight:600;color:#1A1A1A;cursor:pointer">璁句负榛樿杞﹁締</label>
     </div>
     <div class="modal-actions">
       <button class="btn btn-cancel" id="veh-cancel">鍙栨秷</button>
@@ -685,15 +797,95 @@ const TRACK_SHORT = { 'ZIC':'ZIC','瀹佹尝':'瀹佹尝','澶╅┈':'澶╅┈
 const TRACK_FULL = { 'ZIC':'鐝犳捣鍥介檯璧涜溅鍦?,'瀹佹尝':'瀹佹尝鍥介檯璧涢亾','澶╅┈':'涓婃捣澶╅┈璧涜溅鍦?,'澶╁簻':'鎴愰兘澶╁簻鍥介檯璧涢亾' };
 
 const BRAND_DB = {
-  'Yamaha':   ['YZF-R3','YZF-R7','YZF-R1'],
-  'Kawasaki': ['Ninja 400','ZX-4RR','ZX-6R','ZX-10R'],
-  'Honda':    ['CBR500R','CBR650R','CBR600RR','CBR1000RR-R'],
-  'Suzuki':   ['GSX-8R','GSX-R600','GSX-R750','GSX-R1000'],
-  'Ducati':   ['Panigale V2','Panigale V4'],
-  'BMW':      ['S1000RR','M1000RR'],
-  'CFMoto':   ['450SR','675SR-R'],
+  'Yamaha': {
+    'YZF-R3':  { cc: 321, hp: 42 },
+    'YZF-R6':  { cc: 599, hp: 118 },
+    'YZF-R7':  { cc: 689, hp: 73 },
+    'YZF-R9':  { cc: 890, hp: 119 },
+    'YZF-R1':  { cc: 998, hp: 200 },
+  },
+  'Kawasaki': {
+    'Ninja 400': { cc: 399, hp: 45 },
+    'Ninja 500': { cc: 451, hp: 57 },
+    'ZX-4RR':    { cc: 399, hp: 77 },
+    'ZX-6R':     { cc: 636, hp: 128 },
+    'ZX-10R':    { cc: 998, hp: 203 },
+  },
+  'Honda': {
+    'CBR500R':     { cc: 471, hp: 47 },
+    'CBR650R':     { cc: 649, hp: 95 },
+    'CBR600RR':    { cc: 599, hp: 120 },
+    'CBR1000RR-R': { cc: 999, hp: 217 },
+  },
+  'Suzuki': {
+    'GSX-8R':   { cc: 776, hp: 83 },
+    'GSX-R600': { cc: 599, hp: 125 },
+    'GSX-R750': { cc: 750, hp: 150 },
+    'GSX-R1000':{ cc: 999, hp: 199 },
+  },
+  'Ducati': {
+    'Panigale V2': { cc: 955, hp: 155 },
+    'Panigale V4': { cc: 1103, hp: 215 },
+  },
+  'BMW': {
+    'S1000RR':  { cc: 999, hp: 205 },
+    'M1000RR':  { cc: 999, hp: 212 },
+  },
+  'CFMoto': {
+    '450SR':   { cc: 449, hp: 50 },
+    '675SR-R': { cc: 674, hp: 93 },
+  },
 };
 const BRAND_LIST = Object.keys(BRAND_DB);
+
+const MOD_PARTS_DB = {
+  '鍒硅溅绯荤粺': {
+    '鍒硅溅鐗?: ['鍘熷巶','Brembo','EBC','SBS','鍏朵粬'],
+    '鍒硅溅鐩?: ['鍘熷巶','Brembo','Galfer','EBC','MotoTron','鍏朵粬'],
+    '鍒硅溅鍗￠挸': ['鍘熷巶','Brembo','鍏朵粬'],
+    '涓婃车': ['鍘熷巶','Brembo','GaleSpeed','鍏朵粬'],
+    '鍒硅溅娌?: ['鍘熷巶','Motul','Castrol','鍏朵粬'],
+    '鍏朵粬': [],
+  },
+  '閬块渿': {
+    '鍓嶉伩闇?: ['鍘熷巶','脰hlins','K-Tech','Bitubo','Andreani','鍏朵粬'],
+    '鍚庨伩闇?: ['鍘熷巶','脰hlins','K-Tech','Bitubo','鍏朵粬'],
+    '鍏朵粬': [],
+  },
+  '鍔ㄥ姏涓庝紶鍔ㄧ郴缁?: {
+    'ECU': ['鍘熷巶','Woolich','FT ECU','Rapid Bike','Power Commander','aRacer','鍏朵粬'],
+    '鍙戝姩鏈?: ['鍘熷巶','寮哄寲','鍏朵粬'],
+    '绂诲悎鐗?: ['鍘熷巶','EBC','STM','Yoyodyne','鍏朵粬'],
+    '閾炬潯': ['鍘熷巶','RK','DID','EK','Regina','鍏朵粬'],
+    '鎺掓皵': ['鍘熷巶','SC Project','Akrapovi膷','Austin Racing','Brock\'s','鍏朵粬'],
+    '蹇帓绯荤粺': ['鍘熷巶','HM','Translogic','Dynojet','Rapid Bike','鍏朵粬'],
+    '鍏朵粬': [],
+  },
+  '杞儙': {
+    '鍓嶈疆': ['鍘熷巶','鍊嶈€愬姏','绫冲叾鏋?,'姝ｆ柊','鍏朵粬'],
+    '鍚庤疆': ['鍘熷巶','鍊嶈€愬姏','绫冲叾鏋?,'姝ｆ柊','鍏朵粬'],
+    '杞瘋': ['鍘熷巶','閿婚€?,'鍏朵粬'],
+    '鍏朵粬': [],
+  },
+  '澶栬鍙婇獞琛屼笁瑙?: {
+    '璧涘寘': ['鍘熷巶','瀹氬埗'],
+    '鑴氳笍': ['鍘熷巶','MotoTron','閿嬮攼','鍏朵粬'],
+    '鎵嬫妸': ['鍘熷巶','MotoTron','閿嬮攼','鍏朵粬'],
+    '涓夋槦': ['鍘熷巶','MotoTron','閿嬮攼','鍏朵粬'],
+    '鍏朵粬': [],
+  },
+  '鍏朵粬': {
+    '鏈烘补': ['鍘熷巶','Motul','Castrol','鍏朵粬'],
+    '鏈烘护': ['鍘熷巶','K&N','HiFlo','WIX','鍏朵粬'],
+    '鍐峰嵈娑?: ['鍘熷巶','Motul','Engine Ice','鍏朵粬'],
+    '姹芥补': ['鍘熷巶','鐗硅皟','鍏朵粬'],
+    '鐢垫睜': ['鍘熷巶','閿傜數姹?,'鍏朵粬'],
+    '鎵嬫妸鑳?: ['鍘熷巶','Domino','Renthal','ProGrip','鍏朵粬'],
+    '澶ф嫥娌?: ['鍘熷巶','Poiner','閿嬮攼','鍏朵粬'],
+    '寮€鍏抽敭': ['鍘熷巶','鍏朵粬'],
+    '鍏朵粬': [],
+  },
+};
 
 let nextVehId = 100;
 let vehicles = [
@@ -715,11 +907,11 @@ let records = [
 
 let nextModId = 300;
 let mods = [
-  { id:1, vehicleId:1, name:'SC Project 鍏ㄦ鎺掓皵', category:'鍔ㄥ姏', price:3800, date:'2026-04-01' },
-  { id:2, vehicleId:1, name:'BREMBO M50 鍗￠挸', category:'鍒硅溅', price:2500, date:'2026-03-15' },
-  { id:3, vehicleId:1, name:'Pirelli Diablo Rosso IV', category:'杞儙', price:2200, date:'2026-02-20' },
-  { id:4, vehicleId:1, name:'脰hlins 鍚庨伩闇?, category:'鎮寕', price:4500, date:'2026-01-10' },
-  { id:5, vehicleId:1, name:'纰崇氦缁村畾椋庣考濂椾欢', category:'澶栬', price:680, date:'2025-12-05' },
+  { id:1, vehicleId:1, majorCategory:'鍔ㄥ姏涓庝紶鍔ㄧ郴缁?, subCategory:'鎺掓皵', product:'SC Project', spec:'CR-T', engineWork:'', position:'', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:3800, date:'2026-04-01' },
+  { id:2, vehicleId:1, majorCategory:'鍒硅溅绯荤粺', subCategory:'鍒硅溅鍗￠挸', product:'Brembo', spec:'M50', engineWork:'', position:'鍓嶈疆', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:2500, date:'2026-03-15' },
+  { id:3, vehicleId:1, majorCategory:'杞儙', subCategory:'鍚庤疆', product:'鍊嶈€愬姏', spec:'Diablo Supercorsa', engineWork:'', position:'', isConsumable:true, installDate:'2026-02-20', sessionsUsed:10, targetSessions:20, price:2200, date:'2026-02-20' },
+  { id:4, vehicleId:1, majorCategory:'閬块渿', subCategory:'鍚庨伩闇?, product:'脰hlins', spec:'TTX GP', engineWork:'', position:'', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:4500, date:'2026-01-10' },
+  { id:5, vehicleId:1, majorCategory:'澶栬鍙婇獞琛屼笁瑙?, subCategory:'鍏朵粬', product:'', spec:'纰崇氦缁村畾椋庣考濂椾欢', engineWork:'', position:'', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:680, date:'2025-12-05' },
 ];
 
 // ====== UTILS ======
@@ -759,14 +951,22 @@ function computeCards(){
 }
 
 // ====== RENDER HOME (棣栭〉) ======
+function getSpecStr(v){
+  if(!v || !v.brand || !v.model) return '';
+  const spec = BRAND_DB[v.brand]?.[v.model];
+  return spec ? spec.cc+'cc 路 '+spec.hp+'hp' : '';
+}
 function renderHome(){
-  const v=vehicles[0]?.name||'Yamaha R3';
+  const v=vehicles[0];
+  const name=v?.name||'---';
   const pbAll=records.length?records.reduce((a,b)=>timeToMs(a.time)<timeToMs(b.time)?a:b):null;
   const pbLabel=pbAll?pbAll.track+' '+pbAll.time:'--:--.---';
-  document.querySelector('.vehicle-name').textContent=v;
+  document.querySelector('.vehicle-name').innerHTML = name + (v?'<span style="font-size:10px;background:#E60012;color:#fff;padding:1px 6px;border-radius:6px;margin-left:6px;font-weight:600;vertical-align:middle">榛樿</span>':'');
+  const subEl=document.querySelector('.vehicle-sub');
+  if(subEl) subEl.textContent=v?getSpecStr(v)||'':'';
   document.querySelector('.vehicle-stat .num').textContent=pbLabel;
   const img=document.querySelector('.vehicle-card img');
-  if(img) img.alt=v;
+  if(img) img.alt=name;
 }
 
 // ====== RENDER RECENT (棣栭〉) ======
@@ -786,7 +986,7 @@ function renderRecent(){
     +'<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">'
     +'<div><span style="font-size:12px;color:#888">鏈€蹇湀</span><div style="font-size:20px;font-weight:800;color:#E60012">'+(pb?pb.time:'--')+'</div></div>'
     +(target?'<div><span style="font-size:12px;color:#888">鐩爣</span><div style="font-size:16px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
-    +(gap?'<div><span style="font-size:12px;color:#888">宸窛</span><div style="font-size:22px;font-weight:800;color:'+(achieved?'#00AA55':'#E60012')+'">'+gapLabel+'s</div></div>':'')
+    +(gap?'<div><span style="font-size:12px;color:#888">宸窛</span><div style="font-size:22px;font-weight:800;color:'+(achieved?'#00AA55':'#E60012')+'">'+gapLabel+'</div></div>':'')
     +'</div>'
     +'<div style="margin-top:10px;font-size:11px;color:#999;border-top:1px solid #F0F0F0;padding-top:10px">'+last.date+' 路 '+(last.vehicle||(vehicles[0]?.name||''))+(last.temp?' 路 '+last.temp+'鈩?:'')+(last.cond.length?' 路 '+last.cond.join('/'):'')+'</div>'
     +'<div class="racing-stripe" style="margin-top:8px"></div>';
@@ -835,7 +1035,7 @@ function render(){
       +(target?'<div style="text-align:right"><div style="font-size:12px;color:#888;font-weight:500">鐩爣</div><div style="font-size:15px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
       +'</div>'
       +(gap?'<div style="display:flex;align-items:center;margin-top:4px;gap:6px">'
-        +'<span class="pb-gap '+(achieved?'green':'red')+'">'+gapLabel+'s</span>'
+        +'<span class="pb-gap '+(achieved?'green':'red')+'">'+gapLabel+'</span>'
         +'<span style="font-size:11px;color:#888;font-weight:500">'+(achieved?'馃帀 宸茶揪鎴愮洰鏍囷紒寤鸿璁惧畾鏂扮洰鏍?:'璺濈洰鏍?)+'</span>'
         +'</div>':'')
       +(c.type==='new' && !target?'<div style="margin-top:4px;font-size:11px;color:#E60012;font-weight:600">馃挕 寤鸿璁惧畾鐩爣鍦堥€?/div>':'')
@@ -1030,6 +1230,7 @@ document.getElementById('modal-submit').addEventListener('click',function(){
 // ====== MOD CRUD ======
 let modEditingId = null;
 const modModal = document.getElementById('mod-modal');
+const MAJOR_CATEGORIES = ['鍒硅溅绯荤粺','閬块渿','鍔ㄥ姏涓庝紶鍔ㄧ郴缁?,'杞儙','澶栬鍙婇獞琛屼笁瑙?,'鍏朵粬'];
 
 function populateModVehicleSelect(selId, selectedId){
   const sel = document.getElementById(selId);
@@ -1038,24 +1239,206 @@ function populateModVehicleSelect(selId, selectedId){
   else if(vehicles.length) sel.value = vehicles[mvSelectedIdx]?.id || vehicles[0].id;
 }
 
+function populateMajorSelect(selectedVal){
+  const sel = document.getElementById('m-major');
+  sel.innerHTML = '<option value="">閫夋嫨澶х被</option>' + MAJOR_CATEGORIES.map(c => '<option value="'+c+'">'+c+'</option>').join('');
+  if(selectedVal) sel.value = selectedVal;
+}
+
+function onMajorChange(){
+  const major = document.getElementById('m-major').value;
+  const subSel = document.getElementById('m-sub');
+  const prodSel = document.getElementById('m-product');
+  if(!major){ subSel.innerHTML='<option value="">鍏堥€夋嫨澶х被</option>'; prodSel.innerHTML=''; return; }
+  const subs = Object.keys(MOD_PARTS_DB[major] || {});
+  subSel.innerHTML = '<option value="">閫夋嫨缁嗗垎</option>' + subs.map(s => '<option value="'+s+'">'+s+'</option>').join('');
+  prodSel.innerHTML = '<option value="">鍏堥€夋嫨缁嗗垎</option>';
+  prodSel.style.display = '';
+  document.getElementById('m-pos-group').style.display = major === '鍒硅溅绯荤粺' ? 'block' : 'none';
+  document.getElementById('m-product-other').style.display = 'none';
+}
+document.getElementById('m-major').addEventListener('change', onMajorChange);
+
+function onSubChange(){
+  const major = document.getElementById('m-major').value;
+  const sub = document.getElementById('m-sub').value;
+  const prodSel = document.getElementById('m-product');
+  if(!major || !sub){ prodSel.innerHTML = '<option value="">鍏堥€夋嫨缁嗗垎</option>'; prodSel.style.display = ''; return; }
+  const parts = MOD_PARTS_DB[major]?.[sub];
+  if(!parts || !parts.length){
+    prodSel.style.display = 'none';
+    document.getElementById('m-product-other').style.display='block';
+    document.getElementById('m-engine-group').style.display = 'none';
+    // Auto backfill for empty parts (only hand-fill)
+    if(!modEditingId){
+      const vehicleId = +document.getElementById('m-vehicle').value;
+      const prev = mods.filter(m=>m.vehicleId===vehicleId && m.majorCategory===major && m.subCategory===sub)
+        .sort((a,b)=>b.date.localeCompare(a.date))[0];
+      if(prev){
+        document.getElementById('m-product-other').value = prev.product || '';
+        document.getElementById('m-spec').value = prev.spec || '';
+        document.getElementById('m-target-sessions').value = prev.targetSessions||'';
+      }
+    }
+    return;
+  }
+  prodSel.style.display = '';
+  prodSel.innerHTML = parts.map(p => '<option value="'+p+'">'+p+'</option>').join('');
+  document.getElementById('m-product-other').style.display = 'none';
+  document.getElementById('m-engine-group').style.display = 'none';
+  // Auto backfill for new mode
+  if(!modEditingId){
+    const vehicleId = +document.getElementById('m-vehicle').value;
+    const prev = mods.filter(m=>m.vehicleId===vehicleId && m.majorCategory===major && m.subCategory===sub)
+      .sort((a,b)=>b.date.localeCompare(a.date))[0];
+    if(prev){
+      if(prev.product && [...prodSel.options].some(o=>o.value===prev.product)){
+        prodSel.value = prev.product;
+      } else {
+        document.getElementById('m-product-other').style.display='block';
+        document.getElementById('m-product-other').value = prev.product || '';
+      }
+      document.getElementById('m-spec').value = prev.spec || '';
+      document.getElementById('m-target-sessions').value = prev.targetSessions||'';
+      if(major==='鍔ㄥ姏涓庝紶鍔ㄧ郴缁? && sub==='鍙戝姩鏈? && prev.product==='寮哄寲'){
+        document.getElementById('m-engine-group').style.display = 'block';
+        document.getElementById('m-engine-work').value = prev.engineWork || '';
+      }
+    }
+  }
+}
+document.getElementById('m-sub').addEventListener('change', onSubChange);
+
+function onProductChange(){
+  const v = document.getElementById('m-product').value;
+  const major = document.getElementById('m-major').value;
+  const sub = document.getElementById('m-sub').value;
+  if(v === '鍏朵粬'){
+    document.getElementById('m-product').style.display = 'none';
+    document.getElementById('m-product-other').style.display = 'block';
+    document.getElementById('m-engine-group').style.display = 'none';
+  } else {
+    document.getElementById('m-product').style.display = '';
+    document.getElementById('m-product-other').style.display = 'none';
+    if(major==='鍔ㄥ姏涓庝紶鍔ㄧ郴缁? && sub==='鍙戝姩鏈? && v==='寮哄寲'){
+      document.getElementById('m-engine-group').style.display = 'block';
+    } else {
+      document.getElementById('m-engine-group').style.display = 'none';
+    }
+  }
+}
+document.getElementById('m-product').addEventListener('change', onProductChange);
+
+function onConsumableChange(){
+  const consumable = document.getElementById('m-consumable');
+  document.getElementById('m-install-group').style.display = consumable.checked ? 'block' : 'none';
+  if(consumable.checked && !document.getElementById('m-install-date').value){
+    document.getElementById('m-install-date').value = today();
+  }
+}
+
+// Search
+function buildModSearchIndex(){
+  const idx = [];
+  for(const major of MAJOR_CATEGORIES){
+    const subs = MOD_PARTS_DB[major];
+    if(!subs) continue;
+    for(const sub of Object.keys(subs)){
+      idx.push({ major, sub, label: major+' > '+sub, type:'category' });
+      for(const part of subs[sub]){
+        if(part && part !== '鍏朵粬') idx.push({ major, sub, part, label: part+' ('+major+' > '+sub+')', type:'product' });
+      }
+    }
+  }
+  return idx;
+}
+
+document.getElementById('m-search').addEventListener('input', function(){
+  const q = this.value.trim().toLowerCase();
+  const dd = document.getElementById('m-search-dd');
+  if(!q){ dd.style.display='none'; return; }
+  const idx = buildModSearchIndex();
+  const matches = idx.filter(item => item.label.toLowerCase().includes(q)).slice(0, 8);
+  if(!matches.length){ dd.style.display='none'; return; }
+  dd.innerHTML = matches.map(item =>
+    '<div class="mod-search-dd-item" data-major="'+item.major+'" data-sub="'+item.sub+'" data-part="'+(item.part||'')+'">'
+    +'<div class="dd-main">'+(item.part||(item.major+' > '+item.sub))+'</div>'
+    +'<div class="dd-path">'+item.major+' > '+item.sub+'</div>'
+    +'</div>'
+  ).join('');
+  dd.style.display='block';
+});
+document.getElementById('m-search-dd').addEventListener('click', function(e){
+  const item = e.target.closest('.mod-search-dd-item');
+  if(!item) return;
+  const major = item.dataset.major;
+  const sub = item.dataset.sub;
+  const part = item.dataset.part;
+  document.getElementById('m-search').value = '';
+  this.style.display = 'none';
+  // Set major
+  populateMajorSelect(major);
+  document.getElementById('m-major').value = major;
+  onMajorChange();
+  // Set sub
+  document.getElementById('m-sub').value = sub;
+  onSubChange();
+  // Set product if applicable
+  if(part){
+    setTimeout(()=>{ document.getElementById('m-product').value = part; onProductChange(); }, 50);
+  }
+});
+
+// Open
 function openModModal(modId){
   modEditingId = modId || null;
   document.getElementById('mod-modal-title').textContent = modId ? '缂栬緫鏀硅浠? : '鏂板鏀硅浠?;
   document.getElementById('mod-delete-area').style.display = modId ? 'block' : 'none';
   document.getElementById('mod-submit').textContent = modId ? '淇濆瓨淇敼' : '鎻愪氦';
+  document.getElementById('m-search').value = '';
+  document.getElementById('m-search-dd').style.display = 'none';
+  document.getElementById('m-install-group').style.display = 'none';
 
   if(modId){
     const m = mods.find(x => x.id === modId);
     if(!m) return;
     populateModVehicleSelect('m-vehicle', m.vehicleId);
-    document.getElementById('m-category').value = m.category;
-    document.getElementById('m-name').value = m.name;
-    document.getElementById('m-price').value = m.price;
+    populateMajorSelect(m.majorCategory);
+    document.getElementById('m-major').value = m.majorCategory;
+    onMajorChange();
+    document.getElementById('m-sub').value = m.subCategory;
+    onSubChange();
+    setTimeout(()=>{
+      const prodSel = document.getElementById('m-product');
+      if([...prodSel.options].some(o=>o.value===m.product)) prodSel.value = m.product;
+      else { document.getElementById('m-product-other').style.display='block'; document.getElementById('m-product-other').value=m.product||''; }
+      onProductChange();
+    }, 60);
+    document.getElementById('m-spec').value = m.spec || '';
+    document.getElementById('m-engine-work').value = m.engineWork || '';
+    document.getElementById('m-position').value = m.position || '鍓嶈疆';
+    document.getElementById('m-consumable').checked = m.isConsumable;
+    document.getElementById('m-install-group').style.display = m.isConsumable ? 'block' : 'none';
+    document.getElementById('m-install-date').value = m.installDate || '';
+    document.getElementById('m-sessions').value = m.sessionsUsed||0;
+    document.getElementById('m-target-sessions').value = m.targetSessions||'';
+    document.getElementById('m-price').value = m.price||'';
     document.getElementById('m-date').value = m.date;
   } else {
     populateModVehicleSelect('m-vehicle', null);
-    document.getElementById('m-category').value = '鍔ㄥ姏';
-    document.getElementById('m-name').value = '';
+    populateMajorSelect('');
+    document.getElementById('m-sub').innerHTML = '<option value="">鍏堥€夋嫨澶х被</option>';
+    document.getElementById('m-product').innerHTML = '<option value="">鍏堥€夋嫨缁嗗垎</option>';
+    document.getElementById('m-product').style.display = '';
+    document.getElementById('m-position').value = '鍓嶈疆';
+    document.getElementById('m-consumable').checked = false;
+    document.getElementById('m-install-date').value = '';
+    document.getElementById('m-sessions').value = 0;
+    document.getElementById('m-target-sessions').value = '';
+    document.getElementById('m-product-other').style.display = 'none';
+    document.getElementById('m-spec').value = '';
+    document.getElementById('m-engine-group').style.display = 'none';
+    document.getElementById('m-engine-work').value = '';
     document.getElementById('m-price').value = '';
     document.getElementById('m-date').value = today();
   }
@@ -1067,21 +1450,49 @@ function closeModModal(){ modModal.classList.remove('show'); modEditingId = null
 document.getElementById('mod-cancel').addEventListener('click', closeModModal);
 modModal.addEventListener('click', e => { if(e.target === modModal) closeModModal(); });
 
+// Close search dropdown when clicking outside
+document.addEventListener('click', function(e){
+  if(!e.target.closest('#m-search') && !e.target.closest('#m-search-dd')){
+    document.getElementById('m-search-dd').style.display = 'none';
+  }
+});
+
 document.getElementById('mod-submit').addEventListener('click', ()=>{
   const vehicleId = +document.getElementById('m-vehicle').value;
-  const category = document.getElementById('m-category').value;
-  const name = document.getElementById('m-name').value.trim();
-  const price = +document.getElementById('m-price').value;
+  const majorCategory = document.getElementById('m-major').value;
+  const subCategory = document.getElementById('m-sub').value;
+  let product = document.getElementById('m-product').value;
+  if(product === '鍏朵粬' || !product) product = document.getElementById('m-product-other').value.trim();
+  const spec = document.getElementById('m-spec').value.trim();
+  const engineWork = document.getElementById('m-engine-group').style.display!=='none' ? document.getElementById('m-engine-work').value.trim() : '';
+  const position = document.getElementById('m-pos-group').style.display !== 'none' ? document.getElementById('m-position').value : '';
+  const isConsumable = document.getElementById('m-consumable').checked;
+  const installDate = document.getElementById('m-install-date').value;
+  const sessionsUsed = +(document.getElementById('m-sessions').value)||0;
+  const targetSessions = +(document.getElementById('m-target-sessions').value)||0;
+  const price = +document.getElementById('m-price').value||0;
   const date = document.getElementById('m-date').value || today();
 
-  if(!vehicleId || !name || !price){ alert('璇峰～鍐欏畬鏁翠俊鎭?); return; }
-  if(price <= 0){ alert('浠锋牸蹇呴』澶т簬0'); return; }
+  if(!vehicleId || !majorCategory){ alert('璇烽€夋嫨杞﹁締鍜屽ぇ绫?); return; }
+
+  const record = { vehicleId, majorCategory, subCategory:'', product:'', spec:'', engineWork:'', position:'', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:0, date };
+  if(subCategory) record.subCategory = subCategory;
+  if(product) record.product = product;
+  if(spec) record.spec = spec;
+  if(engineWork) record.engineWork = engineWork;
+  if(position) record.position = position;
+  record.isConsumable = isConsumable;
+  if(installDate) record.installDate = installDate;
+  record.sessionsUsed = sessionsUsed;
+  record.targetSessions = targetSessions;
+  if(price) record.price = price;
+  if(date) record.date = date;
 
   if(modEditingId){
     const idx = mods.findIndex(x => x.id === modEditingId);
-    if(idx !== -1){ mods[idx] = { ...mods[idx], vehicleId, category, name, price, date }; }
+    if(idx !== -1){ mods[idx] = { ...mods[idx], ...record }; }
   } else {
-    mods.push({ id: ++nextModId, vehicleId, category, name, price, date });
+    mods.push({ id: ++nextModId, ...record });
   }
   closeModModal();
   renderMyVehicles();
@@ -1108,6 +1519,7 @@ function openVehicleAddModal(){
   document.getElementById('v-year').value = '';
   document.getElementById('v-name').value = '';
   document.getElementById('v-photo').value = '';
+  document.getElementById('v-default').checked = false;
   vehModal.classList.add('show');
 }
 
@@ -1115,7 +1527,7 @@ function onBrandChange(){
   const brand = document.getElementById('v-brand').value;
   const modelSel = document.getElementById('v-model');
   if(!brand){ modelSel.innerHTML = '<option value="">鍏堥€夋嫨鍝佺墝</option>'; return; }
-  const models = BRAND_DB[brand] || [];
+  const models = Object.keys(BRAND_DB[brand] || {});
   modelSel.innerHTML = '<option value="">閫夋嫨杞﹀瀷</option>' + models.map(m => '<option value="'+m+'">'+m+'</option>').join('');
   autoFillVehicleName();
 }
@@ -1144,7 +1556,16 @@ document.getElementById('veh-submit').addEventListener('click', ()=>{
   if(!brand || !model){ alert('璇烽€夋嫨鍝佺墝鍜岃溅鍨?); return; }
   if(!name) name = brand + ' ' + model;
 
-  vehicles.push({ id: ++nextVehId, name, brand, model, year, photo });
+  const newVehicle = { id: ++nextVehId, name, brand, model, year, photo };
+  const setDefault = document.getElementById('v-default').checked;
+  if(setDefault){
+    vehicles.unshift(newVehicle);
+    mvSelectedIdx = 0;
+    renderHome();
+    renderRecent();
+  } else {
+    vehicles.push(newVehicle);
+  }
   vehModal.classList.remove('show');
   renderMyVehicles();
   renderVehicleMgmt();
@@ -1203,10 +1624,8 @@ function renameVehicle(idx){
   }
 }
 function deleteVehicle(idx){
-  if(vehicles.length<=1){ alert('鑷冲皯淇濈暀涓€杈嗚溅'); return; }
   const v=vehicles[idx];
-  if(!confirm('纭畾鍒犻櫎 "'+v.name+'"锛熷湀閫熻褰曚腑鐨勮溅杈嗕俊鎭皢琚竻绌恒€?))return;
-  records.forEach(r=>{ if(r.vehicle===v.name)r.vehicle=''; });
+  if(!confirm('纭畾鍒犻櫎 "'+v.name+'"锛?))return;
   vehicles.splice(idx,1);
   renderVehicleMgmt();
   render(); renderHome(); renderRecent();
@@ -1218,7 +1637,13 @@ function addVehicle(){
 // ====== MY VEHICLES PAGE ======
 let mvSelectedIdx=0;
 function renderMyVehicles(){
-  if(!vehicles.length)return;
+  if(!vehicles.length){
+    document.getElementById('mv-switcher').innerHTML = '';
+    document.getElementById('mv-vehicle-card').innerHTML = '<div style="width:100%;text-align:center;padding:30px;color:#CCC;font-size:14px">鏆傛棤杞﹁締锛岀偣鍑?+ 娣诲姞</div>';
+    document.getElementById('mv-mod-tags').innerHTML = '';
+    document.getElementById('mv-mod-list').innerHTML = '<div style="text-align:center;padding:30px;color:#CCC;font-size:13px">鏆傛棤杞﹁締</div>';
+    return;
+  }
   if(mvSelectedIdx>=vehicles.length)mvSelectedIdx=0;
   const v=vehicles[mvSelectedIdx];
 
@@ -1233,17 +1658,48 @@ function renderMyVehicles(){
   // Vehicle card
   const card=document.getElementById('mv-vehicle-card');
   const photoHtml=v.photo?'<img src="'+v.photo+'" alt="'+v.name+'" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<div style=font-size:32px>馃弽锔?/div>\'">':'<div style="font-size:32px">馃弽锔?/div>';
+  const isDefault = mvSelectedIdx === 0;
   card.innerHTML='<div class="mv-vehicle-photo">'+photoHtml+'</div>'
     +'<div class="mv-vehicle-info">'
-    +'<div class="mv-vehicle-name">'+v.name+'</div>'
+    +'<div class="mv-vehicle-name">'+v.name+(isDefault?'<span style="font-size:10px;background:#E60012;color:#fff;padding:1px 6px;border-radius:6px;margin-left:6px;font-weight:600;vertical-align:middle">榛樿</span>':'')+'</div>'
     +'<div class="mv-vehicle-detail">'+(v.brand||'鍝佺墝')+' 路 '+(v.model||'杞﹀瀷')+' 路 <span>'+(v.year||'--')+'</span></div>'
-    +'</div>';
+    +'<div class="mv-vehicle-actions">'
+    +(!isDefault?'<button class="mv-vehicle-btn default" data-action="set-default">璁句负榛樿</button>':'')
+    +'<button class="mv-vehicle-btn danger" data-action="delete-vehicle">鍒犻櫎杞﹁締</button>'
+      +'</div>'
+      +'</div>';
+
+  card.querySelector('[data-action="set-default"]')?.addEventListener('click', ()=>{
+    const [veh] = vehicles.splice(mvSelectedIdx, 1);
+    vehicles.unshift(veh);
+    mvSelectedIdx = 0;
+    renderHome();
+    renderRecent();
+    renderMyVehicles();
+  });
+  card.querySelector('[data-action="delete-vehicle"]')?.addEventListener('click', ()=>{
+    const modCount = mods.filter(m => m.vehicleId === v.id).length;
+    if(!confirm(`纭畾鍒犻櫎 "${v.name}"锛焋+(modCount?`璇ヨ溅鐨?${modCount} 鏉℃敼瑁呰褰曞皢琚悓姝ュ垹闄ゃ€俙:''))) return;
+    mods = mods.filter(m => m.vehicleId !== v.id);
+    vehicles.splice(mvSelectedIdx, 1);
+    if(vehicles.length && mvSelectedIdx >= vehicles.length) mvSelectedIdx = vehicles.length - 1;
+    renderHome();
+    renderRecent();
+    renderMyVehicles();
+    renderExpenses();
+  });
 
   // Mods filter tags
-  const categories=['鍏ㄩ儴','鍔ㄥ姏','鍒硅溅','杞儙','鎮寕','澶栬'];
+  const FILTER_CATS = ['鍏ㄩ儴','馃敟 娑堣€楀搧','鍒硅溅绯荤粺','閬块渿','鍔ㄥ姏涓庝紶鍔ㄧ郴缁?,'杞儙','澶栬鍙婇獞琛屼笁瑙?,'鍏朵粬'];
   const filterTag=document.getElementById('mv-mod-tags');
   const activeFilter=filterTag.dataset.filter||'鍏ㄩ儴';
-  filterTag.innerHTML=categories.map(c=>'<span class="mv-mod-tag'+(c===activeFilter?' active':'')+'" data-cat="'+c+'">'+c+'</span>').join('');
+  filterTag.innerHTML=FILTER_CATS.map(c=>{
+    let cls = 'mv-mod-tag';
+    if(c==='鍏ㄩ儴' && c===activeFilter) cls+=' active';
+    else if(c===activeFilter) cls+=' active';
+    if(c==='娑堣€楀搧') cls+=' consumable';
+    return '<span class="'+cls+'" data-cat="'+c+'">'+c+'</span>';
+  }).join('');
   filterTag.querySelectorAll('.mv-mod-tag').forEach(el=>el.addEventListener('click',()=>{
     filterTag.dataset.filter=el.dataset.cat;
     renderMyVehicles();
@@ -1253,35 +1709,129 @@ function renderMyVehicles(){
   const list=document.getElementById('mv-mod-list');
   list.innerHTML='';
   let filtered=mods.filter(m=>m.vehicleId===v.id);
-  if(activeFilter!=='鍏ㄩ儴')filtered=filtered.filter(m=>m.category===activeFilter);
+  if(activeFilter==='娑堣€楀搧'){
+    filtered=filtered.filter(m=>m.isConsumable);
+  } else if(activeFilter!=='鍏ㄩ儴'){
+    filtered=filtered.filter(m=>m.majorCategory===activeFilter);
+  }
   filtered.sort((a,b)=>b.date.localeCompare(a.date));
-  if(!filtered.length){ list.innerHTML='<div style="text-align:center;padding:30px;color:#CCC;font-size:13px">鏆傛棤鏀硅璁板綍</div>'; return; }
-  const catIcon={鍔ㄥ姏:'鈿?,鍒硅溅:'馃洃',杞儙:'馃洖',鎮寕:'馃敡',澶栬:'馃帹'};
+  if(!filtered.length){ list.innerHTML='<div style="text-align:center;padding:30px;color:#CCC;font-size:13px">鏆傛棤鏀硅鏄庣粏</div>'; return; }
+
+  // Group by (majorCategory, subCategory)
+  const groups = {};
   filtered.forEach(m=>{
-    list.innerHTML+='<div class="mv-mod-item">'
+    const key = m.majorCategory+'|||'+m.subCategory;
+    if(!groups[key]) groups[key] = [];
+    groups[key].push(m);
+  });
+
+  Object.entries(groups).forEach(([key, items])=>{
+    items.sort((a,b)=>b.date.localeCompare(a.date));
+    const latest = items[0];
+    const major = latest.majorCategory;
+    const sub = latest.subCategory;
+    const majorIcons={'鍒硅溅绯荤粺':'馃洃','閬块渿':'馃敡','鍔ㄥ姏涓庝紶鍔ㄧ郴缁?:'鈿?,'杞儙':'馃洖','澶栬鍙婇獞琛屼笁瑙?:'馃帹','鍏朵粬':'馃摝'};
+
+    list.innerHTML+='<div class="mv-mod-item" data-group="'+key+'">'
       +'<div class="mv-mod-left">'
-      +'<div class="mv-mod-icon">'+(catIcon[m.category]||'馃摝')+'</div>'
-      +'<div><div class="mv-mod-name">'+m.name+'</div><div class="mv-mod-date">'+m.date+'</div></div>'
+      +'<div class="mv-mod-icon">'+(majorIcons[major]||'馃摝')+'</div>'
+      +'<div>'
+      +'<div class="mv-mod-name">'+sub+(latest.isConsumable?'<span class="mod-consumable-badge">娑堣€?/span>':'')+'</div>'
+      +'<div class="mv-mod-date">'+(latest.product||'鏈寚瀹氬搧鐗?)+(latest.spec?' '+latest.spec:'')+' 路 '+latest.date+'</div>'
       +'</div>'
-      +'<div class="mv-mod-right"><span class="mv-mod-cat">'+m.category+'</span><span class="mv-mod-price">楼'+m.price.toLocaleString()+'</span>'
-      +'<div class="mv-mod-actions"><button class="mv-mod-btn edit" data-mid="'+m.id+'">鉁?/button><button class="mv-mod-btn" data-mid="'+m.id+'" style="color:#E60012">鉁?/button></div>'
+      +'</div>'
+      +'<div class="mv-mod-right"><span class="mv-mod-cat">'+major+'</span>'
+      +'<div class="mv-mod-actions">'
+      +(items.length>1?'<button class="mod-expand-btn" data-group="'+key+'"><span class="count">'+items.length+'鏉?/span></button>':'')
+      +'<button class="mv-mod-btn edit" data-mid="'+latest.id+'">鉁?/button>'
+      +'</div>'
       +'</div>'
       +'</div>';
+
+    // Usage bar for consumable
+    if(latest.isConsumable){
+      const u = latest.sessionsUsed||0;
+      const t = latest.targetSessions||0;
+      const pct = t>0 ? Math.min(100, Math.round(u/t*100)) : 0;
+      const level = t>0 ? (pct<50?'low':pct<80?'mid':'high') : '';
+      list.innerHTML+='<div class="mod-usage" data-mid="'+latest.id+'">'
+        +(t>0?'<div class="mod-usage-bar"><div class="mod-usage-fill '+level+'" style="width:'+pct+'%"></div></div>'+pct+'% | ':'')
+        +'<span class="mod-usage-clickable" data-field="sessionsUsed">宸茬敤 '+u+'鑺?/span>'
+        +(t>0?' / <span class="mod-usage-clickable" data-field="targetSessions">鐩爣 '+t+'鑺?/span>':' 路 <span class="mod-usage-clickable" data-field="targetSessions">鐩爣鏈</span>')
+        +'</div>';
+    }
+
+    // History rows
+    if(items.length>1){
+      items.forEach((m,i)=>{
+        const cls = i===0 ? 'mod-history-item latest' : 'mod-history-item';
+        list.innerHTML+='<div class="'+cls+'" data-group="'+key+'" style="display:none">'
+          +'<div class="mod-history-left"><div style="font-weight:600">'+(m.product||'--')+(m.spec?' '+m.spec:'')+'</div><div style="font-size:10px;color:#999">'+m.date+'</div></div>'
+          +'<div class="mod-history-right">'
+          +(m.isConsumable?'<span class="mod-consumable-badge" style="font-size:9px">娑堣€?/span>':'')
+          +(m.isConsumable?'<span style="font-size:10px;color:#888;margin-right:4px">'+m.sessionsUsed+'/'+(m.targetSessions||'?')+'鑺?/span>':'')
+          +'<span style="font-size:11px;color:#888;margin-right:4px">楼'+m.price.toLocaleString()+'</span>'
+          +'<button class="mv-mod-btn edit" data-mid="'+m.id+'" style="font-size:11px">鉁?/button>'
+          +'</div>'
+          +'</div>';
+      });
+    }
   });
+
+  // Expand toggle
+  list.querySelectorAll('.mod-expand-btn').forEach(btn=>{
+    btn.addEventListener('click', e=>{
+      e.stopPropagation();
+      const key = btn.dataset.group;
+      const rows = list.querySelectorAll('[data-group="'+key+'"].mod-history-item');
+      const visible = rows[0]?.style.display !== 'none';
+      rows.forEach(r=>r.style.display=visible?'none':'');
+      btn.querySelector('.count').textContent = visible ? itemsByKey(key)+'鏉? : '鈻?;
+    });
+  });
+  function itemsByKey(key){
+    const [maj,sub] = key.split('|||');
+    return mods.filter(m=>m.vehicleId===v.id && m.majorCategory===maj && m.subCategory===sub).length;
+  }
+
+  // Edit buttons
   list.querySelectorAll('.mv-mod-btn.edit').forEach(b => b.addEventListener('click', (e) => {
     e.stopPropagation();
     openModModal(+b.dataset.mid);
   }));
-  list.querySelectorAll('.mv-mod-btn[style]').forEach(b => b.addEventListener('click', (e) => {
+  // Session clickable
+  list.querySelectorAll('.mod-usage-clickable').forEach(el => el.addEventListener('click', (e) => {
     e.stopPropagation();
-    const mid = +b.dataset.mid;
-    if(confirm('纭畾鍒犻櫎璇ユ敼瑁呬欢锛?)){
-      mods = mods.filter(x => x.id !== mid);
-      renderMyVehicles();
-      renderExpenses();
-    }
+    const mid = +el.parentElement.dataset.mid;
+    openSessionModal(mid);
   }));
 }
+
+// ====== SESSION EDIT MODAL ======
+let sessionEditingMid = null;
+const sessionModal = document.getElementById('session-modal');
+
+function openSessionModal(mid){
+  const m = mods.find(x => x.id === mid);
+  if(!m) return;
+  sessionEditingMid = mid;
+  document.getElementById('s-used').value = m.sessionsUsed||0;
+  document.getElementById('s-target').value = m.targetSessions||'';
+  sessionModal.classList.add('show');
+}
+function closeSessionModal(){ sessionModal.classList.remove('show'); sessionEditingMid = null; }
+
+document.getElementById('session-cancel').addEventListener('click', closeSessionModal);
+sessionModal.addEventListener('click', e => { if(e.target === sessionModal) closeSessionModal(); });
+
+document.getElementById('session-submit').addEventListener('click', ()=>{
+  const m = mods.find(x => x.id === sessionEditingMid);
+  if(!m) return;
+  m.sessionsUsed = +document.getElementById('s-used').value||0;
+  m.targetSessions = +document.getElementById('s-target').value||0;
+  closeSessionModal();
+  renderMyVehicles();
+});
 
 // ====== LEADERBOARD ======
 const LB_RIDERS = [
@@ -1311,7 +1861,7 @@ function renderLeaderboard(){
   const data=LB_RIDERS.map((r,i)=>{
     const diff=i*350+Math.floor(Math.random()*200);
     const t=base+diff;
-    return { ...r, time:msToTime(t), gap:i===0?'--':msToTime(base-(base+diff)) };
+    return { ...r, time:msToTime(t), gap:i===0?'--':msToSecStr(diff) };
   });
   data.forEach((r,i)=>{
     const rankClass=i===0?'gold':i===1?'silver':i===2?'bronze':'other';
@@ -1356,10 +1906,10 @@ function renderExpenses(){
 
   // Category breakdown
   const catTotal = {};
-  filtered.forEach(m => { catTotal[m.category] = (catTotal[m.category] || 0) + m.price; });
-  const catOrder = ['鍔ㄥ姏','鍒硅溅','杞儙','鎮寕','澶栬'];
-  const catColors = { '鍔ㄥ姏':'#E60012', '鍒硅溅':'#1A1A1A', '杞儙':'#FF6B00', '鎮寕':'#4A90D9', '澶栬':'#888' };
-  const catIcon2 = { '鍔ㄥ姏':'鈿?, '鍒硅溅':'馃洃', '杞儙':'馃洖', '鎮寕':'馃敡', '澶栬':'馃帹' };
+  filtered.forEach(m => { catTotal[m.majorCategory] = (catTotal[m.majorCategory] || 0) + m.price; });
+  const catOrder = ['鍒硅溅绯荤粺','閬块渿','鍔ㄥ姏涓庝紶鍔ㄧ郴缁?,'杞儙','澶栬鍙婇獞琛屼笁瑙?,'鍏朵粬'];
+  const catColors = { '鍒硅溅绯荤粺':'#E60012','閬块渿':'#1A1A1A','鍔ㄥ姏涓庝紶鍔ㄧ郴缁?:'#FF6B00','杞儙':'#4A90D9','澶栬鍙婇獞琛屼笁瑙?:'#888','鍏朵粬':'#AAA' };
+  const catIcon2 = { '鍒硅溅绯荤粺':'馃洃','閬块渿':'馃敡','鍔ㄥ姏涓庝紶鍔ㄧ郴缁?:'鈿?,'杞儙':'馃洖','澶栬鍙婇獞琛屼笁瑙?:'馃帹','鍏朵粬':'馃摝' };
 
   // Pie
   let pieParts = '';
@@ -1390,8 +1940,8 @@ function renderExpenses(){
     listEl.innerHTML = filtered.map(m =>
       '<div class="expense-item">' +
       '<div class="expense-left">' +
-      '<div class="expense-icon">'+(catIcon2[m.category]||'馃摝')+'</div>' +
-      '<div><div class="expense-name">'+m.name+'</div><div class="expense-date">'+m.date+'</div></div>' +
+      '<div class="expense-icon">'+(catIcon2[m.majorCategory]||'馃摝')+'</div>' +
+      '<div><div class="expense-name">'+m.subCategory+(m.product?' 路 '+m.product+(m.spec?' '+m.spec:''):'')+'</div><div class="expense-date">'+m.date+'</div></div>' +
       '</div>' +
       '<div class="expense-amount">楼'+m.price.toLocaleString()+'</div>' +
       '</div>'
