@@ -615,8 +615,8 @@ let records = [
 
 // ====== UTILS ======
 function timeToMs(t){ const p=t.split(/[:.]/); return +p[0]*60000+ +p[1]*1000+ +p[2]; }
-function msToTime(ms){ const m=Math.floor(ms/60000); const s=Math.floor((ms%60000)/1000); const ms3=ms%1000; return m+':'+String(s).padStart(2,'0')+'.'+String(ms3).padEnd(3,'0'); }
-function msToSecStr(ms){ const s=Math.floor(ms/1000); const ms3=ms%1000; return s+'.'+String(ms3).padEnd(3,'0'); }
+function msToTime(ms){ const m=Math.floor(ms/60000); const s=Math.floor((ms%60000)/1000); const ms3=ms%1000; return m+':'+String(s).padStart(2,'0')+'.'+String(ms3).padStart(3,'0'); }
+function msToSecStr(ms){ const s=Math.floor(ms/1000); const ms3=ms%1000; return s+'.'+String(ms3).padStart(3,'0'); }
 function diffStr(t1,t2){ if(!t1||!t2)return''; const d=timeToMs(t2)-timeToMs(t1); const abs=Math.abs(d); return msToSecStr(abs); }
 function today(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 function sorted(r){ return [...r].sort((a,b)=>b.date.localeCompare(a.date)||timeToMs(a.time)-timeToMs(b.time)); }
