@@ -215,6 +215,40 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .back-btn{display:inline-flex;align-items:center;gap:4px;color:#1A1A1A;font-size:14px;font-weight:600;cursor:pointer;border:none;background:none;padding:8px 0;margin-bottom:8px}
 .back-btn:hover{opacity:.7}
 
+/* === My Vehicles Page === */
+.mv-top{height:33vh;min-height:200px;position:relative;display:flex;flex-direction:column}
+.mv-vehicle-switcher{display:flex;gap:6px;overflow-x:auto;padding:12px 16px 0;flex-shrink:0;-webkit-overflow-scrolling:touch}
+.mv-vehicle-switcher::-webkit-scrollbar{display:none}
+.mv-switch-tag{padding:6px 14px;border-radius:16px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;border:1.5px solid #DDD;background:#fff;color:#888;transition:.15s;flex-shrink:0}
+.mv-switch-tag.active{background:#E60012;color:#fff;border-color:#E60012}
+.mv-vehicle-card{flex:1;background:#fff;margin:8px 16px;border-radius:12px;padding:14px;display:flex;gap:14px;align-items:center;box-shadow:0 2px 8px rgba(0,0,0,.06);overflow:hidden}
+.mv-vehicle-photo{width:90px;height:68px;border-radius:8px;background:#F5F5F5;border:1px solid #E5E5E5;flex-shrink:0;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.mv-vehicle-photo img{width:100%;height:100%;object-fit:cover}
+.mv-vehicle-info{flex:1;min-width:0}
+.mv-vehicle-name{font-size:17px;font-weight:800;color:#1A1A1A;margin-bottom:2px}
+.mv-vehicle-detail{font-size:12px;color:#888;font-weight:500}
+.mv-vehicle-detail span{color:#E60012;font-weight:700}
+.mv-mod-section{border-top:1px solid #F0F0F0}
+.mv-mod-header{display:flex;justify-content:space-between;align-items:center;padding:14px 16px 8px}
+.mv-mod-title{font-size:14px;font-weight:700;color:#1A1A1A}
+.mv-mod-tags{display:flex;gap:6px;overflow-x:auto}
+.mv-mod-tag{padding:4px 12px;border-radius:12px;font-size:11px;font-weight:600;cursor:pointer;border:1px solid #DDD;background:#fff;color:#888;white-space:nowrap;transition:.15s}
+.mv-mod-tag.active{background:#1A1A1A;color:#fff;border-color:#1A1A1A}
+.mv-mod-list{padding:0 16px 16px}
+.mv-mod-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #F5F5F5}
+.mv-mod-item:last-child{border-bottom:none}
+.mv-mod-left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.mv-mod-icon{width:34px;height:34px;border-radius:8px;background:#F8F8F8;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.mv-mod-name{font-size:14px;font-weight:600;color:#1A1A1A}
+.mv-mod-date{font-size:11px;color:#BBB;margin-top:1px}
+.mv-mod-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.mv-mod-price{font-size:14px;font-weight:700;color:#E60012;white-space:nowrap}
+.mv-mod-cat{font-size:10px;background:#F0F0F0;color:#888;padding:2px 7px;border-radius:8px;font-weight:600}
+.mv-mod-actions{display:flex;gap:2px}
+.mv-mod-btn{width:26px;height:26px;border-radius:6px;border:none;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;background:transparent;color:#999;transition:.1s}
+.mv-mod-btn:hover{background:#F0F0F0}
+.mv-mod-btn.edit{color:#1A1A1A}
+
 /* === Modal === */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;justify-content:center;align-items:flex-end;animation:fadeIn .2s ease}
 .modal-overlay.show{display:flex}
@@ -337,38 +371,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   </div>
 
   <!-- ========== 鎴戠殑杞﹁締 ========== -->
-  <div class="page" id="page-mods">
-    <div class="card" style="padding:12px 16px">
-      <div class="mod-tags">
-        <button class="mod-tag active">鍏ㄩ儴</button>
-        <button class="mod-tag">鍔ㄥ姏</button>
-        <button class="mod-tag">鍒硅溅</button>
-        <button class="mod-tag">杞儙</button>
-        <button class="mod-tag">鎮寕</button>
-        <button class="mod-tag">澶栬</button>
+  <div class="page mv-page" id="page-mods">
+    <div class="mv-vehicle-switcher" id="mv-switcher"></div>
+    <div class="mv-vehicle-card" id="mv-vehicle-card"></div>
+    <div class="mv-mod-section">
+      <div class="mv-mod-header">
+        <span class="mv-mod-title">鏀硅璁板綍</span>
+        <div class="mv-mod-tags" id="mv-mod-tags"></div>
       </div>
-    </div>
-    <div class="card">
-      <div class="mod-item">
-        <div><div class="mod-name">SC Project 鍏ㄦ鎺掓皵</div><span class="mod-cat">鍔ㄥ姏</span></div>
-        <div><div class="mod-price">楼3,800</div><div class="mod-date">2026-04-01</div></div>
-      </div>
-      <div class="mod-item">
-        <div><div class="mod-name">BREMBO M50 鍗￠挸</div><span class="mod-cat">鍒硅溅</span></div>
-        <div><div class="mod-price">楼2,500</div><div class="mod-date">2026-03-15</div></div>
-      </div>
-      <div class="mod-item">
-        <div><div class="mod-name">Pirelli Diablo Rosso IV</div><span class="mod-cat">杞儙</span></div>
-        <div><div class="mod-price">楼2,200</div><div class="mod-date">2026-02-20</div></div>
-      </div>
-      <div class="mod-item">
-        <div><div class="mod-name">脰hlins 鍚庨伩闇?/div><span class="mod-cat">鎮寕</span></div>
-        <div><div class="mod-price">楼4,500</div><div class="mod-date">2026-01-10</div></div>
-      </div>
-      <div class="mod-item">
-        <div><div class="mod-name">纰崇氦缁村畾椋庣考濂椾欢</div><span class="mod-cat">澶栬</span></div>
-        <div><div class="mod-price">楼680</div><div class="mod-date">2025-12-05</div></div>
-      </div>
+      <div class="mv-mod-list" id="mv-mod-list"></div>
     </div>
   </div>
 
@@ -575,6 +586,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     <span>鍦堥€?/span>
   </button>
+  <button class="tab" data-page="leaderboard">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 9 5.5 9 8v1"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 15 5.5 15 8v1"/><path d="M4 15h16"/><path d="M10 9v6a2 2 0 0 0 4 0V9"/></svg>
+    <span>鎺掕</span>
+  </button>
   <button class="tab" data-page="mods">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
     <span>鎴戠殑杞﹁締</span>
@@ -582,10 +597,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <button class="tab" data-page="expenses">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/><path d="M12 18V6"/></svg>
     <span>鑺遍攢</span>
-  </button>
-  <button class="tab" data-page="leaderboard">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 9 5.5 9 8v1"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 15 5.5 15 8v1"/><path d="M4 15h16"/><path d="M10 9v6a2 2 0 0 0 4 0V9"/></svg>
-    <span>鎺掕</span>
   </button>
   <button class="tab" data-page="mine">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
@@ -598,8 +609,23 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 const TARGETS = { 'ZIC': '1:50.000', '瀹佹尝': '1:53.000', '澶╁簻': '2:00.000', '澶╅┈': '' };
 const TRACK_SHORT = { 'ZIC':'ZIC','瀹佹尝':'瀹佹尝','澶╅┈':'澶╅┈','澶╁簻':'澶╁簻' };
 const TRACK_FULL = { 'ZIC':'鐝犳捣鍥介檯璧涜溅鍦?,'瀹佹尝':'瀹佹尝鍥介檯璧涢亾','澶╅┈':'涓婃捣澶╅┈璧涜溅鍦?,'澶╁簻':'鎴愰兘澶╁簻鍥介檯璧涢亾' };
-let vehicles = ['Yamaha R3'];
-let nextId = 100;
+
+const BRAND_DB = {
+  'Yamaha':   ['YZF-R3','YZF-R7','YZF-R1'],
+  'Kawasaki': ['Ninja 400','ZX-4RR','ZX-6R','ZX-10R'],
+  'Honda':    ['CBR500R','CBR650R','CBR600RR','CBR1000RR-R'],
+  'Suzuki':   ['GSX-8R','GSX-R600','GSX-R750','GSX-R1000'],
+  'Ducati':   ['Panigale V2','Panigale V4'],
+  'BMW':      ['S1000RR','M1000RR'],
+  'CFMoto':   ['450SR','675SR-R'],
+};
+const BRAND_LIST = Object.keys(BRAND_DB);
+
+let nextVehId = 100;
+let vehicles = [
+  { id:1, name:'Yamaha R3', brand:'Yamaha', model:'YZF-R3', year:'2023', photo:'' },
+];
+let nextRecId = 100;
 let records = [
   { id:1, date:'2026-06-16',track:'ZIC',time:'1:53.800',temp:'',cond:[],vehicle:'Yamaha R3' },
   { id:2, date:'2026-06-02',track:'瀹佹尝',time:'1:55.142',temp:'',cond:[],vehicle:'Yamaha R3' },
@@ -611,6 +637,15 @@ let records = [
   { id:8, date:'2026-02-20',track:'ZIC',time:'1:54.800',temp:'',cond:[],vehicle:'Yamaha R3' },
   { id:9, date:'2026-02-14',track:'澶╁簻',time:'2:05.890',temp:'',cond:[],vehicle:'Yamaha R3' },
   { id:10, date:'2026-01-12',track:'ZIC',time:'1:56.200',temp:'',cond:[],vehicle:'Yamaha R3' },
+];
+
+let nextModId = 300;
+let mods = [
+  { id:1, vehicleId:1, name:'SC Project 鍏ㄦ鎺掓皵', category:'鍔ㄥ姏', price:3800, date:'2026-04-01' },
+  { id:2, vehicleId:1, name:'BREMBO M50 鍗￠挸', category:'鍒硅溅', price:2500, date:'2026-03-15' },
+  { id:3, vehicleId:1, name:'Pirelli Diablo Rosso IV', category:'杞儙', price:2200, date:'2026-02-20' },
+  { id:4, vehicleId:1, name:'脰hlins 鍚庨伩闇?, category:'鎮寕', price:4500, date:'2026-01-10' },
+  { id:5, vehicleId:1, name:'纰崇氦缁村畾椋庣考濂椾欢', category:'澶栬', price:680, date:'2025-12-05' },
 ];
 
 // ====== UTILS ======
@@ -651,7 +686,7 @@ function computeCards(){
 
 // ====== RENDER HOME (棣栭〉) ======
 function renderHome(){
-  const v=vehicles[0]||'Yamaha R3';
+  const v=vehicles[0]?.name||'Yamaha R3';
   const pbAll=records.length?records.reduce((a,b)=>timeToMs(a.time)<timeToMs(b.time)?a:b):null;
   const pbLabel=pbAll?pbAll.track+' '+pbAll.time:'--:--.---';
   document.querySelector('.vehicle-name').textContent=v;
@@ -679,7 +714,7 @@ function renderRecent(){
     +(target?'<div><span style="font-size:12px;color:#888">鐩爣</span><div style="font-size:16px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
     +(gap?'<div><span style="font-size:12px;color:#888">宸窛</span><div style="font-size:22px;font-weight:800;color:'+(achieved?'#00AA55':'#E60012')+'">'+gapLabel+'s</div></div>':'')
     +'</div>'
-    +'<div style="margin-top:10px;font-size:11px;color:#999;border-top:1px solid #F0F0F0;padding-top:10px">'+last.date+' 路 '+(last.vehicle||(vehicles[0]||''))+(last.temp?' 路 '+last.temp+'鈩?:'')+(last.cond.length?' 路 '+last.cond.join('/'):'')+'</div>'
+    +'<div style="margin-top:10px;font-size:11px;color:#999;border-top:1px solid #F0F0F0;padding-top:10px">'+last.date+' 路 '+(last.vehicle||(vehicles[0]?.name||''))+(last.temp?' 路 '+last.temp+'鈩?:'')+(last.cond.length?' 路 '+last.cond.join('/'):'')+'</div>'
     +'<div class="racing-stripe" style="margin-top:8px"></div>';
 }
 
@@ -740,7 +775,7 @@ function render(){
   r.forEach(rec=>{
     listDiv.innerHTML+='<div class="lap-list-item">'
       +'<div class="lap-list-main">'
-      +'<div class="lli-left"><span class="lli-date">'+rec.date+'</span><span class="lli-track">'+rec.track+'</span><span class="lli-vehicle">'+(rec.vehicle||(vehicles[0]||''))+(rec.temp?' 路 '+rec.temp+'鈩?:'')+(rec.cond.length?' 路 '+rec.cond.join('/'):'')+'</span></div>'
+      +'<div class="lli-left"><span class="lli-date">'+rec.date+'</span><span class="lli-track">'+rec.track+'</span><span class="lli-vehicle">'+(rec.vehicle||(vehicles[0]?.name||''))+(rec.temp?' 路 '+rec.temp+'鈩?:'')+(rec.cond.length?' 路 '+rec.cond.join('/'):'')+'</span></div>'
       +'</div>'
       +'<div class="lap-list-right">'
       +'<div class="lli-time">'+rec.time+'</div>'
@@ -760,8 +795,8 @@ let editingId=null;
 
 function populateVehicleSelect(selId, selectedVal){
   const sel=document.getElementById(selId);
-  sel.innerHTML='<option value="">閫夋嫨杞﹁締</option>'+vehicles.map(v=>'<option value="'+v+'">'+v+'</option>').join('')+'<option value="__other__">鍏朵粬锛堟墜鍔ㄥ～鍐欙級</option>';
-  if(selectedVal && vehicles.includes(selectedVal)){ sel.value=selectedVal; document.getElementById('f-vehicle-other').style.display='none'; }
+  sel.innerHTML='<option value="">閫夋嫨杞﹁締</option>'+vehicles.map(v=>'<option value="'+v.name+'">'+v.name+'</option>').join('')+'<option value="__other__">鍏朵粬锛堟墜鍔ㄥ～鍐欙級</option>';
+  if(selectedVal && vehicles.some(x=>x.name===selectedVal)){ sel.value=selectedVal; document.getElementById('f-vehicle-other').style.display='none'; }
   else if(selectedVal){ sel.value='__other__'; document.getElementById('f-vehicle-other').style.display='block'; document.getElementById('f-vehicle-other').value=selectedVal; }
   else{ sel.value=''; document.getElementById('f-vehicle-other').style.display='none'; }
 }
@@ -825,7 +860,7 @@ function openModal(recId){
     document.getElementById('f-min').value=''; document.getElementById('f-sec').value=''; document.getElementById('f-ms').value='';
     document.getElementById('t-min').value=''; document.getElementById('t-sec').value=''; document.getElementById('t-ms').value='';
     document.getElementById('f-temp-min').value=''; document.getElementById('f-temp-max').value='';
-    populateVehicleSelect('f-vehicle', vehicles[0]||'');
+    populateVehicleSelect('f-vehicle', vehicles[0]?.name||'');
     document.getElementById('modal-submit').textContent='鎻愪氦';
     document.getElementById('f-track').value='';
   }
@@ -892,7 +927,7 @@ document.getElementById('modal-submit').addEventListener('click',function(){
   let vehicle=document.getElementById('f-vehicle').value;
   if(vehicle==='__other__'){ vehicle=document.getElementById('f-vehicle-other').value.trim(); }
   if(!vehicle){ alert('璇烽€夋嫨鎴栬緭鍏ヨ溅杈?); return; }
-  if(!vehicles.includes(vehicle)){ vehicles.push(vehicle); }
+  if(!vehicles.some(x=>x.name===vehicle)){ vehicles.push({id:++nextVehId, name:vehicle, brand:'', model:'', year:'', photo:''}); }
 
   // Target
   if(tMin!==''&&tSec!==''&&tMs!==''){
@@ -909,7 +944,7 @@ document.getElementById('modal-submit').addEventListener('click',function(){
       records[idx]={ ...records[idx], date, track, time, temp, cond, vehicle };
     }
   } else {
-    records.push({ id:++nextId, date, track, time, temp, cond, vehicle });
+    records.push({ id:++nextRecId, date, track, time, temp, cond, vehicle });
   }
 
   closeModal();
@@ -955,16 +990,17 @@ function renderVehicleMgmt(){
   const list=document.getElementById('vm-list');
   list.innerHTML='';
   vehicles.forEach((v,i)=>{
-    list.innerHTML+='<div class="vm-item"><span class="vm-item-name">'+v+'</span><div class="vm-item-actions"><button class="vm-item-btn rename" data-idx="'+i+'">鉁?/button><button class="vm-item-btn delete" data-idx="'+i+'">鉁?/button></div></div>';
+    list.innerHTML+='<div class="vm-item"><div><span class="vm-item-name">'+v.name+'</span><div style="font-size:11px;color:#BBB">'+v.brand+' '+v.model+' 路 '+v.year+'</div></div><div class="vm-item-actions"><button class="vm-item-btn rename" data-idx="'+i+'">鉁?/button><button class="vm-item-btn delete" data-idx="'+i+'">鉁?/button></div></div>';
   });
   list.querySelectorAll('.vm-item-btn.rename').forEach(b=>b.addEventListener('click',()=>renameVehicle(+b.dataset.idx)));
   list.querySelectorAll('.vm-item-btn.delete').forEach(b=>b.addEventListener('click',()=>deleteVehicle(+b.dataset.idx)));
 }
 function renameVehicle(idx){
-  const newName=prompt('杈撳叆鏂板悕绉帮細', vehicles[idx]);
-  if(newName && newName.trim() && newName.trim()!==vehicles[idx]){
-    const oldName=vehicles[idx];
-    vehicles[idx]=newName.trim();
+  const v=vehicles[idx];
+  const newName=prompt('杈撳叆鏂板悕绉帮細', v.name);
+  if(newName && newName.trim() && newName.trim()!==v.name){
+    const oldName=v.name;
+    vehicles[idx].name=newName.trim();
     records.forEach(r=>{ if(r.vehicle===oldName)r.vehicle=newName.trim(); });
     renderVehicleMgmt();
     render(); renderHome(); renderRecent();
@@ -972,21 +1008,74 @@ function renameVehicle(idx){
 }
 function deleteVehicle(idx){
   if(vehicles.length<=1){ alert('鑷冲皯淇濈暀涓€杈嗚溅'); return; }
-  if(!confirm('纭畾鍒犻櫎 "'+vehicles[idx]+'"锛熷湀閫熻褰曚腑鐨勮溅杈嗕俊鎭皢琚竻绌恒€?))return;
-  const oldName=vehicles[idx];
+  const v=vehicles[idx];
+  if(!confirm('纭畾鍒犻櫎 "'+v.name+'"锛熷湀閫熻褰曚腑鐨勮溅杈嗕俊鎭皢琚竻绌恒€?))return;
+  records.forEach(r=>{ if(r.vehicle===v.name)r.vehicle=''; });
   vehicles.splice(idx,1);
-  records.forEach(r=>{ if(r.vehicle===oldName)r.vehicle=''; });
   renderVehicleMgmt();
   render(); renderHome(); renderRecent();
 }
 function addVehicle(){
   const name=prompt('杈撳叆鏂拌溅鍚嶇О锛?);
-  if(name && name.trim() && !vehicles.includes(name.trim())){
-    vehicles.push(name.trim());
+  if(name && name.trim() && !vehicles.some(x=>x.name===name.trim())){
+    vehicles.push({id:++nextVehId, name:name.trim(), brand:'', model:'', year:'', photo:''});
     renderVehicleMgmt();
-  } else if(name && vehicles.includes(name.trim())){
+  } else if(name && vehicles.some(x=>x.name===name.trim())){
     alert('璇ヨ溅杈嗗凡瀛樺湪');
   }
+}
+
+// ====== MY VEHICLES PAGE ======
+let mvSelectedIdx=0;
+function renderMyVehicles(){
+  if(!vehicles.length)return;
+  if(mvSelectedIdx>=vehicles.length)mvSelectedIdx=0;
+  const v=vehicles[mvSelectedIdx];
+
+  // Vehicle switcher
+  const switcher=document.getElementById('mv-switcher');
+  switcher.innerHTML=vehicles.map((vv,i)=>'<span class="mv-switch-tag'+(i===mvSelectedIdx?' active':'')+'" data-idx="'+i+'">'+vv.name+'</span>').join('');
+  switcher.querySelectorAll('.mv-switch-tag').forEach(el=>el.addEventListener('click',()=>{
+    mvSelectedIdx=+el.dataset.idx;
+    renderMyVehicles();
+  }));
+
+  // Vehicle card
+  const card=document.getElementById('mv-vehicle-card');
+  const photoHtml=v.photo?'<img src="'+v.photo+'" alt="'+v.name+'" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<div style=font-size:32px>馃弽锔?/div>\'">':'<div style="font-size:32px">馃弽锔?/div>';
+  card.innerHTML='<div class="mv-vehicle-photo">'+photoHtml+'</div>'
+    +'<div class="mv-vehicle-info">'
+    +'<div class="mv-vehicle-name">'+v.name+'</div>'
+    +'<div class="mv-vehicle-detail">'+(v.brand||'鍝佺墝')+' 路 '+(v.model||'杞﹀瀷')+' 路 <span>'+(v.year||'--')+'</span></div>'
+    +'</div>';
+
+  // Mods filter tags
+  const categories=['鍏ㄩ儴','鍔ㄥ姏','鍒硅溅','杞儙','鎮寕','澶栬'];
+  const filterTag=document.getElementById('mv-mod-tags');
+  const activeFilter=filterTag.dataset.filter||'鍏ㄩ儴';
+  filterTag.innerHTML=categories.map(c=>'<span class="mv-mod-tag'+(c===activeFilter?' active':'')+'" data-cat="'+c+'">'+c+'</span>').join('');
+  filterTag.querySelectorAll('.mv-mod-tag').forEach(el=>el.addEventListener('click',()=>{
+    filterTag.dataset.filter=el.dataset.cat;
+    renderMyVehicles();
+  }));
+
+  // Mods list
+  const list=document.getElementById('mv-mod-list');
+  list.innerHTML='';
+  let filtered=mods.filter(m=>m.vehicleId===v.id);
+  if(activeFilter!=='鍏ㄩ儴')filtered=filtered.filter(m=>m.category===activeFilter);
+  filtered.sort((a,b)=>b.date.localeCompare(a.date));
+  if(!filtered.length){ list.innerHTML='<div style="text-align:center;padding:30px;color:#CCC;font-size:13px">鏆傛棤鏀硅璁板綍</div>'; return; }
+  const catIcon={鍔ㄥ姏:'鈿?,鍒硅溅:'馃洃',杞儙:'馃洖',鎮寕:'馃敡',澶栬:'馃帹'};
+  filtered.forEach(m=>{
+    list.innerHTML+='<div class="mv-mod-item">'
+      +'<div class="mv-mod-left">'
+      +'<div class="mv-mod-icon">'+(catIcon[m.category]||'馃摝')+'</div>'
+      +'<div><div class="mv-mod-name">'+m.name+'</div><div class="mv-mod-date">'+m.date+'</div></div>'
+      +'</div>'
+      +'<div class="mv-mod-right"><span class="mv-mod-cat">'+m.category+'</span><span class="mv-mod-price">楼'+m.price.toLocaleString()+'</span></div>'
+      +'</div>';
+  });
 }
 
 // ====== LEADERBOARD ======
@@ -1034,6 +1123,7 @@ function renderLeaderboard(){
 renderHome();
 render();
 renderRecent();
+renderMyVehicles();
 renderLeaderboard();
 
 const tabs = document.querySelectorAll('.tab');
@@ -1061,13 +1151,7 @@ tabs.forEach(tab => {
     if(tab.dataset.page==='laps')render();
     if(tab.dataset.page==='home'){ renderHome(); renderRecent(); }
     if(tab.dataset.page==='leaderboard')renderLeaderboard();
-  });
-});
-
-document.querySelectorAll('.mod-tag').forEach(tag => {
-  tag.addEventListener('click', () => {
-    tag.parentElement.querySelectorAll('.mod-tag').forEach(t => t.classList.remove('active'));
-    tag.classList.add('active');
+    if(tab.dataset.page==='mods')renderMyVehicles();
   });
 });
 </script>
