@@ -944,16 +944,6 @@ function openModal(recId){
 
 function closeModal(){ modal.classList.remove('show'); editingId=null; }
 
-fab.addEventListener('click', ()=>{
-  const activeTab = document.querySelector('.tab.active');
-  if(activeTab && activeTab.dataset.page === 'mods'){
-    fabMenuOpen ? hideFabMenu() : showFabMenu();
-  } else if(activeTab && activeTab.dataset.page === 'expenses'){
-    openModModal(null);
-  } else {
-    openModal(null);
-  }
-});
 document.getElementById('modal-cancel').addEventListener('click',closeModal);
 document.getElementById('modal-delete-btn').addEventListener('click',function(){
   if(editingId){ showConfirm(editingId); closeModal(); }
@@ -1450,6 +1440,18 @@ document.getElementById('fab-add-mod').addEventListener('click', ()=>{
 
 fab.style.display = 'none';
 const fabPages = ['laps', 'mods', 'expenses'];
+
+fab.addEventListener('click', ()=>{
+  const activeTab = document.querySelector('.tab.active');
+  if(activeTab && activeTab.dataset.page === 'mods'){
+    fabMenuOpen ? hideFabMenu() : showFabMenu();
+  } else if(activeTab && activeTab.dataset.page === 'expenses'){
+    openModModal(null);
+  } else {
+    openModal(null);
+  }
+});
+
 const pages = {
   home: document.getElementById('page-home'),
   laps: document.getElementById('page-laps'),
