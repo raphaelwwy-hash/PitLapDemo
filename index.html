@@ -484,7 +484,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
     <div class="form-group">
       <label class="form-label">璧涢亾</label>
-      <select class="form-select" id="f-track"><option value="">璇烽€夋嫨璧涢亾</option></select>
+      <select class="form-select" id="f-track" onchange="onTrackChange()"><option value="">璇烽€夋嫨璧涢亾</option></select>
     </div>
 
     <div class="form-group">
@@ -615,8 +615,8 @@ let records = [
 
 // ====== UTILS ======
 function timeToMs(t){ const p=t.split(/[:.]/); return +p[0]*60000+ +p[1]*1000+ +p[2]; }
-function msToTime(ms){ const m=Math.floor(ms/60000); const s=Math.floor((ms%60000)/1000); const ms3=ms%1000; return m+':'+String(s).padStart(2,'0')+'.'+String(ms3).padStart(3,'0'); }
-function msToSecStr(ms){ const s=Math.floor(ms/1000); const ms3=ms%1000; return s+'.'+String(ms3).padStart(3,'0'); }
+function msToTime(ms){ const m=Math.floor(ms/60000); const s=Math.floor((ms%60000)/1000); const ms3=ms%1000; return m+':'+String(s).padStart(2,'0')+'.'+String(ms3).padEnd(3,'0'); }
+function msToSecStr(ms){ const s=Math.floor(ms/1000); const ms3=ms%1000; return s+'.'+String(ms3).padEnd(3,'0'); }
 function diffStr(t1,t2){ if(!t1||!t2)return''; const d=timeToMs(t2)-timeToMs(t1); const abs=Math.abs(d); return msToSecStr(abs); }
 function today(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
 function sorted(r){ return [...r].sort((a,b)=>b.date.localeCompare(a.date)||timeToMs(a.time)-timeToMs(b.time)); }
@@ -843,8 +843,8 @@ document.getElementById('modal-delete-btn').addEventListener('click',function(){
 modal.addEventListener('click',e=>{ if(e.target===modal)closeModal(); });
 
 // Track selection auto-fills target
-document.getElementById('f-track').addEventListener('change',function(){
-  const t=this.value;
+function onTrackChange(){
+  const t=document.getElementById('f-track').value;
   const hint=document.getElementById('target-hint');
   if(t && TARGETS[t]){
     const parts=TARGETS[t].split(/[:.]/);
@@ -858,7 +858,8 @@ document.getElementById('f-track').addEventListener('change',function(){
   } else {
     hint.textContent='';
   }
-});
+}
+document.getElementById('f-track').addEventListener('change',onTrackChange);
 
 // Condition multi-select
 document.querySelectorAll('#f-conditions .tag-opt').forEach(el=>{
@@ -885,7 +886,7 @@ document.getElementById('modal-submit').addEventListener('click',function(){
   const secNum=+sec; const msNum=+ms;
   if(secNum>59||msNum>999){ alert('绉掓暟涓嶈兘瓒呰繃59锛屾绉掍笉鑳借秴杩?99'); return; }
 
-  const time=min+':'+String(secNum).padStart(2,'0')+'.'+String(msNum).padStart(3,'0');
+  const time=min+':'+String(secNum).padStart(2,'0')+'.'+String(msNum).padEnd(3,'0');
 
   // Vehicle
   let vehicle=document.getElementById('f-vehicle').value;
@@ -895,7 +896,7 @@ document.getElementById('modal-submit').addEventListener('click',function(){
 
   // Target
   if(tMin!==''&&tSec!==''&&tMs!==''){
-    TARGETS[track]=tMin+':'+String(+tSec).padStart(2,'0')+'.'+String(+tMs).padStart(3,'0');
+    TARGETS[track]=tMin+':'+String(+tSec).padStart(2,'0')+'.'+String(+tMs).padEnd(3,'0');
   }
 
   const temp=tempMin||tempMax?(tempMin||'?')+'~'+(tempMax||'?'):'';
