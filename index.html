@@ -107,22 +107,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .pie-placeholder{width:100px;height:100px;border-radius:50%;margin:0 auto;background:conic-gradient(#E60012 0% 35%,#1A1A1A 35% 55%,#FF6B00 55% 70%,#CCC 70% 85%,#555 85% 100%);position:relative;flex-shrink:0}
 .pie-placeholder::after{content:'';position:absolute;inset:20px;border-radius:50%;background:#fff}
 
-/* My */
-.profile-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
-.avatar{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#E60012,#1A1A1A);display:flex;align-items:center;justify-content:center;font-size:22px;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.1)}
-.profile-name{font-size:18px;font-weight:800;color:#1A1A1A}
-.profile-sub{font-size:12px;color:#888}
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat-box{background:#F8F8F8;border-radius:10px;padding:14px;text-align:center;border:1px solid #EEE}
-.stat-box .num{font-size:20px;font-weight:800;color:#E60012}
-.stat-box .num.blue{color:#1A1A1A}
-.stat-box .label{font-size:11px;color:#888;margin-top:3px;font-weight:500}
-.menu-item{display:flex;align-items:center;gap:10px;padding:14px 0;border-bottom:1px solid #F0F0F0;color:#555;font-size:14px;font-weight:500;cursor:pointer}
-.menu-item:last-child{border-bottom:none}
-.menu-item .arrow{margin-left:auto;color:#ccc;font-weight:700}
-.menu-item .badge{background:#E60012;color:#fff;font-size:10px;padding:1px 6px;border-radius:8px;margin-left:auto}
 
-/* FAB */
+/* === Vehicle Management === *//* FAB */
 .fab{position:fixed;bottom:76px;right:calc(50% - 210px + 16px);width:48px;height:48px;border-radius:50%;background:#E60012;color:#fff;border:none;font-size:22px;cursor:pointer;box-shadow:0 4px 15px rgba(230,0,18,.35);display:flex;align-items:center;justify-content:center;z-index:10;transition:.15s;font-weight:700}
 .fab:active{transform:scale(.92)}
 @media(max-width:420px){.fab{right:16px}}
@@ -188,32 +174,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .lb-time{font-size:18px;font-weight:800;color:#E60012}
 .lb-gap{font-size:11px;color:#999;margin-top:1px}
 
-/* === Vehicle Management === */
-.vm-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-.vm-title{font-size:18px;font-weight:800;color:#1A1A1A}
-.vm-add-btn{width:32px;height:32px;border-radius:8px;border:none;background:#E60012;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.vm-list{display:flex;flex-direction:column;gap:8px}
-.vm-item{display:flex;justify-content:space-between;align-items:center;padding:12px;background:#fff;border-radius:10px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.vm-item-name{font-size:14px;font-weight:600;color:#1A1A1A}
-.vm-item-actions{display:flex;gap:8px}
-.vm-item-btn{width:30px;height:30px;border-radius:6px;border:none;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;background:transparent;color:#999;transition:.1s}
-.vm-item-btn:hover{background:#F0F0F0}
-.vm-item-btn.rename{color:#1A1A1A}
-.vm-item-btn.delete{color:#E60012}
 
+/* === My Vehicles Page === */
 /* === Confirm Dialog === */
 .confirm-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.4);z-index:2000;display:none;align-items:center;justify-content:center}
 .confirm-overlay.show{display:flex}
 .confirm-box{background:#fff;border-radius:16px;padding:24px;width:280px;text-align:center;box-shadow:0 8px 32px rgba(0,0,0,.12)}
-.confirm-msg{font-size:15px;color:#1A1A1A;margin-bottom:20px;line-height:1.5}
+.confirm-msg{font-size:15px;color:#1A1A1A;margin-bottom:20px;line-height:1.5;white-space:pre-line}
 .confirm-actions{display:flex;gap:10px;justify-content:center}
 .confirm-btn{padding:8px 24px;border-radius:10px;border:none;font-size:14px;font-weight:600;cursor:pointer;transition:.15s}
 .confirm-btn.cancel{background:#F0F0F0;color:#666}
 .confirm-btn.danger{background:#E60012;color:#fff}
-
-/* === Back Button === */
-.back-btn{display:inline-flex;align-items:center;gap:4px;color:#1A1A1A;font-size:14px;font-weight:600;cursor:pointer;border:none;background:none;padding:8px 0;margin-bottom:8px}
-.back-btn:hover{opacity:.7}
 
 /* === My Vehicles Page === */
 .mv-top{height:33vh;min-height:200px;position:relative;display:flex;flex-direction:column}
@@ -305,6 +276,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .expense-filter{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px}
 .expense-filter-btn{padding:5px 14px;border-radius:14px;font-size:11px;font-weight:600;cursor:pointer;border:1.5px solid #DDD;background:#fff;color:#888;white-space:nowrap;transition:.15s}
 .expense-filter-btn.active{background:#E60012;color:#fff;border-color:#E60012}
+.expense-vehicle-switcher{display:flex;gap:6px;overflow-x:auto;flex-shrink:0;-webkit-overflow-scrolling:touch;margin-bottom:10px}
+.expense-vehicle-switcher::-webkit-scrollbar{display:none}
+.expense-date-range{display:flex;gap:6px;align-items:center}
+.expense-date-input{flex:1;padding:6px 8px;border:1px solid #DDD;border-radius:8px;font-size:12px;background:#FAFAFA;color:#1A1A1A;outline:none}
+.expense-date-input:focus{border-color:#E60012}
 
 /* Mod Search Dropdown */
 .mod-search-dropdown{position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid #DDD;border-radius:8px;max-height:180px;overflow-y:auto;z-index:20;box-shadow:0 4px 12px rgba(0,0,0,.1)}
@@ -362,6 +338,37 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .mv-vehicle-btn.default:hover{background:#E60012;color:#fff}
 .mv-vehicle-btn.danger{background:#FFF0F0;color:#E60012}
 .mv-vehicle-btn.danger:hover{background:#E60012;color:#fff}
+
+/* Home Vehicle Switcher */
+.home-vehicle-switcher{display:flex;gap:4px;overflow-x:auto;margin-top:12px;padding-top:8px;border-top:1px dashed #E5E5E5;-webkit-overflow-scrolling:touch}
+.home-vehicle-switcher::-webkit-scrollbar{display:none}
+.home-vs-tag{padding:4px 10px;border-radius:12px;font-size:11px;font-weight:600;cursor:pointer;white-space:nowrap;border:1px solid #DDD;background:#fff;color:#888;transition:.15s;flex-shrink:0}
+.home-vs-tag.active{background:#1A1A1A;color:#fff;border-color:#1A1A1A}
+
+/* Home Status Cards */
+.home-status-card{border-bottom:1px solid #F0F0F0;padding:10px 0}
+.home-status-card:last-child{border-bottom:none}
+.home-status-card-name{font-size:13px;font-weight:700;color:#1A1A1A;margin-bottom:2px}
+.home-status-card-sub{font-size:10px;color:#888;margin-bottom:6px}
+.home-status-empty{text-align:center;padding:14px 0;color:#CCC;font-size:12px;border:1.5px dashed #E5E5E5;border-radius:8px;margin:4px 0}
+.home-status-pair{display:flex;gap:10px}
+.home-status-pair-col{flex:1;background:#FBFBFB;border-radius:8px;padding:8px 10px;border:1px solid #F0F0F0}
+
+/* Status Edit Modal */
+.status-edit-label{font-size:12px;font-weight:600;color:#888;margin-bottom:6px}
+.status-edit-list{display:flex;flex-direction:column;gap:6px;margin-bottom:8px;min-height:20px}
+.status-edit-item{display:flex;align-items:center;gap:8px;padding:8px 10px;background:#F8F8F8;border-radius:8px;border:1px solid #EEE;font-size:13px;cursor:default;transition:.15s;user-select:none;-webkit-user-select:none}
+.status-edit-item.dragging{opacity:.4;background:#FFF0F0;border-color:#E60012}
+.status-edit-item .drag-handle{flex-shrink:0;cursor:grab;color:#CCC;font-size:14px;padding:0 2px;touch-action:none}
+.status-edit-item .drag-handle:active{cursor:grabbing;color:#E60012}
+.status-edit-item .item-info{flex:1;min-width:0}
+.status-edit-item .item-name{font-weight:600;color:#1A1A1A}
+.status-edit-item .item-meta{font-size:10px;color:#999}
+.status-edit-item .item-btn{width:28px;height:28px;border-radius:6px;border:none;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;transition:.1s;flex-shrink:0}
+.status-edit-item .item-btn.remove{background:#FFF0F0;color:#E60012}
+.status-edit-item .item-btn.add{background:#F0F0F0;color:#888}
+.status-edit-item .item-btn.add:hover{background:#E60012;color:#fff}
+.status-edit-item .item-btn.add:disabled{opacity:.3;pointer-events:none}
 </style>
 </head>
 <body>
@@ -379,42 +386,29 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     <div class="card vehicle-card">
       <div style="display:flex;gap:16px;align-items:center">
         <div style="flex:1">
-          <div class="vehicle-name">Yamaha R3</div>
-          <div class="vehicle-sub">321cc 路 42hp</div>
+          <div class="vehicle-name" id="home-vehicle-name">Yamaha R3</div>
+          <div class="vehicle-sub" id="home-vehicle-spec">321cc 路 42hp</div>
           <div class="vehicle-stats" style="justify-content:center">
             <div class="vehicle-stat" style="flex:none;padding:8px 20px">
-              <div class="num" style="font-size:22px">ZIC 1:52.34</div>
+              <div class="num" style="font-size:22px" id="home-vehicle-pb">ZIC 1:52.34</div>
               <div class="label">鏈€浣冲湀閫?/div>
             </div>
           </div>
         </div>
-        <div style="flex-shrink:0;width:120px;height:80px;border-radius:8px;overflow:hidden;background:#F5F5F5;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center">
+        <div style="flex-shrink:0;width:120px;height:80px;border-radius:8px;overflow:hidden;background:#F5F5F5;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center" id="home-vehicle-photo">
           <img src="https://imgd.aeplcdn.com/1056x594/bw/models/yamaha-yzf-r3.jpg?20190103151915&q=80" alt="Yamaha R3" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=font-size:32px>馃弽锔?/div>'">
         </div>
       </div>
+      <div class="home-vehicle-switcher" id="home-vehicle-switcher"></div>
       <div class="racing-line"></div>
     </div>
 
-    <div class="card">
-      <div class="card-title"><span class="dot dot-red"></span>杞儙鐘舵€?/div>
-      <div style="display:flex;justify-content:space-between;font-size:14px;font-weight:600">
-        <span>Pirelli Diablo Rosso IV</span>
-        <span style="color:#E60012">80%</span>
+    <div class="card" id="home-status-wrapper">
+      <div class="card-title">
+        <span class="dot dot-red"></span>杞﹁締鐘舵€?        <span style="margin-left:auto;font-size:11px;color:#888;cursor:pointer" id="home-status-edit-btn">缂栬緫</span>
       </div>
-      <div class="tire-info" style="margin-top:0">
-        <span>鍚庤疆锛?5%</span>
-        <span>鏇存崲棰勮锛?5 鑺?/span>
-      </div>
-      <div style="margin-top:10px">
-        <div style="display:flex;justify-content:space-between;font-size:12px;color:#888;margin-bottom:3px">
-          <span>宸蹭娇鐢?/span>
-          <span style="font-weight:600;color:#1A1A1A">4 / 15 鑺?/span>
-        </div>
-        <div class="tire-bar"><div class="tire-fill good" style="width:27%"></div></div>
-        <div style="display:flex;justify-content:space-between;font-size:11px;margin-top:4px">
-          <span style="color:#1A1A1A;font-weight:600">鈼?姝ｅ父</span>
-          <span style="color:#E60012;font-size:10px">鎺ヨ繎鏇存崲锛堝墿浣?11 鑺傦級</span>
-        </div>
+      <div id="home-status-cards">
+        <div style="text-align:center;padding:20px;color:#CCC;font-size:13px">鐐瑰嚮缂栬緫娣诲姞鐘舵€?/div>
       </div>
     </div>
 
@@ -469,6 +463,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
   <!-- ========== 鑺遍攢 ========== -->
   <div class="page" id="page-expenses">
+    <div class="expense-vehicle-switcher" id="expense-vehicle-switcher"></div>
     <div class="card" id="expense-summary-card">
       <div class="expense-summary" id="expense-summary"></div>
     </div>
@@ -481,6 +476,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
     <div class="card">
       <div class="expense-filter" id="expense-filter"></div>
+      <div class="expense-date-range" id="expense-date-range" style="display:none">
+        <input class="expense-date-input" id="expense-date-from" type="text" placeholder="yyyy-MM-dd" maxlength="10" autocomplete="off">
+        <span style="color:#888;font-size:12px;flex-shrink:0">鑷?/span>
+        <input class="expense-date-input" id="expense-date-to" type="text" placeholder="yyyy-MM-dd" maxlength="10" autocomplete="off">
+        <button class="expense-filter-btn" id="expense-date-apply" style="flex-shrink:0">纭畾</button>
+      </div>
       <div id="expense-list"></div>
     </div>
   </div>
@@ -493,43 +494,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
     <div class="lb-track-select" id="lb-tracks"></div>
     <div id="lb-list"></div>
-  </div>
-
-  <!-- ========== 鎴戠殑 ========== -->
-  <div class="page" id="page-mine">
-    <div class="card">
-      <div class="profile-header">
-        <div class="avatar">馃弫</div>
-        <div>
-          <div class="profile-name">Racer R3</div>
-          <div class="profile-sub">Yamaha R3 (2023) 路 娴欐睙鏉窞</div>
-        </div>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-box"><div class="num">47</div><div class="label">鎬诲湀鏁?/div></div>
-        <div class="stat-box"><div class="num blue">1:52.34</div><div class="label">鏈€浣冲湀閫?/div></div>
-        <div class="stat-box"><div class="num">楼14,400</div><div class="label">鎬昏姳閿€</div></div>
-        <div class="stat-box"><div class="num">5</div><div class="label">鏀硅浠?/div></div>
-      </div>
-    </div>
-    <div class="card">
-      <div class="menu-item" onclick="showVehicleMgmt()">馃弽锔?杞﹁締绠＄悊 <span class="arrow">鈥?/span></div>
-      <div class="menu-item">馃搳 鏁版嵁瀵煎嚭 <span class="arrow">鈥?/span></div>
-      <div class="menu-item">馃敂 鎺ㄩ€佽缃?<span class="badge">NEW</span></div>
-      <div class="menu-item">馃寵 娣辫壊妯″紡 <span class="arrow">鈥?/span></div>
-      <div class="menu-item">鈩癸笍 鍏充簬 PitLap <span class="arrow">鈥?/span></div>
-    </div>
-    <div style="text-align:center;padding:20px 0 10px;font-size:11px;color:#ccc;font-weight:500">PitLap Demo 路 v0.2 浜壊鐗?/div>
-  </div>
-
-  <!-- ========== 杞﹁締绠＄悊 ========== -->
-  <div class="page" id="page-vehicle-mgmt">
-    <button class="back-btn" onclick="hideVehicleMgmt()">鈥?杩斿洖</button>
-    <div class="vm-header">
-      <div class="vm-title">杞﹁締绠＄悊</div>
-      <button class="vm-add-btn" onclick="addVehicle()">+</button>
-    </div>
-    <div class="vm-list" id="vm-list"></div>
   </div>
 
 </div>
@@ -556,7 +520,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
     <div class="form-group">
       <label class="form-label">鏃ユ湡</label>
-      <input class="form-input" id="f-date" type="date">
+      <input class="form-input" id="f-date" type="text" placeholder="yyyy-MM-dd" maxlength="10">
     </div>
 
     <div class="form-group">
@@ -670,7 +634,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
     <div class="form-group">
       <label class="form-label">璁板綍鏃ユ湡</label>
-      <input class="form-input" id="m-date" type="date">
+      <input class="form-input" id="m-date" type="text" placeholder="yyyy-MM-dd" maxlength="10">
     </div>
     <div class="form-group" style="display:flex;align-items:center;gap:8px">
       <input type="checkbox" id="m-consumable" style="width:18px;height:18px;accent-color:#E60012" onchange="onConsumableChange()">
@@ -678,10 +642,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
     <div class="form-group" id="m-install-group" style="display:none">
       <label class="form-label">瀹夎鏃ユ湡 <span style="color:#999;font-weight:400;font-size:11px">閫夊～</span></label>
-      <input class="form-input" id="m-install-date" type="date">
+      <input class="form-input" id="m-install-date" type="text" placeholder="yyyy-MM-dd" maxlength="10">
       <div style="margin-top:10px;display:flex;gap:8px">
         <div style="flex:1"><label class="form-label" style="font-size:11px">宸蹭娇鐢ㄨ妭鏁?/label><input class="form-input" id="m-sessions" type="number" min="0" placeholder="0" inputmode="numeric"></div>
         <div style="flex:1"><label class="form-label" style="font-size:11px">鐩爣鑺傛暟 <span style="color:#999;font-weight:400">閫夊～</span></label><input class="form-input" id="m-target-sessions" type="number" min="0" placeholder="" inputmode="numeric"></div>
+      </div>
+      <div style="margin-top:6px">
+        <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
+          <input type="checkbox" id="m-sync" checked style="width:15px;height:15px;accent-color:#E60012">
+          鍚屾鍚岃溅鍏朵粬娑堣€楀搧
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:#888;margin-top:4px;cursor:pointer">
+          <input type="checkbox" id="m-remember" style="width:15px;height:15px;accent-color:#E60012">
+          璁颁綇锛屼互鍚庣洿鎺ュ悓姝ヤ笉鍐嶈闂?        </label>
       </div>
     </div>
     <div class="modal-actions">
@@ -707,9 +680,34 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <label class="form-label-sm">鐩爣浣跨敤鑺傛暟</label>
       <input class="form-input-sm" id="s-target" type="number" min="0" placeholder="鏈瀹? inputmode="numeric">
     </div>
+    <div class="form-group-sm" style="margin-top:6px">
+      <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
+        <input type="checkbox" id="s-sync" checked style="width:15px;height:15px;accent-color:#E60012">
+        鍚屾鍚岃溅鍏朵粬娑堣€楀搧
+      </label>
+      <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:#888;margin-top:4px;cursor:pointer">
+        <input type="checkbox" id="s-remember" style="width:15px;height:15px;accent-color:#E60012">
+        璁颁綇锛屼互鍚庣洿鎺ュ悓姝ヤ笉鍐嶈闂?      </label>
+    </div>
     <div class="modal-actions">
       <button class="btn btn-cancel" id="session-cancel">鍙栨秷</button>
       <button class="btn btn-submit" id="session-submit">淇濆瓨</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== Home Status Edit Modal ========== -->
+<div class="modal-overlay" id="status-edit-modal">
+  <div class="modal-sheet">
+    <div class="modal-handle"></div>
+    <div class="modal-title">棣栭〉鐘舵€佺紪杈?/div>
+    <div class="status-edit-label">宸查€夛紙鎷栨嫿鎺掑簭 路 鏈€澶?椤癸級</div>
+    <div class="status-edit-list" id="status-edit-selected"></div>
+    <div class="status-edit-label" style="margin-top:16px">鍙€夋秷鑰楀搧</div>
+    <div class="status-edit-list" id="status-edit-available"></div>
+    <div class="modal-actions">
+      <button class="btn btn-cancel" id="status-edit-cancel">鍙栨秷</button>
+      <button class="btn btn-submit" id="status-edit-save">纭畾</button>
     </div>
   </div>
 </div>
@@ -718,7 +716,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div class="modal-overlay" id="veh-modal">
   <div class="modal-sheet">
     <div class="modal-handle"></div>
-    <div class="modal-title">娣诲姞杞﹁締</div>
+    <div class="modal-title"><span id="veh-modal-title">娣诲姞杞﹁締</span></div>
     <div class="form-group">
       <label class="form-label">鍝佺墝</label>
       <select class="form-select" id="v-brand" onchange="onBrandChange()">
@@ -783,10 +781,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   <button class="tab" data-page="expenses">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/><path d="M12 18V6"/></svg>
     <span>鑺遍攢</span>
-  </button>
-  <button class="tab" data-page="mine">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-    <span>鎴戠殑</span>
   </button>
 </div>
 
@@ -914,6 +908,37 @@ let mods = [
   { id:5, vehicleId:1, majorCategory:'澶栬鍙婇獞琛屼笁瑙?, subCategory:'鍏朵粬', product:'', spec:'纰崇氦缁村畾椋庣考濂椾欢', engineWork:'', position:'', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:680, date:'2025-12-05' },
 ];
 
+let autoSyncConsumables = false;
+
+// ====== SYNC LOGIC ======
+function getSyncTargets(vehicleId, exceptId){
+  const pairs = {};
+  mods.filter(m=>m.vehicleId===vehicleId && m.isConsumable && m.id!==exceptId).forEach(m=>{
+    const key = m.majorCategory+'|||'+m.subCategory;
+    if(!pairs[key] || m.date > pairs[key].date) pairs[key] = m;
+  });
+  return Object.values(pairs);
+}
+
+function handleConsumableSync(mid, oldSessionsUsed, newSessionsUsed, syncChecked, rememberChecked, onDone){
+  const delta = newSessionsUsed - oldSessionsUsed;
+  autoSyncConsumables = rememberChecked;
+  if(!syncChecked){ onDone(); return; }
+  const m = mods.find(x=>x.id===mid);
+  if(!m || !m.isConsumable){ onDone(); return; }
+  const targets = getSyncTargets(m.vehicleId, mid);
+  if(!targets.length){ onDone(); return; }
+  if(rememberChecked){
+    targets.forEach(t=>{ t.sessionsUsed = Math.max(0, (t.sessionsUsed||0) + delta); });
+    onDone();
+  } else {
+    showSyncConfirm(delta, targets.length, ()=>{
+      targets.forEach(t=>{ t.sessionsUsed = Math.max(0, (t.sessionsUsed||0) + delta); });
+      onDone();
+    }, ()=>{ onDone(); });
+  }
+}
+
 // ====== UTILS ======
 function timeToMs(t){ const p=t.split(/[:.]/); return +p[0]*60000+ +p[1]*1000+ +p[2]; }
 function msToTime(ms){ const m=Math.floor(ms/60000); const s=Math.floor((ms%60000)/1000); const ms3=ms%1000; return m+':'+String(s).padStart(2,'0')+'.'+String(ms3).padStart(3,'0'); }
@@ -956,18 +981,296 @@ function getSpecStr(v){
   const spec = BRAND_DB[v.brand]?.[v.model];
   return spec ? spec.cc+'cc 路 '+spec.hp+'hp' : '';
 }
-function renderHome(){
-  const v=vehicles[0];
-  const name=v?.name||'---';
-  const pbAll=records.length?records.reduce((a,b)=>timeToMs(a.time)<timeToMs(b.time)?a:b):null;
-  const pbLabel=pbAll?pbAll.track+' '+pbAll.time:'--:--.---';
-  document.querySelector('.vehicle-name').innerHTML = name + (v?'<span style="font-size:10px;background:#E60012;color:#fff;padding:1px 6px;border-radius:6px;margin-left:6px;font-weight:600;vertical-align:middle">榛樿</span>':'');
-  const subEl=document.querySelector('.vehicle-sub');
-  if(subEl) subEl.textContent=v?getSpecStr(v)||'':'';
-  document.querySelector('.vehicle-stat .num').textContent=pbLabel;
-  const img=document.querySelector('.vehicle-card img');
-  if(img) img.alt=name;
+// ====== HOME PAGE ======
+let homeVehicleId = null;
+let homeStatusSlots = {};
+
+function getHomeVehicleId(){
+  if(homeVehicleId && vehicles.some(v=>v.id===homeVehicleId)) return homeVehicleId;
+  const s = sorted(records);
+  if(s.length){
+    const v = vehicles.find(x=>x.name===s[0].vehicle);
+    if(v) return v.id;
+  }
+  return vehicles[0]?.id||null;
 }
+
+function getLatestMod(vid, major, sub){
+  return mods.filter(m=>m.vehicleId===vid && m.majorCategory===major && m.subCategory===sub)
+    .sort((a,b)=>b.date.localeCompare(a.date))[0]||null;
+}
+
+function renderHome(){
+  const vid = getHomeVehicleId();
+  const v = vehicles.find(x=>x.id===vid);
+  const name = v?v.name:'---';
+  const specStr = v?getSpecStr(v)||'':'';
+  const vehRecords = records.filter(r=>r.vehicle===name);
+  const pbAll = vehRecords.length ? vehRecords.reduce((a,b)=>timeToMs(a.time)<timeToMs(b.time)?a:b) : null;
+  const pbLabel = pbAll ? pbAll.track+' '+pbAll.time : '--:--.---';
+  document.getElementById('home-vehicle-name').innerHTML = name;
+  document.getElementById('home-vehicle-spec').textContent = specStr;
+  document.getElementById('home-vehicle-pb').textContent = pbLabel;
+  const photoEl = document.getElementById('home-vehicle-photo');
+  if(v && v.photo){
+    photoEl.style.display = '';
+    photoEl.innerHTML='<img src="'+v.photo+'" alt="'+name+'" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<div style=font-size:32px>馃弽锔?/div>\'">';
+  } else {
+    photoEl.style.display = 'none';
+  }
+
+  // Vehicle switcher
+  const sw = document.getElementById('home-vehicle-switcher');
+  sw.innerHTML = vehicles.map(vv=>
+    '<span class="home-vs-tag'+(vv.id===vid?' active':'')+'" data-vid="'+vv.id+'">'+vv.name+'</span>'
+  ).join('');
+  sw.querySelectorAll('.home-vs-tag').forEach(el=>el.addEventListener('click',()=>{
+    homeVehicleId = +el.dataset.vid;
+    renderHome();
+  }));
+
+  // Status cards
+  renderHomeStatus(vid);
+}
+
+function renderHomeStatus(vid){
+  const slots = homeStatusSlots[vid] || [null,null,null,null];
+  const rendered = new Set();
+  const items = [];
+  slots.forEach(key=>{
+    if(!key){ items.push(null); return; }
+    if(rendered.has(key)){ items.push(null); return; }
+    const [major, sub] = key.split('|||');
+    const mod = getLatestMod(vid, major, sub);
+    if(!mod){ items.push(null); return; }
+    if(major==='杞儙'){
+      const otherSub = sub==='鍓嶈疆'?'鍚庤疆':'鍓嶈疆';
+      const otherKey = '杞儙|||'+otherSub;
+      const otherMod = getLatestMod(vid, '杞儙', otherSub);
+      items.push({ type:'tire', front:sub==='鍓嶈疆'?mod:otherMod, rear:sub==='鍚庤疆'?mod:otherMod });
+      rendered.add(key);
+      rendered.add(otherKey);
+    } else {
+      items.push({ type:'single', mod });
+      rendered.add(key);
+    }
+  });
+
+  let html = '';
+  for(let i=0;i<4;i++){
+    const item = items[i];
+    if(!item) continue;
+    if(item.type==='tire'){
+      html+=renderHomeTirePair(item.front, item.rear);
+    } else {
+      html+=renderHomeConsumable(item.mod);
+    }
+  }
+
+  const cards = document.getElementById('home-status-cards');
+  cards.innerHTML = html || '<div style="text-align:center;padding:20px;color:#CCC;font-size:13px">鐐瑰嚮缂栬緫娣诲姞鐘舵€?/div>';
+
+  // Attach click handlers for session editing
+  cards.querySelectorAll('.mod-usage-clickable').forEach(el=>el.addEventListener('click',e=>{
+    e.stopPropagation();
+    openSessionModal(+el.dataset.mid);
+  }));
+}
+
+function renderHomeTirePair(frontMod, rearMod){
+  const renderTire = (m, label)=>{
+    if(!m) return '<div class="home-status-pair-col"><div style="color:#CCC;font-size:11px;text-align:center;padding:8px">鏃?+label+'璁板綍</div></div>';
+    const u = m.sessionsUsed||0;
+    const t = m.targetSessions||0;
+    const pct = t>0?Math.min(100,Math.round(u/t*100)):0;
+    const level = t>0?(pct>=100?'high':pct>=80?'mid':'low'):'';
+    return '<div class="home-status-pair-col">'
+      +'<div style="font-size:11px;color:#888;font-weight:600;margin-bottom:3px">'+label+'</div>'
+      +'<div style="font-size:10px;color:#BBB;margin-bottom:4px">'+(m.product||'--')+(m.spec?' '+m.spec:'')+'</div>'
+      +'<span class="mod-usage-clickable" data-mid="'+m.id+'">宸茬敤 '+u+'鑺?/span>'
+      +(t>0?' / <span style="font-size:11px;color:#888">鐩爣 '+t+'鑺?/span>':'')
+      +'<div class="mod-usage-bar" style="margin-top:4px"><div class="mod-usage-fill '+level+'" style="width:'+pct+'%"></div></div>'
+      +(t>0?'<div style="font-size:10px;color:#888;margin-top:2px">'+pct+'%</div>':'')
+      +'</div>';
+  };
+  return '<div class="home-status-card">'
+    +'<div class="home-status-card-name">馃洖 杞儙</div>'
+    +'<div class="home-status-pair">'
+    +renderTire(frontMod,'鍓嶈疆')
+    +renderTire(rearMod,'鍚庤疆')
+    +'</div></div>';
+}
+
+function renderHomeConsumable(mod){
+  const u = mod.sessionsUsed||0;
+  const t = mod.targetSessions||0;
+  const pct = t>0?Math.min(100,Math.round(u/t*100)):0;
+  const level = t>0?(pct>=100?'high':pct>=80?'mid':'low'):'';
+  const icons = {'鍒硅溅绯荤粺':'馃洃','閬块渿':'馃敡','鍔ㄥ姏涓庝紶鍔ㄧ郴缁?:'鈿?,'澶栬鍙婇獞琛屼笁瑙?:'馃帹','鍏朵粬':'馃摝'};
+  return '<div class="home-status-card">'
+    +'<div class="home-status-card-name">'+(icons[mod.majorCategory]||'馃摝')+' '+mod.subCategory+'</div>'
+    +'<div class="home-status-card-sub">'+(mod.product||'--')+(mod.spec?' '+mod.spec:'')+(mod.position?' 路 '+mod.position:'')+'</div>'
+    +'<span class="mod-usage-clickable" data-mid="'+mod.id+'">宸茬敤 '+u+'鑺?/span>'
+    +(t>0?' / <span style="font-size:11px;color:#888">鐩爣 '+t+'鑺?/span>':'')
+    +'<div class="mod-usage-bar" style="margin-top:4px"><div class="mod-usage-fill '+level+'" style="width:'+pct+'%"></div></div>'
+    +(t>0?'<div style="font-size:10px;color:#888;margin-top:2px">'+pct+'%</div>':'')
+    +'</div>';
+}
+
+// ====== STATUS EDIT MODAL ======
+function openStatusEditModal(){
+  const vid = getHomeVehicleId();
+  if(!vid) return;
+  if(!homeStatusSlots[vid]) homeStatusSlots[vid] = [null,null,null,null];
+  const slots = homeStatusSlots[vid];
+  const selectedKeys = slots.filter(s=>s);
+
+  // Available: unique (major, sub) pairs for this vehicle's consumables
+  const allPairs = [];
+  const seen = {};
+  mods.filter(m=>m.vehicleId===vid&&m.isConsumable).forEach(m=>{
+    const k = m.majorCategory+'|||'+m.subCategory;
+    if(!seen[k]){ seen[k]=true; allPairs.push(k); }
+  });
+  const availableKeys = allPairs.filter(k=>!selectedKeys.includes(k));
+
+  // Selected
+  const selEl = document.getElementById('status-edit-selected');
+  if(selectedKeys.length){
+    selEl.innerHTML = selectedKeys.map(key=>'<div class="status-edit-item" data-key="'+key+'">'
+      +'<span class="drag-handle">鈮?/span>'
+      +'<div class="item-info"><div class="item-name">'+formatStatusKey(key)+'</div><div class="item-meta">'+getStatusModInfo(vid,key)+'</div></div>'
+      +'<button class="item-btn remove">鈭?/button>'
+      +'</div>').join('');
+  } else {
+    selEl.innerHTML = '<div style="font-size:12px;color:#CCC;padding:8px">鏆傛湭閫夋嫨锛屼粠涓嬫柟娣诲姞</div>';
+  }
+
+  // Available
+  const availEl = document.getElementById('status-edit-available');
+  const isFull = selectedKeys.length >= 4;
+  if(availableKeys.length){
+    availEl.innerHTML = availableKeys.map(key=>'<div class="status-edit-item" data-key="'+key+'">'
+      +'<div class="item-info"><div class="item-name">'+formatStatusKey(key)+'</div><div class="item-meta">'+getStatusModInfo(vid,key)+'</div></div>'
+      +'<button class="item-btn add"'+(isFull?' disabled':'')+'>+</button>'
+      +'</div>').join('');
+  } else {
+    availEl.innerHTML = '<div style="font-size:12px;color:#CCC;padding:8px">'+(!allPairs.length?'鏆傛棤娑堣€楀搧璁板綍':'鎵€鏈夋秷鑰楀搧宸叉坊鍔?)+'</div>';
+  }
+
+  // Remove buttons
+  selEl.querySelectorAll('.item-btn.remove').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const key = btn.parentElement.dataset.key;
+      const s = [...slots];
+      s[s.indexOf(key)] = null;
+      homeStatusSlots[vid] = s.filter(Boolean);
+      while(homeStatusSlots[vid].length < 4) homeStatusSlots[vid].push(null);
+      openStatusEditModal();
+    });
+  });
+
+  // Add buttons
+  availEl.querySelectorAll('.item-btn.add').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const key = btn.parentElement.dataset.key;
+      const s = [...slots];
+      const emptyIdx = s.indexOf(null);
+      if(emptyIdx >= 0) s[emptyIdx] = key;
+      homeStatusSlots[vid] = s;
+      openStatusEditModal();
+    });
+  });
+
+  // Drag sort
+  setupDragSort(selEl, (orderedKeys)=>{
+    const s = [null,null,null,null];
+    orderedKeys.forEach((k,i)=>{ if(i<4) s[i] = k; });
+    homeStatusSlots[vid] = s;
+  });
+
+  document.getElementById('status-edit-modal').classList.add('show');
+}
+
+function closeStatusEditModal(){
+  document.getElementById('status-edit-modal').classList.remove('show');
+}
+
+function formatStatusKey(key){
+  const [major, sub] = key.split('|||');
+  return sub+' 路 '+major;
+}
+
+function getStatusModInfo(vid, key){
+  const [major, sub] = key.split('|||');
+  const m = getLatestMod(vid, major, sub);
+  return m?(m.product||'--')+(m.spec?' '+m.spec:'')+(m.position?' 路 '+m.position:''):'';
+}
+
+function setupDragSort(listEl, onReorder){
+  let dragIdx = -1;
+
+  function reorder(clientY){
+    if(dragIdx<0) return;
+    const items = [...listEl.children];
+    const dragItem = items[dragIdx];
+    if(!dragItem) return;
+    items.forEach((item,i)=>{
+      if(i===dragIdx) return;
+      const rect = item.getBoundingClientRect();
+      const mid = rect.top + rect.height/2;
+      if(clientY > mid && dragIdx < i){ listEl.insertBefore(dragItem, item.nextSibling); dragIdx = i; }
+      else if(clientY < mid && dragIdx > i){ listEl.insertBefore(dragItem, item); dragIdx = i; }
+    });
+  }
+
+  function cleanup(){
+    if(dragIdx>=0){
+      listEl.querySelectorAll('.dragging').forEach(el=>el.classList.remove('dragging'));
+      const ordered = [...listEl.children].map(el=>el.dataset.key).filter(Boolean);
+      if(onReorder) onReorder(ordered);
+    }
+    dragIdx = -1;
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  }
+
+  // Touch
+  listEl.addEventListener('touchstart', e=>{
+    const handle = e.target.closest('.drag-handle');
+    if(!handle) return;
+    const item = handle.closest('.status-edit-item');
+    if(!item) return;
+    dragIdx = [...listEl.children].indexOf(item);
+    item.classList.add('dragging');
+    e.preventDefault();
+  }, {passive:false});
+  listEl.addEventListener('touchmove', e=>{ reorder(e.touches[0].clientY); e.preventDefault(); }, {passive:false});
+  listEl.addEventListener('touchend', e=>{ cleanup(); e.preventDefault(); });
+
+  // Mouse
+  const onMouseMove = e=>{ reorder(e.clientY); e.preventDefault(); };
+  const onMouseUp = e=>{ cleanup(); e.preventDefault(); };
+  listEl.addEventListener('mousedown', e=>{
+    const handle = e.target.closest('.drag-handle');
+    if(!handle) return;
+    const item = handle.closest('.status-edit-item');
+    if(!item) return;
+    dragIdx = [...listEl.children].indexOf(item);
+    item.classList.add('dragging');
+    document.addEventListener('mousemove', onMouseMove);
+    document.addEventListener('mouseup', onMouseUp);
+    e.preventDefault();
+  });
+}
+
+document.getElementById('status-edit-cancel').addEventListener('click', closeStatusEditModal);
+document.getElementById('status-edit-save').addEventListener('click', ()=>{
+  closeStatusEditModal();
+  renderHome();
+});
+document.getElementById('status-edit-modal').addEventListener('click', e=>{ if(e.target===document.getElementById('status-edit-modal')) closeStatusEditModal(); });
+document.getElementById('home-status-edit-btn').addEventListener('click', openStatusEditModal);
 
 // ====== RENDER RECENT (棣栭〉) ======
 function renderRecent(){
@@ -1332,8 +1635,12 @@ document.getElementById('m-product').addEventListener('change', onProductChange)
 function onConsumableChange(){
   const consumable = document.getElementById('m-consumable');
   document.getElementById('m-install-group').style.display = consumable.checked ? 'block' : 'none';
-  if(consumable.checked && !document.getElementById('m-install-date').value){
-    document.getElementById('m-install-date').value = today();
+  if(consumable.checked){
+    if(!document.getElementById('m-install-date').value){
+      document.getElementById('m-install-date').value = today();
+    }
+    document.getElementById('m-sync').checked = true;
+    document.getElementById('m-remember').checked = autoSyncConsumables;
   }
 }
 
@@ -1419,6 +1726,8 @@ function openModModal(modId){
     document.getElementById('m-position').value = m.position || '鍓嶈疆';
     document.getElementById('m-consumable').checked = m.isConsumable;
     document.getElementById('m-install-group').style.display = m.isConsumable ? 'block' : 'none';
+    document.getElementById('m-sync').checked = true;
+    document.getElementById('m-remember').checked = autoSyncConsumables;
     document.getElementById('m-install-date').value = m.installDate || '';
     document.getElementById('m-sessions').value = m.sessionsUsed||0;
     document.getElementById('m-target-sessions').value = m.targetSessions||'';
@@ -1489,14 +1798,30 @@ document.getElementById('mod-submit').addEventListener('click', ()=>{
   if(date) record.date = date;
 
   if(modEditingId){
+    const oldSessionsUsed = mods.find(x=>x.id===modEditingId)?.sessionsUsed||0;
     const idx = mods.findIndex(x => x.id === modEditingId);
     if(idx !== -1){ mods[idx] = { ...mods[idx], ...record }; }
+    if(record.isConsumable){
+      const syncChecked = document.getElementById('m-sync').checked;
+      const rememberChecked = document.getElementById('m-remember').checked;
+      handleConsumableSync(modEditingId, oldSessionsUsed, sessionsUsed, syncChecked, rememberChecked, ()=>{
+        closeModModal();
+        renderMyVehicles();
+        renderExpenses();
+        renderHome();
+      });
+    } else {
+      closeModModal();
+      renderMyVehicles();
+      renderExpenses();
+      renderHome();
+    }
   } else {
     mods.push({ id: ++nextModId, ...record });
+    closeModModal();
+    renderMyVehicles();
+    renderExpenses();
   }
-  closeModModal();
-  renderMyVehicles();
-  renderExpenses();
 });
 
 document.getElementById('mod-delete-btn').addEventListener('click', ()=>{
@@ -1510,16 +1835,38 @@ document.getElementById('mod-delete-btn').addEventListener('click', ()=>{
 
 // ====== VEHICLE ADD MODAL ======
 const vehModal = document.getElementById('veh-modal');
+let vehEditingId = null;
 
-function openVehicleAddModal(){
+function openVehicleAddModal(vehId){
+  vehEditingId = vehId || null;
   const brandSel = document.getElementById('v-brand');
   brandSel.innerHTML = '<option value="">閫夋嫨鍝佺墝</option>' + BRAND_LIST.map(b => '<option value="'+b+'">'+b+'</option>').join('');
-  brandSel.value = '';
-  document.getElementById('v-model').innerHTML = '<option value="">鍏堥€夋嫨鍝佺墝</option>';
-  document.getElementById('v-year').value = '';
-  document.getElementById('v-name').value = '';
-  document.getElementById('v-photo').value = '';
-  document.getElementById('v-default').checked = false;
+
+  if(vehEditingId){
+    const v = vehicles.find(x=>x.id===vehEditingId);
+    if(!v){ openVehicleAddModal(); return; }
+    document.getElementById('veh-modal-title').textContent = '缂栬緫杞﹁締';
+    brandSel.value = v.brand || '';
+    onBrandChange();
+    setTimeout(()=>{
+      document.getElementById('v-model').value = v.model || '';
+      document.getElementById('v-name').value = v.name || '';
+    }, 50);
+    document.getElementById('v-year').value = v.year || '';
+    document.getElementById('v-photo').value = v.photo || '';
+    document.getElementById('v-default').parentElement.style.display = 'none';
+    document.getElementById('veh-submit').textContent = '淇濆瓨淇敼';
+  } else {
+    document.getElementById('veh-modal-title').textContent = '娣诲姞杞﹁締';
+    brandSel.value = '';
+    document.getElementById('v-model').innerHTML = '<option value="">鍏堥€夋嫨鍝佺墝</option>';
+    document.getElementById('v-year').value = '';
+    document.getElementById('v-name').value = '';
+    document.getElementById('v-photo').value = '';
+    document.getElementById('v-default').checked = false;
+    document.getElementById('v-default').parentElement.style.display = '';
+    document.getElementById('veh-submit').textContent = '鎻愪氦';
+  }
   vehModal.classList.add('show');
 }
 
@@ -1543,8 +1890,8 @@ function autoFillVehicleName(){
   }
 }
 
-document.getElementById('veh-cancel').addEventListener('click', ()=>{ vehModal.classList.remove('show'); });
-vehModal.addEventListener('click', e => { if(e.target === vehModal) vehModal.classList.remove('show'); });
+document.getElementById('veh-cancel').addEventListener('click', ()=>{ vehEditingId = null; vehModal.classList.remove('show'); });
+vehModal.addEventListener('click', e => { if(e.target === vehModal){ vehEditingId = null; vehModal.classList.remove('show'); } });
 
 document.getElementById('veh-submit').addEventListener('click', ()=>{
   const brand = document.getElementById('v-brand').value;
@@ -1556,31 +1903,63 @@ document.getElementById('veh-submit').addEventListener('click', ()=>{
   if(!brand || !model){ alert('璇烽€夋嫨鍝佺墝鍜岃溅鍨?); return; }
   if(!name) name = brand + ' ' + model;
 
-  const newVehicle = { id: ++nextVehId, name, brand, model, year, photo };
-  const setDefault = document.getElementById('v-default').checked;
-  if(setDefault){
-    vehicles.unshift(newVehicle);
-    mvSelectedIdx = 0;
-    renderHome();
-    renderRecent();
+  if(vehEditingId){
+    const v = vehicles.find(x=>x.id===vehEditingId);
+    if(v){
+      const oldName = v.name;
+      v.brand = brand; v.model = model; v.year = year; v.name = name; v.photo = photo;
+      if(oldName !== name){
+        records.forEach(r=>{ if(r.vehicle===oldName) r.vehicle = name; });
+      }
+    }
+    vehEditingId = null;
   } else {
-    vehicles.push(newVehicle);
+    const newVehicle = { id: ++nextVehId, name, brand, model, year, photo };
+    const setDefault = document.getElementById('v-default').checked;
+    if(setDefault){
+      homeVehicleId = newVehicle.id;
+      vehicles.unshift(newVehicle);
+      mvSelectedIdx = 0;
+    } else {
+      vehicles.push(newVehicle);
+    }
   }
   vehModal.classList.remove('show');
+  renderHome();
   renderMyVehicles();
-  renderVehicleMgmt();
 });
 
 // ====== CONFIRM DIALOG ======
 let confirmCallback=null;
+let confirmCancelCallback=null;
 const confirmEl=document.getElementById('confirm');
 function showConfirm(id){
   document.getElementById('confirm-msg').textContent='纭畾鍒犻櫎璇ュ湀閫熻褰曪紵';
+  document.getElementById('confirm-ok').textContent='鍒犻櫎';
+  document.getElementById('confirm-ok').className='confirm-btn danger';
+  confirmCancelCallback=null;
   confirmEl.classList.add('show');
   confirmCallback=()=>{ deleteRecord(id); };
 }
-document.getElementById('confirm-cancel').addEventListener('click',()=>{ confirmEl.classList.remove('show'); confirmCallback=null; });
-document.getElementById('confirm-ok').addEventListener('click',()=>{ if(confirmCallback)confirmCallback(); confirmEl.classList.remove('show'); confirmCallback=null; });
+function showSyncConfirm(delta, count, onSync, onSkip){
+  const sign = delta >= 0 ? '+' : '';
+  document.getElementById('confirm-msg').textContent='鍚岃溅鍏朵粬娑堣€楀搧鍚屾 '+sign+delta+' 鑺傦紵\n锛堝叡 '+count+' 椤癸級';
+  document.getElementById('confirm-ok').textContent='鏄紝鍚屾';
+  document.getElementById('confirm-ok').className='confirm-btn danger';
+  confirmCancelCallback=onSkip;
+  confirmEl.classList.add('show');
+  confirmCallback=onSync;
+}
+document.getElementById('confirm-cancel').addEventListener('click',()=>{
+  confirmEl.classList.remove('show');
+  if(confirmCancelCallback) confirmCancelCallback();
+  confirmCallback=null; confirmCancelCallback=null;
+});
+document.getElementById('confirm-ok').addEventListener('click',()=>{
+  if(confirmCallback) confirmCallback();
+  confirmEl.classList.remove('show');
+  confirmCallback=null; confirmCancelCallback=null;
+});
 
 function deleteRecord(id){
   records=records.filter(x=>x.id!==id);
@@ -1588,50 +1967,6 @@ function deleteRecord(id){
   renderHome();
   renderRecent();
   renderLeaderboard();
-}
-
-// ====== VEHICLE MANAGEMENT ======
-let inVehicleMgmt=false;
-function showVehicleMgmt(){
-  inVehicleMgmt=true;
-  document.getElementById('page-mine').classList.remove('active');
-  document.getElementById('page-vehicle-mgmt').classList.add('active');
-  renderVehicleMgmt();
-}
-function hideVehicleMgmt(){
-  inVehicleMgmt=false;
-  document.getElementById('page-vehicle-mgmt').classList.remove('active');
-  document.getElementById('page-mine').classList.add('active');
-}
-function renderVehicleMgmt(){
-  const list=document.getElementById('vm-list');
-  list.innerHTML='';
-  vehicles.forEach((v,i)=>{
-    list.innerHTML+='<div class="vm-item"><div><span class="vm-item-name">'+v.name+'</span><div style="font-size:11px;color:#BBB">'+v.brand+' '+v.model+' 路 '+v.year+'</div></div><div class="vm-item-actions"><button class="vm-item-btn rename" data-idx="'+i+'">鉁?/button><button class="vm-item-btn delete" data-idx="'+i+'">鉁?/button></div></div>';
-  });
-  list.querySelectorAll('.vm-item-btn.rename').forEach(b=>b.addEventListener('click',()=>renameVehicle(+b.dataset.idx)));
-  list.querySelectorAll('.vm-item-btn.delete').forEach(b=>b.addEventListener('click',()=>deleteVehicle(+b.dataset.idx)));
-}
-function renameVehicle(idx){
-  const v=vehicles[idx];
-  const newName=prompt('杈撳叆鏂板悕绉帮細', v.name);
-  if(newName && newName.trim() && newName.trim()!==v.name){
-    const oldName=v.name;
-    vehicles[idx].name=newName.trim();
-    records.forEach(r=>{ if(r.vehicle===oldName)r.vehicle=newName.trim(); });
-    renderVehicleMgmt();
-    render(); renderHome(); renderRecent();
-  }
-}
-function deleteVehicle(idx){
-  const v=vehicles[idx];
-  if(!confirm('纭畾鍒犻櫎 "'+v.name+'"锛?))return;
-  vehicles.splice(idx,1);
-  renderVehicleMgmt();
-  render(); renderHome(); renderRecent();
-}
-function addVehicle(){
-  openVehicleAddModal();
 }
 
 // ====== MY VEHICLES PAGE ======
@@ -1658,12 +1993,13 @@ function renderMyVehicles(){
   // Vehicle card
   const card=document.getElementById('mv-vehicle-card');
   const photoHtml=v.photo?'<img src="'+v.photo+'" alt="'+v.name+'" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<div style=font-size:32px>馃弽锔?/div>\'">':'<div style="font-size:32px">馃弽锔?/div>';
-  const isDefault = mvSelectedIdx === 0;
+  const isDefault = v.id === homeVehicleId || (!homeVehicleId && mvSelectedIdx === 0);
   card.innerHTML='<div class="mv-vehicle-photo">'+photoHtml+'</div>'
     +'<div class="mv-vehicle-info">'
     +'<div class="mv-vehicle-name">'+v.name+(isDefault?'<span style="font-size:10px;background:#E60012;color:#fff;padding:1px 6px;border-radius:6px;margin-left:6px;font-weight:600;vertical-align:middle">榛樿</span>':'')+'</div>'
     +'<div class="mv-vehicle-detail">'+(v.brand||'鍝佺墝')+' 路 '+(v.model||'杞﹀瀷')+' 路 <span>'+(v.year||'--')+'</span></div>'
     +'<div class="mv-vehicle-actions">'
+    +'<button class="mv-vehicle-btn default" data-action="edit-vehicle">缂栬緫</button>'
     +(!isDefault?'<button class="mv-vehicle-btn default" data-action="set-default">璁句负榛樿</button>':'')
     +'<button class="mv-vehicle-btn danger" data-action="delete-vehicle">鍒犻櫎杞﹁締</button>'
       +'</div>'
@@ -1672,10 +2008,14 @@ function renderMyVehicles(){
   card.querySelector('[data-action="set-default"]')?.addEventListener('click', ()=>{
     const [veh] = vehicles.splice(mvSelectedIdx, 1);
     vehicles.unshift(veh);
+    homeVehicleId = veh.id;
     mvSelectedIdx = 0;
     renderHome();
     renderRecent();
     renderMyVehicles();
+  });
+  card.querySelector('[data-action="edit-vehicle"]')?.addEventListener('click', ()=>{
+    openVehicleAddModal(v.id);
   });
   card.querySelector('[data-action="delete-vehicle"]')?.addEventListener('click', ()=>{
     const modCount = mods.filter(m => m.vehicleId === v.id).length;
@@ -1697,7 +2037,7 @@ function renderMyVehicles(){
     let cls = 'mv-mod-tag';
     if(c==='鍏ㄩ儴' && c===activeFilter) cls+=' active';
     else if(c===activeFilter) cls+=' active';
-    if(c==='娑堣€楀搧') cls+=' consumable';
+    if(c==='馃敟 娑堣€楀搧') cls+=' consumable';
     return '<span class="'+cls+'" data-cat="'+c+'">'+c+'</span>';
   }).join('');
   filterTag.querySelectorAll('.mv-mod-tag').forEach(el=>el.addEventListener('click',()=>{
@@ -1709,7 +2049,7 @@ function renderMyVehicles(){
   const list=document.getElementById('mv-mod-list');
   list.innerHTML='';
   let filtered=mods.filter(m=>m.vehicleId===v.id);
-  if(activeFilter==='娑堣€楀搧'){
+  if(activeFilter==='馃敟 娑堣€楀搧'){
     filtered=filtered.filter(m=>m.isConsumable);
   } else if(activeFilter!=='鍏ㄩ儴'){
     filtered=filtered.filter(m=>m.majorCategory===activeFilter);
@@ -1817,6 +2157,8 @@ function openSessionModal(mid){
   sessionEditingMid = mid;
   document.getElementById('s-used').value = m.sessionsUsed||0;
   document.getElementById('s-target').value = m.targetSessions||'';
+  document.getElementById('s-sync').checked = true;
+  document.getElementById('s-remember').checked = autoSyncConsumables;
   sessionModal.classList.add('show');
 }
 function closeSessionModal(){ sessionModal.classList.remove('show'); sessionEditingMid = null; }
@@ -1827,10 +2169,18 @@ sessionModal.addEventListener('click', e => { if(e.target === sessionModal) clos
 document.getElementById('session-submit').addEventListener('click', ()=>{
   const m = mods.find(x => x.id === sessionEditingMid);
   if(!m) return;
-  m.sessionsUsed = +document.getElementById('s-used').value||0;
-  m.targetSessions = +document.getElementById('s-target').value||0;
-  closeSessionModal();
-  renderMyVehicles();
+  const oldUsed = m.sessionsUsed || 0;
+  const newUsed = +document.getElementById('s-used').value||0;
+  const newTarget = +document.getElementById('s-target').value||0;
+  m.sessionsUsed = newUsed;
+  m.targetSessions = newTarget;
+  const syncChecked = document.getElementById('s-sync').checked;
+  const rememberChecked = document.getElementById('s-remember').checked;
+  handleConsumableSync(sessionEditingMid, oldUsed, newUsed, syncChecked, rememberChecked, ()=>{
+    closeSessionModal();
+    renderMyVehicles();
+    renderHome();
+  });
 });
 
 // ====== LEADERBOARD ======
@@ -1875,38 +2225,73 @@ function renderLeaderboard(){
 }
 
 function renderExpenses(){
-  const filterEl = document.getElementById('expense-filter');
-  const activePeriod = filterEl.dataset.period || 'all';
-  const periods = ['all','2026','2025'];
-  filterEl.innerHTML = periods.map(p => {
-    const label = p === 'all' ? '鍏ㄩ儴' : p + '骞?;
-    return '<button class="expense-filter-btn' + (p === activePeriod ? ' active' : '') + '" data-period="'+p+'">'+label+'</button>';
-  }).join('');
-  filterEl.querySelectorAll('.expense-filter-btn').forEach(b => b.addEventListener('click', () => {
-    filterEl.dataset.period = b.dataset.period;
+  // Vehicle switcher
+  const vsEl = document.getElementById('expense-vehicle-switcher');
+  const activeVehId = vsEl.dataset.vehid || 'all';
+  vsEl.innerHTML = '<span class="mv-switch-tag'+(activeVehId==='all'?' active':'')+'" data-vid="all">鍏ㄩ儴</span>'+
+    vehicles.map(v=>'<span class="mv-switch-tag'+(''+v.id===activeVehId?' active':'')+'" data-vid="'+v.id+'">'+v.name+'</span>').join('');
+  vsEl.querySelectorAll('.mv-switch-tag').forEach(el=>el.addEventListener('click',()=>{
+    vsEl.dataset.vehid = el.dataset.vid;
     renderExpenses();
   }));
 
-  let filtered = [...mods];
-  if(activePeriod !== 'all'){
-    filtered = filtered.filter(m => m.date.startsWith(activePeriod));
+  // Time filter
+  const filterEl = document.getElementById('expense-filter');
+  const activeMode = filterEl.dataset.mode || 'year';
+  const modes = ['year','month','custom'];
+  const modeLabels = { year:'浠婂勾', month:'鏈湀', custom:'鑷畾涔? };
+  filterEl.innerHTML = modes.map(m=>
+    '<button class="expense-filter-btn'+(m===activeMode?' active':'')+'" data-mode="'+m+'">'+modeLabels[m]+'</button>'
+  ).join('');
+  filterEl.querySelectorAll('.expense-filter-btn').forEach(b=>b.addEventListener('click',()=>{
+    filterEl.dataset.mode = b.dataset.mode;
+    renderExpenses();
+  }));
+
+  // Custom date range
+  const dateRangeEl = document.getElementById('expense-date-range');
+  if(activeMode==='custom'){
+    dateRangeEl.style.display = 'flex';
+    document.getElementById('expense-date-from').value = filterEl.dataset.from || '';
+    document.getElementById('expense-date-to').value = filterEl.dataset.to || '';
+  } else {
+    dateRangeEl.style.display = 'none';
   }
-  filtered.sort((a,b) => b.date.localeCompare(a.date));
+
+  // Apply filters
+  let filtered = [...mods];
+  if(activeVehId !== 'all'){
+    filtered = filtered.filter(m=>m.vehicleId===+activeVehId);
+  }
+  const now = new Date();
+  if(activeMode==='year'){
+    const y = ''+now.getFullYear();
+    filtered = filtered.filter(m=>m.date.startsWith(y));
+  } else if(activeMode==='month'){
+    const ym = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+    filtered = filtered.filter(m=>m.date.startsWith(ym));
+  } else if(activeMode==='custom'){
+    const from = filterEl.dataset.from || '';
+    const to = filterEl.dataset.to || '';
+    if(from) filtered = filtered.filter(m=>m.date >= from);
+    if(to) filtered = filtered.filter(m=>m.date <= to);
+  }
+  filtered.sort((a,b)=>b.date.localeCompare(a.date));
 
   // Summary
-  const total = filtered.reduce((s,m) => s + m.price, 0);
+  const total = filtered.reduce((s,m)=>s+m.price,0);
   const count = filtered.length;
-  const months = [...new Set(filtered.map(m => m.date.substring(0,7)))];
-  const avg = months.length ? Math.round(total / months.length) : 0;
+  const uniqueMonths = [...new Set(filtered.map(m=>m.date.substring(0,7)))];
+  const avg = uniqueMonths.length ? Math.round(total/uniqueMonths.length) : 0;
 
   document.getElementById('expense-summary').innerHTML =
-    '<div class="expense-stat"><div class="num">楼'+total.toLocaleString()+'</div><div class="label">鎬昏姳閿€</div></div>' +
-    '<div class="expense-stat"><div class="num">楼'+avg.toLocaleString()+'</div><div class="label">鏈堝潎</div></div>' +
+    '<div class="expense-stat"><div class="num">楼'+total.toLocaleString()+'</div><div class="label">鎬昏姳閿€</div></div>'+
+    '<div class="expense-stat"><div class="num">楼'+avg.toLocaleString()+'</div><div class="label">鏈堝潎</div></div>'+
     '<div class="expense-stat"><div class="num">'+count+'</div><div class="label">绗旀暟</div></div>';
 
   // Category breakdown
   const catTotal = {};
-  filtered.forEach(m => { catTotal[m.majorCategory] = (catTotal[m.majorCategory] || 0) + m.price; });
+  filtered.forEach(m=>{ catTotal[m.majorCategory] = (catTotal[m.majorCategory]||0)+m.price; });
   const catOrder = ['鍒硅溅绯荤粺','閬块渿','鍔ㄥ姏涓庝紶鍔ㄧ郴缁?,'杞儙','澶栬鍙婇獞琛屼笁瑙?,'鍏朵粬'];
   const catColors = { '鍒硅溅绯荤粺':'#E60012','閬块渿':'#1A1A1A','鍔ㄥ姏涓庝紶鍔ㄧ郴缁?:'#FF6B00','杞儙':'#4A90D9','澶栬鍙婇獞琛屼笁瑙?:'#888','鍏朵粬':'#AAA' };
   const catIcon2 = { '鍒硅溅绯荤粺':'馃洃','閬块渿':'馃敡','鍔ㄥ姏涓庝紶鍔ㄧ郴缁?:'鈿?,'杞儙':'馃洖','澶栬鍙婇獞琛屼笁瑙?:'馃帹','鍏朵粬':'馃摝' };
@@ -1914,14 +2299,13 @@ function renderExpenses(){
   // Pie
   let pieParts = '';
   let cum = 0;
-  const entries = catOrder.filter(c => catTotal[c]).map(c => {
-    const pct = total ? catTotal[c] / total : 0;
-    const start = cum;
-    cum += pct;
-    return { cat: c, start, end: cum, color: catColors[c] };
+  const entries = catOrder.filter(c=>catTotal[c]).map(c=>{
+    const pct = total ? catTotal[c]/total : 0;
+    const start = cum; cum += pct;
+    return { cat:c, start, end:cum, color:catColors[c] };
   });
   if(entries.length){
-    pieParts = entries.map(e => e.color+' '+Math.round(e.start*360)+'deg '+Math.round(e.end*360)+'deg').join(', ');
+    pieParts = entries.map(e=>e.color+' '+Math.round(e.start*360)+'deg '+Math.round(e.end*360)+'deg').join(', ');
   } else {
     pieParts = '#EEE 0% 100%';
   }
@@ -1929,7 +2313,7 @@ function renderExpenses(){
 
   // Legend
   document.getElementById('expense-legend').innerHTML = entries.length ?
-    entries.map(e => '<div style="font-size:12px;margin-bottom:6px"><span style="color:'+e.color+'">鈼?/span> '+e.cat+' <strong>'+Math.round((e.end-e.start)*100)+'%</strong></div>').join('') :
+    entries.map(e=>'<div style="font-size:12px;margin-bottom:6px"><span style="color:'+e.color+'">鈼?/span> '+e.cat+' <strong>'+Math.round((e.end-e.start)*100)+'%</strong></div>').join('') :
     '<div style="font-size:12px;color:#CCC">鏆傛棤鏀硅鑺遍攢</div>';
 
   // List
@@ -1937,13 +2321,13 @@ function renderExpenses(){
   if(!filtered.length){
     listEl.innerHTML = '<div style="text-align:center;padding:20px;color:#CCC;font-size:13px">鏆傛棤璁板綍</div>';
   } else {
-    listEl.innerHTML = filtered.map(m =>
-      '<div class="expense-item">' +
-      '<div class="expense-left">' +
-      '<div class="expense-icon">'+(catIcon2[m.majorCategory]||'馃摝')+'</div>' +
-      '<div><div class="expense-name">'+m.subCategory+(m.product?' 路 '+m.product+(m.spec?' '+m.spec:''):'')+'</div><div class="expense-date">'+m.date+'</div></div>' +
-      '</div>' +
-      '<div class="expense-amount">楼'+m.price.toLocaleString()+'</div>' +
+    listEl.innerHTML = filtered.map(m=>
+      '<div class="expense-item">'+
+      '<div class="expense-left">'+
+      '<div class="expense-icon">'+(catIcon2[m.majorCategory]||'馃摝')+'</div>'+
+      '<div><div class="expense-name">'+m.subCategory+(m.product?' 路 '+m.product+(m.spec?' '+m.spec:''):'')+'</div><div class="expense-date">'+m.date+'</div></div>'+
+      '</div>'+
+      '<div class="expense-amount">楼'+m.price.toLocaleString()+'</div>'+
       '</div>'
     ).join('');
   }
@@ -1956,6 +2340,17 @@ renderRecent();
 renderMyVehicles();
 renderLeaderboard();
 renderExpenses();
+
+// Custom date range apply
+document.getElementById('expense-date-apply').addEventListener('click', ()=>{
+  const filterEl = document.getElementById('expense-filter');
+  const from = document.getElementById('expense-date-from').value;
+  const to = document.getElementById('expense-date-to').value;
+  if(from && to && from > to){ alert('璧峰鏃ユ湡涓嶈兘鏅氫簬缁撴潫鏃ユ湡'); return; }
+  filterEl.dataset.from = from;
+  filterEl.dataset.to = to;
+  renderExpenses();
+});
 
 const tabs = document.querySelectorAll('.tab');
 const fab = document.getElementById('fab');
@@ -1989,7 +2384,7 @@ document.getElementById('fab-add-mod').addEventListener('click', ()=>{
 });
 
 fab.style.display = 'none';
-const fabPages = ['laps', 'mods', 'expenses'];
+const fabPages = ['laps', 'mods'];
 
 fab.addEventListener('click', ()=>{
   const activeTab = document.querySelector('.tab.active');
@@ -2008,12 +2403,10 @@ const pages = {
   mods: document.getElementById('page-mods'),
   expenses: document.getElementById('page-expenses'),
   leaderboard: document.getElementById('page-leaderboard'),
-  mine: document.getElementById('page-mine'),
 };
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    if(inVehicleMgmt)hideVehicleMgmt();
     if(fabMenuOpen)hideFabMenu();
     tabs.forEach(t => t.classList.remove('active'));
     tab.classList.add('active');
