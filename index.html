@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>PitLap - 鐠ф稖婧呴崷鍫モ偓鐔峰И閹?/title>
+<title>PitLap - 赛车圈速助手</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#F5F5F5;color:#1A1A1A;max-width:420px;margin:0 auto;height:100dvh;display:flex;flex-direction:column;overflow:hidden}
@@ -11,8 +11,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 /* Header */
 .header{background:#fff;padding:12px 16px;border-bottom:1px solid #E5E5E5;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;position:relative;overflow:hidden}
-.header::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#E60012,#FF3333,#E60012,#1A1A1A)}
-.header::after{content:'';position:absolute;bottom:0;right:20px;width:80px;height:20px;opacity:.06;background:repeating-linear-gradient(45deg,#000 0,#000 2px,transparent 2px,transparent 4px)}
+.header::before{content: '';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#E60012,#FF3333,#E60012,#1A1A1A)}
+.header::after{content: '';position:absolute;bottom:0;right:20px;width:80px;height:20px;opacity:.06;background:repeating-linear-gradient(45deg,#000 0,#000 2px,transparent 2px,transparent 4px)}
 .header h1{font-size:20px;font-weight:800;color:#1A1A1A;letter-spacing:1px}
 .header h1 span{color:#E60012}
 .header-badge{font-size:11px;color:#999;background:#F0F0F0;padding:3px 8px;border-radius:10px;font-weight:600}
@@ -35,7 +35,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 /* Vehicle Card */
 .vehicle-card{background:#fff;border-left:4px solid #E60012;position:relative;overflow:hidden}
-.vehicle-card::after{content:'棣冨极';position:absolute;right:12px;top:12px;font-size:24px;opacity:.3}
+.vehicle-card::after{content:'🏁';position:absolute;right:12px;top:12px;font-size:24px;opacity:.3}
 .vehicle-card .racing-line{position:absolute;bottom:0;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,#E60012 0,#E60012 8px,transparent 8px,transparent 16px)}
 .vehicle-name{font-size:22px;font-weight:800;color:#1A1A1A;margin-bottom:4px}
 .vehicle-sub{font-size:12px;color:#888;margin-bottom:12px}
@@ -70,7 +70,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 /* Tabs */
 .tabs{display:flex;background:#fff;border-top:2px solid #E5E5E5;flex-shrink:0;padding:4px 0 env(safe-area-inset-bottom,6px) 0;position:relative}
-.tabs::before{content:'';position:absolute;top:-2px;left:10%;right:10%;height:2px;background:repeating-linear-gradient(90deg,#E60012 0,#E60012 8px,transparent 8px,transparent 16px)}
+.tabs::before{content: '';position:absolute;top:-2px;left:10%;right:10%;height:2px;background:repeating-linear-gradient(90deg,#E60012 0,#E60012 8px,transparent 8px,transparent 16px)}
 .tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 0 4px;cursor:pointer;transition:.15s;border:none;background:none;color:#999}
 .tab svg{width:22px;height:22px}
 .tab span{font-size:10px;font-weight:600}
@@ -105,7 +105,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 /* Pie */
 .pie-placeholder{width:100px;height:100px;border-radius:50%;margin:0 auto;background:conic-gradient(#E60012 0% 35%,#1A1A1A 35% 55%,#FF6B00 55% 70%,#CCC 70% 85%,#555 85% 100%);position:relative;flex-shrink:0}
-.pie-placeholder::after{content:'';position:absolute;inset:20px;border-radius:50%;background:#fff}
+.pie-placeholder::after{content: '';position:absolute;inset:20px;border-radius:50%;background:#fff}
 
 
 /* === Vehicle Management === *//* FAB */
@@ -381,22 +381,22 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
 <div class="content" id="content">
 
-  <!-- ========== 妫ｆ牠銆?========== -->
+  <!-- ========== 首页 ========== -->
   <div class="page active" id="page-home">
     <div class="card vehicle-card">
       <div style="display:flex;gap:16px;align-items:center">
         <div style="flex:1">
           <div class="vehicle-name" id="home-vehicle-name">Yamaha R3</div>
-          <div class="vehicle-sub" id="home-vehicle-spec">321cc 璺?42hp</div>
+          <div class="vehicle-sub" id="home-vehicle-spec">321cc  · 42hp</div>
           <div class="vehicle-stats" style="justify-content:center">
             <div class="vehicle-stat" style="flex:none;padding:8px 20px">
               <div class="num" style="font-size:22px" id="home-vehicle-pb">ZIC 1:52.34</div>
-              <div class="label">閺堚偓娴ｅ啿婀€闁?/div>
+              <div class="label">最快圈速</div>
             </div>
           </div>
         </div>
         <div style="flex-shrink:0;width:120px;height:80px;border-radius:8px;overflow:hidden;background:#F5F5F5;border:1px solid #E5E5E5;display:flex;align-items:center;justify-content:center" id="home-vehicle-photo">
-          <img src="https://imgd.aeplcdn.com/1056x594/bw/models/yamaha-yzf-r3.jpg?20190103151915&q=80" alt="Yamaha R3" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=font-size:32px>棣冨冀閿?/div>'">
+          <img src="https://imgd.aeplcdn.com/1056x594/bw/models/yamaha-yzf-r3.jpg?20190103151915&q=80" alt="Yamaha R3" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display='none';this.parentElement.innerHTML='<div style=font-size:32px>🏍</div>'">
         </div>
       </div>
       <div class="home-vehicle-switcher" id="home-vehicle-switcher"></div>
@@ -405,19 +405,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 
     <div class="card" id="home-status-wrapper">
       <div class="card-title">
-        <span class="dot dot-red"></span>鏉烇箒绶犻悩鑸碘偓?        <span style="margin-left:auto;font-size:11px;color:#888;cursor:pointer" id="home-status-edit-btn">缂傛牞绶?/span>
+        <span class="dot dot-red"></span>车辆状态        <span style="margin-left:auto;font-size:11px;color:#888;cursor:pointer" id="home-status-edit-btn">编辑</span>
       </div>
       <div id="home-status-cards">
-        <div style="text-align:center;padding:20px;color:#CCC;font-size:13px">閻愮懓鍤紓鏍帆濞ｈ濮為悩鑸碘偓?/div>
+        <div style="text-align:center;padding:20px;color:#CCC;font-size:13px">点击编辑添加状态</div>
       </div>
     </div>
 
     <div class="card" id="recent-session">
-      <div class="card-title"><span class="dot dot-black"></span>閺堚偓鏉╂垼绂岄柆鎾存）</div>
+      <div class="card-title"><span class="dot dot-black"></span>最近赛道日</div>
     </div>
 
     <div class="card">
-      <div class="card-title"><span class="dot dot-red"></span>閸﹀牓鈧喕绉奸崝?璺?ZIC</div>
+      <div class="card-title"><span class="dot dot-red"></span>圈速趋势ZIC</div>
       <div class="chart-bars">
         <div class="chart-bar" style="height:80px"><span class="val">1:56.2</span></div>
         <div class="chart-bar" style="height:72px"><span class="val">1:54.8</span></div>
@@ -432,43 +432,43 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
     </div>
   </div>
 
-  <!-- ========== 閸﹀牓鈧?========== -->
+  <!-- ========== 圈速 ========== -->
   <div class="page" id="page-laps">
     <div class="card" style="padding:12px 16px">
       <div class="lap-tags" style="display:flex;gap:8px;overflow-x:auto">
-        <span class="lap-tag active" data-track="">閸忋劑鍎?/span>
+        <span class="lap-tag active" data-track="">全部</span>
       </div>
     </div>
 
     <div id="pb-cards"></div>
 
     <div class="card" style="padding:12px 16px">
-      <div class="card-title"><span class="dot dot-red"></span>鐠佹澘缍?/div>
+      <div class="card-title"><span class="dot dot-red"></span>记录</div>
       <div id="lap-list"></div>
     </div>
   </div>
 
-  <!-- ========== 閹存垹娈戞潪锕佺窢 ========== -->
+  <!-- ========== 我的车辆 ========== -->
   <div class="page mv-page" id="page-mods">
     <div class="mv-vehicle-switcher" id="mv-switcher"></div>
     <div class="mv-vehicle-card" id="mv-vehicle-card"></div>
     <div class="mv-mod-section">
       <div class="mv-mod-header">
-        <span class="mv-mod-title">閺€纭咁棅閺勫海绮?/span>
+        <span class="mv-mod-title">改装明细</span>
         <div class="mv-mod-tags" id="mv-mod-tags"></div>
       </div>
       <div class="mv-mod-list" id="mv-mod-list"></div>
     </div>
   </div>
 
-  <!-- ========== 閼洪亶鏀?========== -->
+  <!-- ========== 花销 ========== -->
   <div class="page" id="page-expenses">
     <div class="expense-vehicle-switcher" id="expense-vehicle-switcher"></div>
     <div class="card" id="expense-summary-card">
       <div class="expense-summary" id="expense-summary"></div>
     </div>
     <div class="card">
-      <div class="section-title">閸掑棛琚崡鐘崇槷</div>
+      <div class="section-title">分类占比</div>
       <div style="display:flex;align-items:center;gap:16px">
         <div class="pie-placeholder" id="expense-pie"></div>
         <div style="flex:1" id="expense-legend"></div>
@@ -478,19 +478,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
       <div class="expense-filter" id="expense-filter"></div>
       <div class="expense-date-range" id="expense-date-range" style="display:none">
         <input class="expense-date-input" id="expense-date-from" type="text" placeholder="yyyy-MM-dd" maxlength="10" autocomplete="off">
-        <span style="color:#888;font-size:12px;flex-shrink:0">閼?/span>
+        <span style="color:#888;font-size:12px;flex-shrink:0">节</span>
         <input class="expense-date-input" id="expense-date-to" type="text" placeholder="yyyy-MM-dd" maxlength="10" autocomplete="off">
-        <button class="expense-filter-btn" id="expense-date-apply" style="flex-shrink:0">绾喖鐣?/button>
+        <button class="expense-filter-btn" id="expense-date-apply" style="flex-shrink:0">确定</button>
       </div>
       <div id="expense-list"></div>
     </div>
   </div>
 
-  <!-- ========== 閹烘帟顢?========== -->
+  <!-- ========== 排行 ========== -->
   <div class="page leaderboard-page" id="page-leaderboard">
     <div class="lb-header">
-      <div style="font-size:18px;font-weight:800;color:#1A1A1A">棣冨极 閹烘帟顢戝?/div>
-      <div style="font-size:12px;color:#888;margin-top:4px">閾忔碍瀚欓弫鐗堝祦鐏炴洜銇?璺?濮濓絽绱￠悧鍫濈殺閹恒儱鍙嗗顔讳繆婵傝棄寮搁幒鎺戞倳</div>
+      <div style="font-size:18px;font-weight:800;color:#1A1A1A">🏁 排行榜</div>
+      <div style="font-size:12px;color:#888;margin-top:4px">虚拟数据展示，正式版将接入微信好友排名</div>
     </div>
     <div class="lb-track-select" id="lb-tracks"></div>
     <div id="lb-list"></div>
@@ -503,85 +503,85 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <!-- FAB Menu -->
 <div class="fab-overlay" id="fab-overlay"></div>
 <div class="fab-menu" id="fab-menu">
-  <button class="fab-menu-item" id="fab-add-vehicle"><span class="fab-icon vehicle">棣冨冀閿?/span>濞ｈ濮炴潪锕佺窢</button>
-  <button class="fab-menu-item" id="fab-add-mod"><span class="fab-icon mod">棣冩暋</span>濞ｈ濮為弨纭咁棅娴?/button>
+  <button class="fab-menu-item" id="fab-add-vehicle"><span class="fab-icon vehicle">🏍</span>添加车辆</button>
+  <button class="fab-menu-item" id="fab-add-mod"><span class="fab-icon mod">🛡</span>添加改装件</button>
 </div>
 
 <!-- ========== Modal ========== -->
 <div class="modal-overlay" id="modal">
   <div class="modal-sheet">
     <div class="modal-handle"></div>
-    <div class="modal-title" id="modal-title">閺傛澘顤冮崷鍫モ偓?/div>
+    <div class="modal-title" id="modal-title">新增圈速</div>
 
     <div class="form-group">
-      <label class="form-label">鐠ф盯浜?/label>
-      <select class="form-select" id="f-track" onchange="onTrackChange()"><option value="">鐠囩兘鈧瀚ㄧ挧娑壕</option></select>
+      <label class="form-label">赛道</label>
+      <select class="form-select" id="f-track" onchange="onTrackChange()"><option value="">请选择赛道</option></select>
     </div>
 
     <div class="form-group">
-      <label class="form-label">閺冦儲婀?/label>
+      <label class="form-label">日期</label>
       <input class="form-input" id="f-date" type="text" placeholder="yyyy-MM-dd" maxlength="10">
     </div>
 
     <div class="form-group">
-      <label class="form-label">鏉烇箒绶?/label>
+      <label class="form-label">车辆</label>
       <div class="form-row">
         <select class="form-select" id="f-vehicle" style="flex:1"></select>
-        <input class="form-input" id="f-vehicle-other" style="flex:1;display:none" placeholder="鏉堟挸鍙嗘潪锕佺窢閸氬秶袨">
+        <input class="form-input" id="f-vehicle-other" style="flex:1;display:none" placeholder="输入其他车辆名称">
       </div>
     </div>
 
     <div class="form-group">
-      <label class="form-label">閸﹀牓鈧?/label>
+      <label class="form-label">圈速</label>
       <div class="form-row">
-        <div class="form-group"><input class="form-input form-input-sm" id="f-min" type="number" min="0" max="9" placeholder="閸? inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="f-min" type="number" min="0" max="9" placeholder="分" inputmode="numeric"></div>
         <span style="font-size:18px;font-weight:700;color:#1A1A1A">:</span>
-        <div class="form-group"><input class="form-input form-input-sm" id="f-sec" type="number" min="0" max="59" placeholder="缁? inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="f-sec" type="number" min="0" max="59" placeholder="秒" inputmode="numeric"></div>
         <span style="font-size:18px;font-weight:700;color:#1A1A1A">.</span>
-        <div class="form-group"><input class="form-input form-input-sm" id="f-ms" type="number" min="0" max="999" placeholder="濮ｎ偆顫? inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="f-ms" type="number" min="0" max="999" placeholder="毫秒" inputmode="numeric"></div>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="form-label">閻╊喗鐖ｉ崷鍫モ偓?<span style="color:#E60012;font-weight:400;font-size:11px" id="target-hint"></span></label>
+      <label class="form-label">目标圈速<span style="color:#E60012;font-weight:400;font-size:11px" id="target-hint"></span></label>
       <div class="form-row">
-        <div class="form-group"><input class="form-input form-input-sm" id="t-min" type="number" min="0" max="9" placeholder="閸? inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="t-min" type="number" min="0" max="9" placeholder="分" inputmode="numeric"></div>
         <span style="font-size:18px;font-weight:700;color:#1A1A1A">:</span>
-        <div class="form-group"><input class="form-input form-input-sm" id="t-sec" type="number" min="0" max="59" placeholder="缁? inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="t-sec" type="number" min="0" max="59" placeholder="秒" inputmode="numeric"></div>
         <span style="font-size:18px;font-weight:700;color:#1A1A1A">.</span>
-        <div class="form-group"><input class="form-input form-input-sm" id="t-ms" type="number" min="0" max="999" placeholder="濮ｎ偆顫? inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="t-ms" type="number" min="0" max="999" placeholder="毫秒" inputmode="numeric"></div>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="form-label">濞撯晛瀹抽敍鍫氬墲閿?<span style="color:#999;font-weight:400;font-size:11px">闂堢偛绻€婵?/span></label>
+      <label class="form-label">温度（℃）<span style="color:#999;font-weight:400;font-size:11px">非必填</span></label>
       <div class="form-row">
-        <div class="form-group"><input class="form-input form-input-sm" id="f-temp-min" type="number" placeholder="閺堚偓娴ｅ孩淇? inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="f-temp-min" type="number" placeholder="最低温" inputmode="numeric"></div>
         <span style="font-size:13px;color:#999">~</span>
-        <div class="form-group"><input class="form-input form-input-sm" id="f-temp-max" type="number" placeholder="閺堚偓妤傛ɑ淇? inputmode="numeric"></div>
+        <div class="form-group"><input class="form-input form-input-sm" id="f-temp-max" type="number" placeholder="最高温" inputmode="numeric"></div>
       </div>
     </div>
 
     <div class="form-group">
-      <label class="form-label">鐠ф盯浜鹃悩璺哄枌 <span style="color:#999;font-weight:400;font-size:11px">閸欘垰顦块柅?璺?闂堢偛绻€婵?/span></label>
+      <label class="form-label">赛道条件 <span style="color:#999;font-weight:400;font-size:11px">可多选 / 非必填</span></label>
       <div class="tag-grid" id="f-conditions">
-        <button class="tag-opt" data-val="楠炴彃婀?>楠炴彃婀?/button>
-        <button class="tag-opt" data-val="濠€鍨勾">濠€鍨勾</button>
-        <button class="tag-opt" data-val="閸楀﹤鍏?>閸楀﹤鍏?/button>
-        <button class="tag-opt" data-val="闂嗐劌鎮?>闂嗐劌鎮?/button>
-        <button class="tag-opt" data-val="閺冪娀顥?>閺冪娀顥?/button>
-        <button class="tag-opt" data-val="瀵邦噣顥?>瀵邦噣顥?/button>
-        <button class="tag-opt" data-val="婢堆囶棑">婢堆囶棑</button>
+        <button class="tag-opt" data-val="干燥">干燥</button>
+        <button class="tag-opt" data-val="湿地">湿地</button>
+        <button class="tag-opt" data-val="半干">半干</button>
+        <button class="tag-opt" data-val="雨后">雨后</button>
+        <button class="tag-opt" data-val="无风">无风</button>
+        <button class="tag-opt" data-val="微风">微风</button>
+        <button class="tag-opt" data-val="大风">大风</button>
       </div>
     </div>
 
     <div class="modal-actions">
-      <button class="btn btn-cancel" id="modal-cancel">閸欐牗绉?/button>
-      <button class="btn btn-submit" id="modal-submit">閹绘劒姘?/button>
+      <button class="btn btn-cancel" id="modal-cancel">取消</button>
+      <button class="btn btn-submit" id="modal-submit">提交</button>
     </div>
 
     <div id="modal-delete-area" style="display:none;margin-top:20px;border-top:1px solid #F0F0F0;padding-top:16px">
-      <button class="btn" style="flex:none;width:100%;background:#FFF0F0;color:#E60012;font-weight:600" id="modal-delete-btn">閸掔娀娅庡銈呮箑闁喕顔囪ぐ?/button>
+      <button class="btn" style="flex:none;width:100%;background:#FFF0F0;color:#E60012;font-weight:600" id="modal-delete-btn">删除此圈速记录</button>
     </div>
   </div>
 </div>
@@ -590,78 +590,78 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div class="modal-overlay" id="mod-modal">
   <div class="modal-sheet">
     <div class="modal-handle"></div>
-    <div class="modal-title" id="mod-modal-title">閺傛澘顤冮弨纭咁棅娴?/div>
+    <div class="modal-title" id="mod-modal-title">新增改装件</div>
     <div class="form-group" style="position:relative">
-      <label class="form-label">閹兼粎鍌ㄩ弨閫涙 <span style="color:#999;font-weight:400;font-size:11px">鏉堟挸鍙嗙紒鍡楀瀻閹存牔楠囬崫浣告倳韫囶偊鈧喎鐣炬担?/span></label>
-      <input class="form-input" id="m-search" type="text" placeholder="娓氬顩ч敍姘崇枂濮ｅ倶鈧竻rembo..." autocomplete="off">
+      <label class="form-label">搜索改件 <span style="color:#999;font-weight:400;font-size:11px">输入细分或产品名快速定位</span></label>
+      <input class="form-input" id="m-search" type="text" placeholder="例如：轮胎、Brembo..." autocomplete="off">
       <div class="mod-search-dropdown" id="m-search-dd" style="display:none"></div>
     </div>
     <div class="form-group">
-      <label class="form-label">鏉烇箒绶?/label>
+      <label class="form-label">车辆</label>
       <select class="form-select" id="m-vehicle"></select>
     </div>
     <div class="form-group">
-      <label class="form-label">婢堆呰</label>
+      <label class="form-label">大类</label>
       <select class="form-select" id="m-major"></select>
     </div>
     <div class="form-group">
-      <label class="form-label">缂佸棗鍨?/label>
-      <select class="form-select" id="m-sub"><option value="">閸忓牓鈧瀚ㄦ径褏琚?/option></select>
+      <label class="form-label">细分</label>
+      <select class="form-select" id="m-sub"><option value="">先选择大类</option></select>
     </div>
     <div class="form-group">
-      <label class="form-label">閸濅胶澧?/label>
+      <label class="form-label">品牌</label>
       <select class="form-select" id="m-product"></select>
-      <input class="form-input" id="m-product-other" style="display:none;margin-top:6px" placeholder="閹靛锝為崫浣哄閸氬秶袨">
+      <input class="form-input" id="m-product-other" style="display:none;margin-top:6px" placeholder="手填品牌名称">
     </div>
     <div class="form-group">
-      <label class="form-label">閸ㄥ褰?鐟欏嫭鐗?<span style="color:#999;font-weight:400;font-size:11px">闁锝?/span></label>
-      <input class="form-input" id="m-spec" type="text" placeholder="娓氬顩ч敍姝?0閵嗕竼R-T...">
+      <label class="form-label">型号规格<span style="color:#999;font-weight:400;font-size:11px">选填</span></label>
+      <input class="form-input" id="m-spec" type="text" placeholder="例如：120、CR-T...">
     </div>
     <div class="form-group" id="m-engine-group" style="display:none;border-left:3px solid #FF6B00;padding-left:12px;border-radius:2px">
-      <label class="form-label">瀵搫瀵查崘鍛啇 <span style="color:#999;font-weight:400;font-size:11px">闁锝?/span></label>
-      <input class="form-input" id="m-engine-work" type="text" placeholder="娓氬顩ч敍姘剁彯閸樺缂夊В鏃€妞挎繅鐐偓渚€鏁鹃柅鐘虹箾閺?..">
+      <label class="form-label">强化内容 <span style="color:#999;font-weight:400;font-size:11px">选填</span></label>
+      <input class="form-input" id="m-engine-work" type="text" placeholder="例如：高压缩比活塞、锻造连杆...">
     </div>
     <div class="form-group" id="m-pos-group" style="display:none">
-      <label class="form-label">娴ｅ秶鐤?/label>
+      <label class="form-label">位置</label>
       <select class="form-select" id="m-position">
-        <option value="閸撳秷鐤?>閸撳秷鐤?/option>
-        <option value="閸氬氦鐤?>閸氬氦鐤?/option>
+        <option value="前轮">前轮</option>
+        <option value="后轮">后轮</option>
       </select>
     </div>
     <div class="form-group">
-      <label class="form-label">娴犻攱鐗搁敍鍩儻绱?<span style="color:#999;font-weight:400;font-size:11px">闁锝?/span></label>
+      <label class="form-label">价格（元）<span style="color:#999;font-weight:400;font-size:11px">选填</span></label>
       <input class="form-input" id="m-price" type="number" placeholder="0" inputmode="numeric">
     </div>
     <div class="form-group">
-      <label class="form-label">鐠佹澘缍嶉弮銉︽埂</label>
+      <label class="form-label">记录日期</label>
       <input class="form-input" id="m-date" type="text" placeholder="yyyy-MM-dd" maxlength="10">
     </div>
     <div class="form-group" style="display:flex;align-items:center;gap:8px">
       <input type="checkbox" id="m-consumable" style="width:18px;height:18px;accent-color:#E60012" onchange="onConsumableChange()">
-      <label for="m-consumable" style="font-size:14px;font-weight:600;color:#E60012;cursor:pointer">鐠佸彞璐熷☉鍫ｂ偓妤€鎼?/label>
+      <label for="m-consumable" style="font-size:14px;font-weight:600;color:#E60012;cursor:pointer">设为消耗品</label>
     </div>
     <div class="form-group" id="m-install-group" style="display:none">
-      <label class="form-label">鐎瑰顥婇弮銉︽埂 <span style="color:#999;font-weight:400;font-size:11px">闁锝?/span></label>
+      <label class="form-label">安装日期 <span style="color:#999;font-weight:400;font-size:11px">选填</span></label>
       <input class="form-input" id="m-install-date" type="text" placeholder="yyyy-MM-dd" maxlength="10">
       <div style="margin-top:10px;display:flex;gap:8px">
-        <div style="flex:1"><label class="form-label" style="font-size:11px">瀹歌弓濞囬悽銊ㄥΝ閺?/label><input class="form-input" id="m-sessions" type="number" min="0" placeholder="0" inputmode="numeric"></div>
-        <div style="flex:1"><label class="form-label" style="font-size:11px">閻╊喗鐖ｉ懞鍌涙殶 <span style="color:#999;font-weight:400">闁锝?/span></label><input class="form-input" id="m-target-sessions" type="number" min="0" placeholder="" inputmode="numeric"></div>
+        <div style="flex:1"><label class="form-label" style="font-size:11px">已使用节数</label><input class="form-input" id="m-sessions" type="number" min="0" placeholder="0" inputmode="numeric"></div>
+        <div style="flex:1"><label class="form-label" style="font-size:11px">目标节数 <span style="color:#999;font-weight:400">选填</span></label><input class="form-input" id="m-target-sessions" type="number" min="0" placeholder="" inputmode="numeric"></div>
       </div>
       <div style="margin-top:6px">
         <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
           <input type="checkbox" id="m-sync" checked style="width:15px;height:15px;accent-color:#E60012">
-          閸氬本顒為崥宀冩簠閸忔湹绮☉鍫ｂ偓妤€鎼?        </label>
+          同步同车其他消耗品        </label>
         <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:#888;margin-top:4px;cursor:pointer">
           <input type="checkbox" id="m-remember" style="width:15px;height:15px;accent-color:#E60012">
-          鐠侀缍囬敍灞间簰閸氬海娲块幒銉ユ倱濮濄儰绗夐崘宥堫嚄闂?        </label>
+          记住，以后直接同步不再询问        </label>
       </div>
     </div>
     <div class="modal-actions">
-      <button class="btn btn-cancel" id="mod-cancel">閸欐牗绉?/button>
-      <button class="btn btn-submit" id="mod-submit">閹绘劒姘?/button>
+      <button class="btn btn-cancel" id="mod-cancel">取消</button>
+      <button class="btn btn-submit" id="mod-submit">提交</button>
     </div>
     <div class="modal-delete" id="mod-delete-area">
-      <button class="btn-danger" id="mod-delete-btn">閸掔娀娅庡銈嗘暭鐟佸懍娆?/button>
+      <button class="btn-danger" id="mod-delete-btn">删除此改装件</button>
     </div>
   </div>
 </div>
@@ -670,26 +670,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div class="modal-overlay" id="session-modal">
   <div class="modal-sheet">
     <div class="modal-handle"></div>
-    <div class="modal-title">娣囶喗鏁奸懞鍌涙殶</div>
+    <div class="modal-title">修改节数</div>
     <div class="form-group-sm">
-      <label class="form-label-sm">瀹歌弓濞囬悽銊ㄥΝ閺?/label>
+      <label class="form-label-sm">已使用节数</label>
       <input class="form-input-sm" id="s-used" type="number" min="0" inputmode="numeric">
     </div>
     <div class="form-group-sm">
-      <label class="form-label-sm">閻╊喗鐖ｆ担璺ㄦ暏閼哄倹鏆?/label>
-      <input class="form-input-sm" id="s-target" type="number" min="0" placeholder="閺堫亣顔曠€? inputmode="numeric">
+      <label class="form-label-sm">目标使用节数</label>
+      <input class="form-input-sm" id="s-target" type="number" min="0" placeholder="未设置 inputmode="numeric">
     </div>
     <div class="form-group-sm" style="margin-top:6px">
       <label style="display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer">
         <input type="checkbox" id="s-sync" checked style="width:15px;height:15px;accent-color:#E60012">
-        閸氬本顒為崥宀冩簠閸忔湹绮☉鍫ｂ偓妤€鎼?      </label>
+        同步同车其他消耗品      </label>
       <label style="display:flex;align-items:center;gap:6px;font-size:12px;color:#888;margin-top:4px;cursor:pointer">
         <input type="checkbox" id="s-remember" style="width:15px;height:15px;accent-color:#E60012">
-        鐠侀缍囬敍灞间簰閸氬海娲块幒銉ユ倱濮濄儰绗夐崘宥堫嚄闂?      </label>
+        记住，以后直接同步不再询问      </label>
     </div>
     <div class="modal-actions">
-      <button class="btn btn-cancel" id="session-cancel">閸欐牗绉?/button>
-      <button class="btn btn-submit" id="session-submit">娣囨繂鐡?/button>
+      <button class="btn btn-cancel" id="session-cancel">取消</button>
+      <button class="btn btn-submit" id="session-submit">保存</button>
     </div>
   </div>
 </div>
@@ -698,14 +698,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div class="modal-overlay" id="status-edit-modal">
   <div class="modal-sheet">
     <div class="modal-handle"></div>
-    <div class="modal-title">妫ｆ牠銆夐悩鑸碘偓浣虹椽鏉?/div>
-    <div class="status-edit-label">瀹告煡鈧绱欓幏鏍ㄥ閹烘帒绨?璺?閺堚偓婢?妞ょ櫢绱?/div>
+    <div class="modal-title">首页状态编辑</div>
+    <div class="status-edit-label">已选（拖拽排序，最多4项）</div>
     <div class="status-edit-list" id="status-edit-selected"></div>
-    <div class="status-edit-label" style="margin-top:16px">閸欘垶鈧绉烽懓妤€鎼?/div>
+    <div class="status-edit-label" style="margin-top:16px">可选消耗品</div>
     <div class="status-edit-list" id="status-edit-available"></div>
     <div class="modal-actions">
-      <button class="btn btn-cancel" id="status-edit-cancel">閸欐牗绉?/button>
-      <button class="btn btn-submit" id="status-edit-save">绾喖鐣?/button>
+      <button class="btn btn-cancel" id="status-edit-cancel">取消</button>
+      <button class="btn btn-submit" id="status-edit-save">确定</button>
     </div>
   </div>
 </div>
@@ -714,36 +714,36 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div class="modal-overlay" id="veh-modal">
   <div class="modal-sheet">
     <div class="modal-handle"></div>
-    <div class="modal-title"><span id="veh-modal-title">濞ｈ濮炴潪锕佺窢</span></div>
+    <div class="modal-title"><span id="veh-modal-title">添加车辆</span></div>
     <div class="form-group">
-      <label class="form-label">閸濅胶澧?/label>
+      <label class="form-label">品牌</label>
       <select class="form-select" id="v-brand" onchange="onBrandChange()">
-        <option value="">闁瀚ㄩ崫浣哄</option>
+        <option value="">选择品牌</option>
       </select>
     </div>
     <div class="form-group">
-      <label class="form-label">鏉烇箑鐎?/label>
-      <select class="form-select" id="v-model"><option value="">閸忓牓鈧瀚ㄩ崫浣哄</option></select>
+      <label class="form-label">车型</label>
+      <select class="form-select" id="v-model"><option value="">先选择品牌</option></select>
     </div>
     <div class="form-group">
-      <label class="form-label">楠炵繝鍞?/label>
-      <input class="form-input" id="v-year" type="text" placeholder="娓氬顩ч敍?023" inputmode="numeric">
+      <label class="form-label">年份</label>
+      <input class="form-input" id="v-year" type="text" placeholder="例如：2023" inputmode="numeric">
     </div>
     <div class="form-group">
-      <label class="form-label">鏉烇箒绶犻崥宥囆?/label>
-      <input class="form-input" id="v-name" type="text" placeholder="閼奉亜濮╅悽鐔稿灇閿涘苯褰叉穱顔芥暭">
+      <label class="form-label">车辆名称</label>
+      <input class="form-input" id="v-name" type="text" placeholder="自动生成，可修改">
     </div>
     <div class="form-group">
-      <label class="form-label">閻撗呭闁剧偓甯?<span style="color:#999;font-weight:400;font-size:11px">闂堢偛绻€婵?/span></label>
-      <input class="form-input" id="v-photo" type="text" placeholder="閸ュ墽澧?URL閿涘牊顒滃蹇曞閺€顖涘瘮閻╃鍞芥稉濠佺炊閿?>
+      <label class="form-label">照片链接<span style="color:#999;font-weight:400;font-size:11px">非必填</span></label>
+      <input class="form-input" id="v-photo" type="text" placeholder="图片URL（正式版支持相册上传）">
     </div>
     <div class="form-group" style="display:flex;align-items:center;gap:8px">
       <input type="checkbox" id="v-default" style="width:18px;height:18px;accent-color:#E60012">
-      <label for="v-default" style="font-size:14px;font-weight:600;color:#1A1A1A;cursor:pointer">鐠佸彞璐熸妯款吇鏉烇箒绶?/label>
+      <label for="v-default" style="font-size:14px;font-weight:600;color:#1A1A1A;cursor:pointer">设为默认车辆</label>
     </div>
     <div class="modal-actions">
-      <button class="btn btn-cancel" id="veh-cancel">閸欐牗绉?/button>
-      <button class="btn btn-submit" id="veh-submit">濞ｈ濮?/button>
+      <button class="btn btn-cancel" id="veh-cancel">取消</button>
+      <button class="btn btn-submit" id="veh-submit">提交</button>
     </div>
   </div>
 </div>
@@ -751,10 +751,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <!-- ========== Confirm Dialog ========== -->
 <div class="confirm-overlay" id="confirm">
   <div class="confirm-box">
-    <div class="confirm-msg" id="confirm-msg">绾喖鐣鹃崚鐘绘珟鐠囥儴顔囪ぐ鏇吹</div>
+    <div class="confirm-msg" id="confirm-msg">确定删除该记录？</div>
     <div class="confirm-actions">
-      <button class="confirm-btn cancel" id="confirm-cancel">閸欐牗绉?/button>
-      <button class="confirm-btn danger" id="confirm-ok">閸掔娀娅?/button>
+      <button class="confirm-btn cancel" id="confirm-cancel">取消</button>
+      <button class="confirm-btn danger" id="confirm-ok">删除</button>
     </div>
   </div>
 </div>
@@ -762,31 +762,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 <div class="tabs">
   <button class="tab active" data-page="home">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h2l7-7 7 7h2"/><path d="M5 12v7h5v-5h4v5h5v-7"/></svg>
-    <span>妫ｆ牠銆?/span>
+    <span>首页</span>
   </button>
   <button class="tab" data-page="laps">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    <span>閸﹀牓鈧?/span>
+    <span>圈速</span>
   </button>
   <button class="tab" data-page="leaderboard">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 9 5.5 9 8v1"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 15 5.5 15 8v1"/><path d="M4 15h16"/><path d="M10 9v6a2 2 0 0 0 4 0V9"/></svg>
-    <span>閹烘帟顢?/span>
+    <span>排行</span>
   </button>
   <button class="tab" data-page="mods">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-    <span>閹存垹娈戞潪锕佺窢</span>
+    <span>我的车辆</span>
   </button>
   <button class="tab" data-page="expenses">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/><path d="M12 18V6"/></svg>
-    <span>閼洪亶鏀?/span>
+    <span>花销</span>
   </button>
 </div>
 
 <script>
 // ====== DATA ======
-const TARGETS = { 'ZIC': '1:50.000', '鐎逛焦灏?: '1:53.000', '婢垛晛绨?: '2:00.000', '婢垛晠鈹?: '' };
-const TRACK_SHORT = { 'ZIC':'ZIC','鐎逛焦灏?:'鐎逛焦灏?,'婢垛晠鈹?:'婢垛晠鈹?,'婢垛晛绨?:'婢垛晛绨? };
-const TRACK_FULL = { 'ZIC':'閻濈姵鎹ｉ崶浠嬫鐠ф稖婧呴崷?,'鐎逛焦灏?:'鐎逛焦灏濋崶浠嬫鐠ф盯浜?,'婢垛晠鈹?:'娑撳﹥鎹ｆ径鈺呪攬鐠ф稖婧呴崷?,'婢垛晛绨?:'閹存劙鍏樻径鈺佺盎閸ヤ粙妾挧娑壕' };
+const TARGETS = { 'ZIC': '1:50.000', '肇庆': '1:53.000', '天马': '2:00.000', '天府': '' };
+const TRACK_SHORT = { 'ZIC':'ZIC','肇庆':'肇庆','天马':'天马','天府':'天府' };
+const TRACK_FULL = { 'ZIC':'珠海国际赛车场','肇庆':'肇庆广东国际赛车场','天马':'上海天马赛车场','天府':'成都天府国际赛道' };
 
 const BRAND_DB = {
   'Yamaha': {
@@ -831,51 +831,51 @@ const BRAND_DB = {
 const BRAND_LIST = Object.keys(BRAND_DB);
 
 const MOD_PARTS_DB = {
-  '閸掔婧呯化鑽ょ埠': {
-    '閸掔婧呴悧?: ['閸樼喎宸?,'Brembo','EBC','SBS','閸忔湹绮?],
-    '閸掔婧呴惄?: ['閸樼喎宸?,'Brembo','Galfer','EBC','MotoTron','閸忔湹绮?],
-    '閸掔婧呴崡锟犳尭': ['閸樼喎宸?,'Brembo','閸忔湹绮?],
-    '娑撳﹥杞?: ['閸樼喎宸?,'Brembo','GaleSpeed','閸忔湹绮?],
-    '閸掔婧呭▽?: ['閸樼喎宸?,'Motul','Castrol','閸忔湹绮?],
-    '閸忔湹绮?: [],
+  '制动系统': {
+    '刹车片': ['原厂','Brembo','EBC','SBS','其他'],
+    '刹车盘': ['原厂','Brembo','Galfer','EBC','MotoTron','其他'],
+    '刹车卡钳': ['原厂','Brembo','其他'],
+    '上泵': ['原厂','Brembo','GaleSpeed','其他'],
+    '刹车油': ['原厂','Motul','Castrol','其他'],
+    '其他': [],
   },
-  '闁潡娓?: {
-    '閸撳秹浼╅棁?: ['閸樼喎宸?,'鑴癶lins','K-Tech','Bitubo','Andreani','閸忔湹绮?],
-    '閸氬酣浼╅棁?: ['閸樼喎宸?,'鑴癶lins','K-Tech','Bitubo','閸忔湹绮?],
-    '閸忔湹绮?: [],
+  '避震': {
+    '前避震': ['原厂','hlins','K-Tech','Bitubo','Andreani','其他'],
+    '后避震': ['原厂','hlins','K-Tech','Bitubo','其他'],
+    '其他': [],
   },
-  '閸斻劌濮忔稉搴濈炊閸斻劎閮寸紒?: {
-    'ECU': ['閸樼喎宸?,'Woolich','FT ECU','Rapid Bike','Power Commander','aRacer','閸忔湹绮?],
-    '閸欐垵濮╅張?: ['閸樼喎宸?,'瀵搫瀵?,'閸忔湹绮?],
-    '缁傝鎮庨悧?: ['閸樼喎宸?,'EBC','STM','Yoyodyne','閸忔湹绮?],
-    '闁剧偓娼?: ['閸樼喎宸?,'RK','DID','EK','Regina','閸忔湹绮?],
-    '閹烘帗鐨?: ['閸樼喎宸?,'SC Project','Akrapovi鑶?,'Austin Racing','Brock\'s','閸忔湹绮?],
-    '韫囶偅甯撶化鑽ょ埠': ['閸樼喎宸?,'HM','Translogic','Dynojet','Rapid Bike','閸忔湹绮?],
-    '閸忔湹绮?: [],
+  '动力与传动系统': {
+    'ECU': ['原厂','Woolich','FT ECU','Rapid Bike','Power Commander','aRacer','其他'],
+    '发动机': ['原厂','强化','其他'],
+    '离合器': ['原厂','EBC','STM','Yoyodyne','其他'],
+    '链条': ['原厂','RK','DID','EK','Regina','其他'],
+    '排气': ['原厂','SC Project','Akrapovi','Austin Racing','Brock\'s','其他'],
+    '快排系统': ['原厂','HM','Translogic','Dynojet','Rapid Bike','其他'],
+    '其他': [],
   },
-  '鏉烆喛鍎?: {
-    '閸撳秷鐤?: ['閸樼喎宸?,'閸婂秷鈧劕濮?,'缁啿鍙鹃弸?,'濮濓絾鏌?,'閸忔湹绮?],
-    '閸氬氦鐤?: ['閸樼喎宸?,'閸婂秷鈧劕濮?,'缁啿鍙鹃弸?,'濮濓絾鏌?,'閸忔湹绮?],
-    '鏉烆喗鐦?: ['閸樼喎宸?,'闁垮鈧?,'閸忔湹绮?],
-    '閸忔湹绮?: [],
+  '轮胎': {
+    '前轮': ['原厂','倍耐力','米其林','正新','其他'],
+    '后轮': ['原厂','倍耐力','米其林','正新','其他'],
+    '轮毂': ['原厂','锻造','其他'],
+    '其他': [],
   },
-  '婢舵牞顫囬崣濠囩崬鐞涘奔绗佺憴?: {
-    '鐠ф稑瀵?: ['閸樼喎宸?,'鐎规艾鍩?],
-    '閼存俺绗?: ['閸樼喎宸?,'MotoTron','闁垮鏀?,'閸忔湹绮?],
-    '閹靛濡?: ['閸樼喎宸?,'MotoTron','闁垮鏀?,'閸忔湹绮?],
-    '娑撳妲?: ['閸樼喎宸?,'MotoTron','闁垮鏀?,'閸忔湹绮?],
-    '閸忔湹绮?: [],
+  '外观及骑行三角': {
+    '赛包': ['原厂','定制'],
+    '脚踏': ['原厂','MotoTron','锋芒','其他'],
+    '手把': ['原厂','MotoTron','锋芒','其他'],
+    '三角': ['原厂','MotoTron','锋芒','其他'],
+    '其他': [],
   },
-  '閸忔湹绮?: {
-    '閺堢儤琛?: ['閸樼喎宸?,'Motul','Castrol','閸忔湹绮?],
-    '閺堢儤鎶?: ['閸樼喎宸?,'K&N','HiFlo','WIX','閸忔湹绮?],
-    '閸愬嘲宓堝☉?: ['閸樼喎宸?,'Motul','Engine Ice','閸忔湹绮?],
-    '濮硅姤琛?: ['閸樼喎宸?,'閻楃鐨?,'閸忔湹绮?],
-    '閻㈠灚鐫?: ['閸樼喎宸?,'闁垮倻鏁稿Ч?,'閸忔湹绮?],
-    '閹靛濡搁懗?: ['閸樼喎宸?,'Domino','Renthal','ProGrip','閸忔湹绮?],
-    '婢堆勫濞?: ['閸樼喎宸?,'Poiner','闁垮鏀?,'閸忔湹绮?],
-    '瀵偓閸忔娊鏁?: ['閸樼喎宸?,'閸忔湹绮?],
-    '閸忔湹绮?: [],
+  '其他': {
+    '机油': ['原厂','Motul','Castrol','其他'],
+    '机滤': ['原厂','K&N','HiFlo','WIX','其他'],
+    '冷却液': ['原厂','Motul','Engine Ice','其他'],
+    '汽油': ['原厂','特调','其他'],
+    '电池': ['原厂','锂电池','其他'],
+    '手把胶': ['原厂','Domino','Renthal','ProGrip','其他'],
+    '大扭油': ['原厂','Poiner','锋芒','其他'],
+    '开关门': ['原厂','其他'],
+    '其他': [],
   },
 };
 
@@ -886,24 +886,24 @@ let vehicles = [
 let nextRecId = 100;
 let records = [
   { id:1, date:'2026-06-16',track:'ZIC',time:'1:53.800',temp:'',cond:[],vehicle:'Yamaha R3' },
-  { id:2, date:'2026-06-02',track:'鐎逛焦灏?,time:'1:55.142',temp:'',cond:[],vehicle:'Yamaha R3' },
-  { id:3, date:'2026-05-20',track:'鐎逛焦灏?,time:'1:56.300',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:2, date:'2026-06-02',track:'肇庆',time:'1:55.142',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:3, date:'2026-05-20',track:'肇庆',time:'1:56.300',temp:'',cond:[],vehicle:'Yamaha R3' },
   { id:4, date:'2026-05-15',track:'ZIC',time:'1:52.345',temp:'',cond:[],vehicle:'Yamaha R3' },
-  { id:5, date:'2026-04-20',track:'鐎逛焦灏?,time:'1:58.672',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:5, date:'2026-04-20',track:'肇庆',time:'1:58.672',temp:'',cond:[],vehicle:'Yamaha R3' },
   { id:6, date:'2026-03-28',track:'ZIC',time:'1:53.100',temp:'',cond:[],vehicle:'Yamaha R3' },
-  { id:7, date:'2026-03-10',track:'婢垛晠鈹?,time:'1:28.456',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:7, date:'2026-03-10',track:'天马',time:'1:28.456',temp:'',cond:[],vehicle:'Yamaha R3' },
   { id:8, date:'2026-02-20',track:'ZIC',time:'1:54.800',temp:'',cond:[],vehicle:'Yamaha R3' },
-  { id:9, date:'2026-02-14',track:'婢垛晛绨?,time:'2:05.890',temp:'',cond:[],vehicle:'Yamaha R3' },
+  { id:9, date:'2026-02-14',track:'天府',time:'2:05.890',temp:'',cond:[],vehicle:'Yamaha R3' },
   { id:10, date:'2026-01-12',track:'ZIC',time:'1:56.200',temp:'',cond:[],vehicle:'Yamaha R3' },
 ];
 
 let nextModId = 300;
 let mods = [
-  { id:1, vehicleId:1, majorCategory:'閸斻劌濮忔稉搴濈炊閸斻劎閮寸紒?, subCategory:'閹烘帗鐨?, product:'SC Project', spec:'CR-T', engineWork:'', position:'', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:3800, date:'2026-04-01' },
-  { id:2, vehicleId:1, majorCategory:'閸掔婧呯化鑽ょ埠', subCategory:'閸掔婧呴崡锟犳尭', product:'Brembo', spec:'M50', engineWork:'', position:'閸撳秷鐤?, isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:2500, date:'2026-03-15' },
-  { id:3, vehicleId:1, majorCategory:'鏉烆喛鍎?, subCategory:'閸氬氦鐤?, product:'閸婂秷鈧劕濮?, spec:'Diablo Supercorsa', engineWork:'', position:'', isConsumable:true, installDate:'2026-02-20', sessionsUsed:10, targetSessions:20, price:2200, date:'2026-02-20' },
-  { id:4, vehicleId:1, majorCategory:'闁潡娓?, subCategory:'閸氬酣浼╅棁?, product:'鑴癶lins', spec:'TTX GP', engineWork:'', position:'', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:4500, date:'2026-01-10' },
-  { id:5, vehicleId:1, majorCategory:'婢舵牞顫囬崣濠囩崬鐞涘奔绗佺憴?, subCategory:'閸忔湹绮?, product:'', spec:'绾板磭姘︾紒鏉戠暰妞嬪海鑰冩總妞炬', engineWork:'', position:'', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:680, date:'2025-12-05' },
+  { id:1, vehicleId:1, majorCategory:'动力与传动系统', subCategory:'排气', product:'SC Project', spec:'CR-T', engineWork:'', position:'', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:3800, date:'2026-04-01' },
+  { id:2, vehicleId:1, majorCategory:'制动系统', subCategory:'刹车卡钳', product:'Brembo', spec:'M50', engineWork:'', position:'前轮', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:2500, date:'2026-03-15' },
+  { id:3, vehicleId:1, majorCategory:'轮胎', subCategory:'后轮', product:'倍耐力', spec:'Diablo Supercorsa', engineWork:'', position:'', isConsumable:true, installDate:'2026-02-20', sessionsUsed:10, targetSessions:20, price:2200, date:'2026-02-20' },
+  { id:4, vehicleId:1, majorCategory:'避震', subCategory:'后避震', product:'hlins', spec:'TTX GP', engineWork:'', position:'', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:4500, date:'2026-01-10' },
+  { id:5, vehicleId:1, majorCategory:'外观及骑行三角', subCategory:'其他', product:'', spec:'碳纤维定风翼套件', engineWork:'', position:'', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:680, date:'2025-12-05' },
 ];
 
 let autoSyncConsumables = false;
@@ -963,21 +963,21 @@ function computeCards(){
   tracks.forEach(t=>{ const fr=s.filter(x=>x.track===t).pop(); if(fr){ firstTimes[t]=fr.date; } });
   for(const t of tracks){
     if(t===mostTrack||t===hotTrack)continue;
-    if(!firstDate||firstTimes[t]>firstDate){ firstDate=firstTimes[t]; firstTrack=t; }
+    if(!firstDate||firstTimes[t]<firstDate){ firstDate=firstTimes[t]; firstTrack=t; }
     else if(!firstTrack){ firstTrack=t; firstDate=firstTimes[t]; }
   }
   const cards=[];
-  if(mostTrack) cards.push({ type:'most', track:mostTrack, label:'棣冨汲 瀵颁焦鍨張鈧径?, badge:'most', count:trackCount[mostTrack] });
-  if(hotTrack)  cards.push({ type:'hot',  track:hotTrack,  label:'棣冩暉 閺堚偓鏉╂垵鐖堕崢?, badge:'hot',  count:'閺堚偓鏉?+(recent5[hotTrack])+'濞? });
-  if(firstTrack)cards.push({ type:'new',  track:firstTrack,label:'棣冨晭 妫ｆ牗顐煎浣规箛', badge:'newb',count:'妫ｆ牗顐? });
+  if(mostTrack) cards.push({ type:'most', track:mostTrack, label:'🏳 征战最多', badge:'most', count:trackCount[mostTrack] });
+  if(hotTrack)  cards.push({ type:'hot',  track:hotTrack,  label:'🔥 最近常去', badge:'hot',  count:hotN });
+  if(firstTrack)cards.push({ type:'new',  track:firstTrack,label:'🎎 首次征服', badge:'newb', count:'首次' });
   return cards;
 }
 
-// ====== RENDER HOME (妫ｆ牠銆? ======
+// ====== RENDER HOME (妫牠銆? ======
 function getSpecStr(v){
   if(!v || !v.brand || !v.model) return '';
   const spec = BRAND_DB[v.brand]?.[v.model];
-  return spec ? spec.cc+'cc 璺?'+spec.hp+'hp' : '';
+  return spec ? spec.cc+'cc   '+spec.hp+'hp' : '';
 }
 // ====== HOME PAGE ======
 let homeVehicleId = null;
@@ -1002,7 +1002,7 @@ function renderHome(){
   const vid = getHomeVehicleId();
   const v = vehicles.find(x=>x.id===vid);
   const name = v?v.name:'---';
-  const specStr = v?getSpecStr(v)||'':'';
+  const specStr = v ? getSpecStr(v) || '' : '';
   const vehRecords = records.filter(r=>r.vehicle===name);
   const pbAll = vehRecords.length ? vehRecords.reduce((a,b)=>timeToMs(a.time)<timeToMs(b.time)?a:b) : null;
   const pbLabel = pbAll ? pbAll.track+' '+pbAll.time : '--:--.---';
@@ -1012,7 +1012,7 @@ function renderHome(){
   const photoEl = document.getElementById('home-vehicle-photo');
   if(v && v.photo){
     photoEl.style.display = '';
-    photoEl.innerHTML='<img src="'+v.photo+'" alt="'+name+'" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<div style=font-size:32px>棣冨冀閿?/div>\'">';
+    photoEl.innerHTML='<img src="'+v.photo+'" alt="'+name+'" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<div style=font-size:32px>🏍</div>\'">';
   } else {
     photoEl.style.display = 'none';
   }
@@ -1041,11 +1041,11 @@ function renderHomeStatus(vid){
     const [major, sub] = key.split('|||');
     const mod = getLatestMod(vid, major, sub);
     if(!mod){ items.push(null); return; }
-    if(major==='鏉烆喛鍎?){
-      const otherSub = sub==='閸撳秷鐤??'閸氬氦鐤?:'閸撳秷鐤?;
-      const otherKey = '鏉烆喛鍎檤||'+otherSub;
-      const otherMod = getLatestMod(vid, '鏉烆喛鍎?, otherSub);
-      items.push({ type:'tire', front:sub==='閸撳秷鐤??mod:otherMod, rear:sub==='閸氬氦鐤??mod:otherMod });
+    if(major==='轮胎'){
+      const otherSub = sub==='前轮'?'后轮':'前轮';
+      const otherKey = '轮胎' + '|||' + otherSub;
+      const otherMod = getLatestMod(vid,'轮胎', otherSub);
+      items.push({ type:'tire', front:sub==='前轮'?mod:otherMod, rear:sub==='后轮'?mod:otherMod });
       rendered.add(key);
       rendered.add(otherKey);
     } else {
@@ -1066,7 +1066,7 @@ function renderHomeStatus(vid){
   }
 
   const cards = document.getElementById('home-status-cards');
-  cards.innerHTML = html || '<div style="text-align:center;padding:20px;color:#CCC;font-size:13px">閻愮懓鍤紓鏍帆濞ｈ濮為悩鑸碘偓?/div>';
+  cards.innerHTML = html || '<div style="text-align:center;padding:20px;color:#CCC;font-size:13px">点击编辑添加状态</div>';
 
   // Attach click handlers for session editing
   cards.querySelectorAll('.mod-usage-clickable').forEach(el=>el.addEventListener('click',e=>{
@@ -1077,25 +1077,25 @@ function renderHomeStatus(vid){
 
 function renderHomeTirePair(frontMod, rearMod){
   const renderTire = (m, label)=>{
-    if(!m) return '<div class="home-status-pair-col"><div style="color:#CCC;font-size:11px;text-align:center;padding:8px">閺?+label+'鐠佹澘缍?/div></div>';
+    if(!m) return '<div class="home-status-pair-col"><div style="color:#CCC;font-size:11px;text-align:center;padding:8px">' + label + '记录</div></div>';
     const u = m.sessionsUsed||0;
     const t = m.targetSessions||0;
     const pct = t>0?Math.min(100,Math.round(u/t*100)):0;
-    const level = t>0?(pct>=100?'high':pct>=80?'mid':'low'):'';
+    const level = t>0?(pct<50?'low':pct<80?'mid':'high'): '';
     return '<div class="home-status-pair-col">'
       +'<div style="font-size:11px;color:#888;font-weight:600;margin-bottom:3px">'+label+'</div>'
       +'<div style="font-size:10px;color:#BBB;margin-bottom:4px">'+(m.product||'--')+(m.spec?' '+m.spec:'')+'</div>'
-      +'<span class="mod-usage-clickable" data-mid="'+m.id+'">瀹歌尙鏁?'+u+'閼?/span>'
-      +(t>0?' / <span style="font-size:11px;color:#888">閻╊喗鐖?'+t+'閼?/span>':'')
+      +'<span class="mod-usage-clickable" data-mid="'+m.id+'">已用'+u+'节</span>'
+      +(t>0?' / <span style="font-size:11px;color:#888">目标'+t+'节</span>':'')
       +'<div class="mod-usage-bar" style="margin-top:4px"><div class="mod-usage-fill '+level+'" style="width:'+pct+'%"></div></div>'
       +(t>0?'<div style="font-size:10px;color:#888;margin-top:2px">'+pct+'%</div>':'')
       +'</div>';
   };
   return '<div class="home-status-card">'
-    +'<div class="home-status-card-name">棣冩礀 鏉烆喛鍎?/div>'
+    +'<div class="home-status-card-name">🛞 轮胎</div>'
     +'<div class="home-status-pair">'
-    +renderTire(frontMod,'閸撳秷鐤?)
-    +renderTire(rearMod,'閸氬氦鐤?)
+    +renderTire(frontMod,'前轮')
+    +renderTire(rearMod, '后轮')
     +'</div></div>';
 }
 
@@ -1103,13 +1103,13 @@ function renderHomeConsumable(mod){
   const u = mod.sessionsUsed||0;
   const t = mod.targetSessions||0;
   const pct = t>0?Math.min(100,Math.round(u/t*100)):0;
-  const level = t>0?(pct>=100?'high':pct>=80?'mid':'low'):'';
-  const icons = {'閸掔婧呯化鑽ょ埠':'棣冩磧','闁潡娓?:'棣冩暋','閸斻劌濮忔稉搴濈炊閸斻劎閮寸紒?:'閳?,'婢舵牞顫囬崣濠囩崬鐞涘奔绗佺憴?:'棣冨腹','閸忔湹绮?:'棣冩憹'};
+  const level = t>0?(pct>=100?'high':pct>=80?'mid':'low'): '';
+  const icons = {'制动系统':'🛃','避震':'🛡','动力与传动系统':'\uD83D\uDD27','外观及骑行三角':'🎹','其他':'📝'};
   return '<div class="home-status-card">'
-    +'<div class="home-status-card-name">'+(icons[mod.majorCategory]||'棣冩憹')+' '+mod.subCategory+'</div>'
-    +'<div class="home-status-card-sub">'+(mod.product||'--')+(mod.spec?' '+mod.spec:'')+(mod.position?' 璺?'+mod.position:'')+'</div>'
-    +'<span class="mod-usage-clickable" data-mid="'+mod.id+'">瀹歌尙鏁?'+u+'閼?/span>'
-    +(t>0?' / <span style="font-size:11px;color:#888">閻╊喗鐖?'+t+'閼?/span>':'')
+    +'<div class="home-status-card-name">'+(icons[mod.majorCategory]||'📝')+' '+mod.subCategory+'</div>'
+    +'<div class="home-status-card-sub">'+(mod.product||'--')+(mod.spec?' '+mod.spec:'')+(mod.position?'   '+mod.position:'')+'</div>'
+    +'<span class="mod-usage-clickable" data-mid="'+mod.id+'">已用'+u+'节</span>'
+    +(t>0?' / <span style="font-size:11px;color:#888">目标'+t+'节</span>':'')
     +'<div class="mod-usage-bar" style="margin-top:4px"><div class="mod-usage-fill '+level+'" style="width:'+pct+'%"></div></div>'
     +(t>0?'<div style="font-size:10px;color:#888;margin-top:2px">'+pct+'%</div>':'')
     +'</div>';
@@ -1136,12 +1136,12 @@ function openStatusEditModal(){
   const selEl = document.getElementById('status-edit-selected');
   if(selectedKeys.length){
     selEl.innerHTML = selectedKeys.map(key=>'<div class="status-edit-item" data-key="'+key+'">'
-      +'<span class="drag-handle">閳?/span>'
+      +'<span class="drag-handle"></span>'
       +'<div class="item-info"><div class="item-name">'+formatStatusKey(key)+'</div><div class="item-meta">'+getStatusModInfo(vid,key)+'</div></div>'
-      +'<button class="item-btn remove">閳?/button>'
+      +'<button class="item-btn remove"></button>'
       +'</div>').join('');
   } else {
-    selEl.innerHTML = '<div style="font-size:12px;color:#CCC;padding:8px">閺嗗倹婀柅澶嬪閿涘奔绮犳稉瀣煙濞ｈ濮?/div>';
+    selEl.innerHTML = '<div style="font-size:12px;color:#CCC;padding:8px">暂未选择从下方添加</div>';
   }
 
   // Available
@@ -1153,7 +1153,7 @@ function openStatusEditModal(){
       +'<button class="item-btn add"'+(isFull?' disabled':'')+'>+</button>'
       +'</div>').join('');
   } else {
-    availEl.innerHTML = '<div style="font-size:12px;color:#CCC;padding:8px">'+(!allPairs.length?'閺嗗倹妫ゅ☉鍫ｂ偓妤€鎼х拋鏉跨秿':'閹碘偓閺堝绉烽懓妤€鎼у鍙夊潑閸?)+'</div>';
+    availEl.innerHTML = '<div style="font-size:12px;color:#CCC;padding:8px">'+(!allPairs.length?'暂无消耗品记录':'所有消耗品已选')+'</div>';
   }
 
   // Remove buttons
@@ -1196,13 +1196,13 @@ function closeStatusEditModal(){
 
 function formatStatusKey(key){
   const [major, sub] = key.split('|||');
-  return sub+' 璺?'+major;
+  return sub+'   '+major;
 }
 
 function getStatusModInfo(vid, key){
   const [major, sub] = key.split('|||');
   const m = getLatestMod(vid, major, sub);
-  return m?(m.product||'--')+(m.spec?' '+m.spec:'')+(m.position?' 璺?'+m.position:''):'';
+  return m?(m.product||'--')+(m.spec?' '+m.spec:'')+(m.position?'   '+m.position:''): '';
 }
 
 function setupDragSort(listEl, onReorder){
@@ -1266,30 +1266,31 @@ document.getElementById('status-edit-cancel').addEventListener('click', closeSta
 document.getElementById('status-edit-save').addEventListener('click', ()=>{
   closeStatusEditModal();
   renderHome();
+  renderRecent();
 });
 document.getElementById('status-edit-modal').addEventListener('click', e=>{ if(e.target===document.getElementById('status-edit-modal')) closeStatusEditModal(); });
 document.getElementById('home-status-edit-btn').addEventListener('click', openStatusEditModal);
 
-// ====== RENDER RECENT (妫ｆ牠銆? ======
+// ====== RENDER RECENT (妫牠銆? ======
 function renderRecent(){
   const div=document.getElementById('recent-session');
   const s=sorted(records);
-  if(!s.length){ div.innerHTML='<div class="card-title"><span class="dot dot-black"></span>閺堚偓鏉╂垼绂岄柆鎾存）</div><div style="text-align:center;padding:20px;color:#CCC;font-size:13px">閺嗗倹妫ょ拋鏉跨秿</div>'; return; }
+  if(!s.length){ div.innerHTML='<div class="card-title"><span class="dot dot-black"></span>最近赛道日</div><div style="text-align:center;padding:20px;color:#CCC;font-size:13px">暂无记录</div>'; return; }
   const last=s[0];
   const pb=getPB(last.track);
   const target=getTarget(last.track);
   const tMs=target?timeToMs(target):0;
-  const gap=tMs?diffStr(pb.time,target):'';
+  const gap=tMs?diffStr(pb.time,target): '';
   const achieved=tMs?timeToMs(pb.time)<=tMs:false;
-  const gapLabel=achieved?'閴?'+gap+'s':'+'+gap+'s';
-  div.innerHTML='<div class="card-title"><span class="dot dot-black"></span>閺堚偓鏉╂垼绂岄柆鎾存）</div>'
+  const gapLabel=achieved?''+gap+'s':'+'+gap+'s';
+  div.innerHTML='<div class="card-title"><span class="dot dot-black"></span>最近赛道日</div>'
     +'<div class="pb-track" style="font-size:16px;margin-bottom:8px">'+last.track+'</div>'
     +'<div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">'
-    +'<div><span style="font-size:12px;color:#888">閺堚偓韫囶偄婀€</span><div style="font-size:20px;font-weight:800;color:#E60012">'+(pb?pb.time:'--')+'</div></div>'
-    +(target?'<div><span style="font-size:12px;color:#888">閻╊喗鐖?/span><div style="font-size:16px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
-    +(gap?'<div><span style="font-size:12px;color:#888">瀹割喛绐?/span><div style="font-size:22px;font-weight:800;color:'+(achieved?'#00AA55':'#E60012')+'">'+gapLabel+'</div></div>':'')
+    +'<div><span style="font-size:12px;color:#888">最快圈</span><div style="font-size:20px;font-weight:800;color:#E60012">'+(pb?pb.time:'--')+'</div></div>'
+    +(target?'<div><span style="font-size:12px;color:#888">目标</span><div style="font-size:16px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
+    +(gap?'<div><span style="font-size:12px;color:#888">差距</span><div style="font-size:22px;font-weight:800;color:'+(achieved?'#00AA55':'#E60012')+'">'+gapLabel+'</div></div>':'')
     +'</div>'
-    +'<div style="margin-top:10px;font-size:11px;color:#999;border-top:1px solid #F0F0F0;padding-top:10px">'+last.date+' 璺?'+(last.vehicle||(vehicles[0]?.name||''))+(last.temp?' 璺?'+last.temp+'閳?:'')+(last.cond.length?' 璺?'+last.cond.join('/'):'')+'</div>'
+    +'<div style="margin-top:10px;font-size:11px;color:#999;border-top:1px solid #F0F0F0;padding-top:10px">'+last.date+'   '+(last.vehicle||(vehicles[0]?.name||''))+(last.temp?'   '+last.temp+':' : '')+(last.cond.length?'   '+last.cond.join('/'):'')+'</div>'
     +'<div class="racing-stripe" style="margin-top:8px"></div>';
 }
 
@@ -1301,7 +1302,7 @@ function render(){
   // Filters
   const ftags=document.querySelector('#page-laps .lap-tags');
   const uq=[...new Set(records.map(x=>x.track))].sort();
-  ftags.innerHTML='<span class="lap-tag active" data-track="">閸忋劑鍎?/span>'+uq.map(t=>'<span class="lap-tag" data-track="'+t+'">'+t+'</span>').join('');
+  ftags.innerHTML='<span class="lap-tag active" data-track="">全部</span>'+uq.map(t=>'<span class="lap-tag" data-track="'+t+'">'+t+'</span>').join('');
   ftags.querySelectorAll('.lap-tag').forEach(el=>{
     el.addEventListener('click',()=>{
       ftags.querySelectorAll('.lap-tag').forEach(x=>x.classList.remove('active'));
@@ -1317,44 +1318,63 @@ function render(){
   // PB Cards
   const pbDiv=document.getElementById('pb-cards');
   pbDiv.innerHTML='';
-  const cards=computeCards();
-  cards.forEach(c=>{
-    const pb=getPB(c.track);
-    const target=getTarget(c.track);
-    const pbMs=pb?timeToMs(pb.time):0;
-    const tMs=target?timeToMs(target):0;
-    const gap=tMs?diffStr(pb.time,target):'';
-    const achieved=tMs?timeToMs(pb.time)<=timeToMs(target):false;
-    const gapLabel=achieved?'閴?'+gap+'s':'+'+gap+'s';
-    pbDiv.innerHTML+='<div class="pb-card">'
-      +'<div class="pb-badge '+c.badge+'">'+c.label+' 璺?'+c.count+'</div>'
-      +'<div style="display:flex;align-items:center;gap:12px">'
-      +'<div style="flex:1">'
-      +'<div class="pb-track">'+c.track+'</div>'
-      +'<div class="pb-time">'+(pb?pb.time:'--:--.---')+'</div>'
+  if(filter){
+    // Single track card: latest, best, target, gap
+    const pb=getPB(filter);
+    const target=getTarget(filter);
+    const latest=sorted(records.filter(x=>x.track===filter))[0];
+    const gapT=target?timeToMs(target):0;
+    const gap=pb&&gapT?diffStr(pb.time,target): '';
+    const achieved=pb&&gapT?timeToMs(pb.time)<=gapT:false;
+    const gapLabel=achieved?'-'+gap+'s':(gap?'+'+gap+'s':'');
+    pbDiv.innerHTML='<div class="pb-card">'
+      +'<div class="pb-track">'+filter+'</div>'
+      +'<div style="display:flex;gap:20px;margin:8px 0">'
+      +'<div style="flex:1;text-align:center;background:#FBFBFB;border-radius:8px;padding:10px"><div style="font-size:10px;color:#999">最新</div><div style="font-size:16px;font-weight:800;color:#E60012">'+(latest?latest.time:'--')+'</div><div style="font-size:10px;color:#BBB;margin-top:2px">'+(latest?latest.date:'--')+'</div></div>'
+      +'<div style="flex:1;text-align:center;background:#FBFBFB;border-radius:8px;padding:10px"><div style="font-size:10px;color:#999">PB</div><div style="font-size:16px;font-weight:800;color:#1A1A1A">'+(pb?pb.time:'--')+'</div><div style="font-size:10px;color:#BBB;margin-top:2px">'+(pb?pb.date:'--')+'</div></div>'
       +'</div>'
-      +(target?'<div style="text-align:right"><div style="font-size:12px;color:#888;font-weight:500">閻╊喗鐖?/div><div style="font-size:15px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
-      +'</div>'
-      +(gap?'<div style="display:flex;align-items:center;margin-top:4px;gap:6px">'
-        +'<span class="pb-gap '+(achieved?'green':'red')+'">'+gapLabel+'</span>'
-        +'<span style="font-size:11px;color:#888;font-weight:500">'+(achieved?'棣冨竴 瀹歌尪鎻幋鎰窗閺嶅浄绱掑楦款唴鐠佹儳鐣鹃弬鎵窗閺?:'鐠烘繄娲伴弽?)+'</span>'
-        +'</div>':'')
-      +(c.type==='new' && !target?'<div style="margin-top:4px;font-size:11px;color:#E60012;font-weight:600">棣冩寱 瀵ら缚顔呯拋鎯х暰閻╊喗鐖ｉ崷鍫モ偓?/div>':'')
+      +(target?'<div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;padding:8px 10px;background:'+(achieved?'#F0FFF4':'#FFF5F5')+';border-radius:8px"><div><span style="font-size:11px;color:#888">目标</span><span style="font-size:16px;font-weight:700;color:#1A1A1A;margin-left:8px">'+target+'</span></div><div><span style="font-size:11px;color:#888">差距</span><span style="font-size:18px;font-weight:800;color:'+(achieved?'#00AA55':'#E60012')+';margin-left:8px">'+gapLabel+'</span></div></div>':'')
       +'</div>';
-  });
+  } else {
+    const cards=computeCards();
+    cards.forEach(c=>{
+      const pb=getPB(c.track);
+      const target=getTarget(c.track);
+      const pbMs=pb?timeToMs(pb.time):0;
+      const tMs=target?timeToMs(target):0;
+      const gap=tMs?diffStr(pb.time,target): '';
+      const achieved=tMs?timeToMs(pb.time)<=timeToMs(target):false;
+      const gapLabel=achieved?''+gap+'s':'+'+gap+'s';
+      pbDiv.innerHTML+='<div class="pb-card">'
+        +'<div class="pb-badge '+c.badge+'">'+c.label+'   '+c.count+'</div>'
+        +'<div style="display:flex;align-items:center;gap:12px">'
+        +'<div style="flex:1">'
+        +'<div class="pb-track">'+c.track+'</div>'
+        +'<div class="pb-time">'+(pb?pb.time:'--:--.---')+'</div>'
+        +'</div>'
+        +(target?'<div style="text-align:right"><div style="font-size:12px;color:#888;font-weight:500">目标</div><div style="font-size:15px;font-weight:700;color:#1A1A1A">'+target+'</div></div>':'')
+        +'</div>'
+        +(gap?'<div style="display:flex;align-items:center;margin-top:4px;gap:6px">'
+          +'<span class="pb-gap '+(achieved?'green':'red')+'">'+gapLabel+'</span>'
+          +'<span style="font-size:11px;color:#888;font-weight:500">'+(achieved?'🎉 已达成目标建议设定新目标:距目标':'')+'</span>'
+          +'</div>':'')
+        +(c.type==='new' && !target?'<div style="margin-top:4px;font-size:11px;color:#E60012;font-weight:600">💡 建议设定目标圈速</div>':'')
+        +'</div>';
+    });
+  }
 
   // Lap List
   const listDiv=document.getElementById('lap-list');
   listDiv.innerHTML='';
-  if(!r.length){ listDiv.innerHTML='<div style="text-align:center;padding:20px;color:#CCC;font-size:13px">閺嗗倹妫ょ拋鏉跨秿</div>'; return; }
+  if(!r.length){ listDiv.innerHTML='<div style="text-align:center;padding:20px;color:#CCC;font-size:13px">暂无记录</div>'; return; }
   r.forEach(rec=>{
     listDiv.innerHTML+='<div class="lap-list-item">'
       +'<div class="lap-list-main">'
-      +'<div class="lli-left"><span class="lli-date">'+rec.date+'</span><span class="lli-track">'+rec.track+'</span><span class="lli-vehicle">'+(rec.vehicle||(vehicles[0]?.name||''))+(rec.temp?' 璺?'+rec.temp+'閳?:'')+(rec.cond.length?' 璺?'+rec.cond.join('/'):'')+'</span></div>'
+      +'<div class="lli-left"><span class="lli-date">'+rec.date+'</span><span class="lli-track">'+rec.track+'</span><span class="lli-vehicle">'+(rec.vehicle||(vehicles[0]?.name||''))+(rec.temp?'   '+rec.temp+':' : '')+(rec.cond.length?'   '+rec.cond.join('/'):'')+'</span></div>'
       +'</div>'
       +'<div class="lap-list-right">'
       +'<div class="lli-time">'+rec.time+'</div>'
-      +'<button class="lli-btn edit" data-id="'+rec.id+'" title="缂傛牞绶? style="margin-left:6px">閴?/button>'
+      +'<button class="lli-btn edit" data-id="'+rec.id+'" title="编辑" style="margin-left:6px">✎</button>'
       +'</div>'
       +'</div>';
   });
@@ -1370,7 +1390,7 @@ let editingId=null;
 
 function populateVehicleSelect(selId, selectedVal){
   const sel=document.getElementById(selId);
-  sel.innerHTML='<option value="">闁瀚ㄦ潪锕佺窢</option>'+vehicles.map(v=>'<option value="'+v.name+'">'+v.name+'</option>').join('')+'<option value="__other__">閸忔湹绮敍鍫熷閸斻劌锝為崘娆欑礆</option>';
+  sel.innerHTML='<option value="">选择车辆</option>'+vehicles.map(v=>'<option value="'+v.name+'">'+v.name+'</option>').join('')+'<option value="__other__">其他手填车辆名称</option>';
   if(selectedVal && vehicles.some(x=>x.name===selectedVal)){ sel.value=selectedVal; document.getElementById('f-vehicle-other').style.display='none'; }
   else if(selectedVal){ sel.value='__other__'; document.getElementById('f-vehicle-other').style.display='block'; document.getElementById('f-vehicle-other').value=selectedVal; }
   else{ sel.value=''; document.getElementById('f-vehicle-other').style.display='none'; }
@@ -1387,8 +1407,8 @@ function openModal(recId){
   document.querySelectorAll('#f-conditions .tag-opt').forEach(x=>x.classList.remove('active'));
 
   const sel=document.getElementById('f-track');
-  const fullList=['ZIC','鐎逛焦灏?,'婢垛晠鈹?,'婢垛晛绨?];
-  sel.innerHTML='<option value="">鐠囩兘鈧瀚ㄧ挧娑壕</option>'+fullList.map(t=>'<option value="'+t+'">'+TRACK_FULL[t]+'</option>').join('');
+  const fullList=['ZIC','肇庆','天马','天府'];
+  sel.innerHTML='<option value="">请选择赛道</option>'+fullList.map(t=>'<option value="'+t+'">'+TRACK_FULL[t]+'</option>').join('');
 
   document.getElementById('target-hint').textContent='';
 
@@ -1396,7 +1416,7 @@ function openModal(recId){
     // Edit mode
     const rec=records.find(x=>x.id===recId);
     if(!rec)return;
-    document.getElementById('modal-title').textContent='缂傛牞绶崷鍫モ偓?;
+    document.getElementById('modal-title').textContent='编辑圈速';
     sel.value=rec.track;
     document.getElementById('f-date').value=rec.date;
     populateVehicleSelect('f-vehicle', rec.vehicle);
@@ -1410,14 +1430,14 @@ function openModal(recId){
       document.getElementById('t-min').value=tparts[0];
       document.getElementById('t-sec').value=tparts[1];
       document.getElementById('t-ms').value=tparts[2];
-      document.getElementById('target-hint').textContent='瑜版挸澧犻惄顔界垼 '+target;
+      document.getElementById('target-hint').textContent='当前目标 '+target;
     } else {
       document.getElementById('t-min').value=''; document.getElementById('t-sec').value=''; document.getElementById('t-ms').value='';
     }
     if(rec.temp){
       const tempParts=rec.temp.split('~');
-      document.getElementById('f-temp-min').value=tempParts[0]!=='?'?tempParts[0]:'';
-      document.getElementById('f-temp-max').value=tempParts[1]!=='?'?tempParts[1]:'';
+      document.getElementById('f-temp-min').value=tempParts[0]&&tempParts[0]!=='?'?tempParts[0]: '';
+      document.getElementById('f-temp-max').value=tempParts[1]&&tempParts[1]!=='?'?tempParts[1]: '';
     } else {
       document.getElementById('f-temp-min').value=''; document.getElementById('f-temp-max').value='';
     }
@@ -1425,18 +1445,18 @@ function openModal(recId){
       const tag=document.querySelector('#f-conditions .tag-opt[data-val="'+c+'"]');
       if(tag){ tag.classList.add('active'); selectedCond.push(c); }
     });
-    document.getElementById('modal-submit').textContent='娣囨繂鐡ㄦ穱顔芥暭';
+    document.getElementById('modal-submit').textContent='保存修改';
     document.getElementById('modal-delete-area').style.display='block';
   } else {
     // New mode
-    document.getElementById('modal-title').textContent='閺傛澘顤冮崷鍫モ偓?;
+    document.getElementById('modal-title').textContent='新增圈速';
     document.getElementById('modal-delete-area').style.display='none';
     document.getElementById('f-date').value=today();
     document.getElementById('f-min').value=''; document.getElementById('f-sec').value=''; document.getElementById('f-ms').value='';
     document.getElementById('t-min').value=''; document.getElementById('t-sec').value=''; document.getElementById('t-ms').value='';
     document.getElementById('f-temp-min').value=''; document.getElementById('f-temp-max').value='';
     populateVehicleSelect('f-vehicle', vehicles[0]?.name||'');
-    document.getElementById('modal-submit').textContent='閹绘劒姘?;
+    document.getElementById('modal-submit').textContent='提交';
     document.getElementById('f-track').value='';
   }
 
@@ -1460,9 +1480,9 @@ function onTrackChange(){
     document.getElementById('t-min').value=parts[0];
     document.getElementById('t-sec').value=parts[1];
     document.getElementById('t-ms').value=parts[2];
-    hint.textContent='濞岃法鏁ゆ稉濠冾偧閻╊喗鐖?'+TARGETS[t];
+    hint.textContent='沿用上次目标'+TARGETS[t];
   } else if(t && !TARGETS[t]){
-    hint.textContent='瀵ら缚顔呯拋鎯х暰閻╊喗鐖ｉ崷鍫モ偓?;
+    hint.textContent='建议设定目标圈速';
     document.getElementById('t-min').value=''; document.getElementById('t-sec').value=''; document.getElementById('t-ms').value='';
   } else {
     hint.textContent='';
@@ -1491,24 +1511,24 @@ document.getElementById('modal-submit').addEventListener('click',function(){
   const tempMin=document.getElementById('f-temp-min').value;
   const tempMax=document.getElementById('f-temp-max').value;
 
-  if(!track||!min||sec===''||ms===''){ alert('鐠囧嘲锝為崘娆掔闁挸鎷伴崷鍫モ偓?); return; }
+  if(!track||!min||sec===''||ms===''){ alert('请填写赛道和圈速'); return; }
   const secNum=+sec; const msNum=+ms;
-  if(secNum>59||msNum>999){ alert('缁夋帗鏆熸稉宥堝厴鐡掑懓绻?9閿涘本顕犵粔鎺嶇瑝閼冲€熺Т鏉?99'); return; }
+  if(isNaN(secNum)||isNaN(msNum)||secNum>59||msNum>999){ alert('秒数不能超过59毫秒不能超过999'); return; }
 
-  const time=min+':'+String(secNum).padStart(2,'0')+'.'+String(msNum).padEnd(3,'0');
+  const time=min+':'+sec.padStart(2,'0')+'.'+ms.padEnd(3,'0');
 
   // Vehicle
   let vehicle=document.getElementById('f-vehicle').value;
   if(vehicle==='__other__'){ vehicle=document.getElementById('f-vehicle-other').value.trim(); }
-  if(!vehicle){ alert('鐠囩兘鈧瀚ㄩ幋鏍翻閸忋儴婧呮潏?); return; }
+  if(!vehicle){ alert('请选择或输入车辆'); return; }
   if(!vehicles.some(x=>x.name===vehicle)){ vehicles.push({id:++nextVehId, name:vehicle, brand:'', model:'', year:'', photo:''}); }
 
   // Target
-  if(tMin!==''&&tSec!==''&&tMs!==''){
+  if(tMin!=='' && tSec!=='' && tMs!==''){
     TARGETS[track]=tMin+':'+String(+tSec).padStart(2,'0')+'.'+String(+tMs).padEnd(3,'0');
   }
 
-  const temp=tempMin||tempMax?(tempMin||'?')+'~'+(tempMax||'?'):'';
+  const temp=tempMin||tempMax?(tempMin||'?')+'~'+(tempMax||'?'): '';
   const cond=[...selectedCond];
   const date=document.getElementById('f-date').value||today();
 
@@ -1531,7 +1551,7 @@ document.getElementById('modal-submit').addEventListener('click',function(){
 // ====== MOD CRUD ======
 let modEditingId = null;
 const modModal = document.getElementById('mod-modal');
-const MAJOR_CATEGORIES = ['閸掔婧呯化鑽ょ埠','闁潡娓?,'閸斻劌濮忔稉搴濈炊閸斻劎閮寸紒?,'鏉烆喛鍎?,'婢舵牞顫囬崣濠囩崬鐞涘奔绗佺憴?,'閸忔湹绮?];
+const MAJOR_CATEGORIES = ['制动系统','避震','动力与传动系统','轮胎','外观及骑行三角','其他'];
 
 function populateModVehicleSelect(selId, selectedId){
   const sel = document.getElementById(selId);
@@ -1542,7 +1562,7 @@ function populateModVehicleSelect(selId, selectedId){
 
 function populateMajorSelect(selectedVal){
   const sel = document.getElementById('m-major');
-  sel.innerHTML = '<option value="">闁瀚ㄦ径褏琚?/option>' + MAJOR_CATEGORIES.map(c => '<option value="'+c+'">'+c+'</option>').join('');
+  sel.innerHTML = '<option value="">选择大类</option>' + MAJOR_CATEGORIES.map(c => '<option value="'+c+'">'+c+'</option>').join('');
   if(selectedVal) sel.value = selectedVal;
 }
 
@@ -1550,12 +1570,12 @@ function onMajorChange(){
   const major = document.getElementById('m-major').value;
   const subSel = document.getElementById('m-sub');
   const prodSel = document.getElementById('m-product');
-  if(!major){ subSel.innerHTML='<option value="">閸忓牓鈧瀚ㄦ径褏琚?/option>'; prodSel.innerHTML=''; return; }
+  if(!major){ subSel.innerHTML='<option value="">先选择大类</option>'; prodSel.innerHTML=''; return; }
   const subs = Object.keys(MOD_PARTS_DB[major] || {});
-  subSel.innerHTML = '<option value="">闁瀚ㄧ紒鍡楀瀻</option>' + subs.map(s => '<option value="'+s+'">'+s+'</option>').join('');
-  prodSel.innerHTML = '<option value="">閸忓牓鈧瀚ㄧ紒鍡楀瀻</option>';
+  subSel.innerHTML = '<option value="">选择细分</option>' + subs.map(s => '<option value="'+s+'">'+s+'</option>').join('');
+  prodSel.innerHTML = '<option value="">先选择细分</option>';
   prodSel.style.display = '';
-  document.getElementById('m-pos-group').style.display = major === '閸掔婧呯化鑽ょ埠' ? 'block' : 'none';
+  document.getElementById('m-pos-group').style.display = major === '制动系统' ? 'block' : 'none';
   document.getElementById('m-product-other').style.display = 'none';
 }
 document.getElementById('m-major').addEventListener('change', onMajorChange);
@@ -1564,7 +1584,7 @@ function onSubChange(){
   const major = document.getElementById('m-major').value;
   const sub = document.getElementById('m-sub').value;
   const prodSel = document.getElementById('m-product');
-  if(!major || !sub){ prodSel.innerHTML = '<option value="">閸忓牓鈧瀚ㄧ紒鍡楀瀻</option>'; prodSel.style.display = ''; return; }
+  if(!major || !sub){ prodSel.innerHTML = '<option value="">先选择细分</option>'; prodSel.style.display = ''; return; }
   const parts = MOD_PARTS_DB[major]?.[sub];
   if(!parts || !parts.length){
     prodSel.style.display = 'none';
@@ -1576,8 +1596,8 @@ function onSubChange(){
       const prev = mods.filter(m=>m.vehicleId===vehicleId && m.majorCategory===major && m.subCategory===sub)
         .sort((a,b)=>b.date.localeCompare(a.date))[0];
       if(prev){
-        document.getElementById('m-product-other').value = prev.product || '';
-        document.getElementById('m-spec').value = prev.spec || '';
+        document.getElementById('m-product-other').value = prev.product ||'';
+        document.getElementById('m-spec').value = prev.spec ||'';
         document.getElementById('m-target-sessions').value = prev.targetSessions||'';
       }
     }
@@ -1597,13 +1617,13 @@ function onSubChange(){
         prodSel.value = prev.product;
       } else {
         document.getElementById('m-product-other').style.display='block';
-        document.getElementById('m-product-other').value = prev.product || '';
+        document.getElementById('m-product-other').value = prev.product ||'';
       }
-      document.getElementById('m-spec').value = prev.spec || '';
+      document.getElementById('m-spec').value = prev.spec ||'';
       document.getElementById('m-target-sessions').value = prev.targetSessions||'';
-      if(major==='閸斻劌濮忔稉搴濈炊閸斻劎閮寸紒? && sub==='閸欐垵濮╅張? && prev.product==='瀵搫瀵?){
+      if(major==='动力与传动系统' && sub==='发动机' && prev.product==='强化'){
         document.getElementById('m-engine-group').style.display = 'block';
-        document.getElementById('m-engine-work').value = prev.engineWork || '';
+        document.getElementById('m-engine-work').value = prev.engineWork ||'';
       }
     }
   }
@@ -1614,14 +1634,14 @@ function onProductChange(){
   const v = document.getElementById('m-product').value;
   const major = document.getElementById('m-major').value;
   const sub = document.getElementById('m-sub').value;
-  if(v === '閸忔湹绮?){
+  if(v === '其他'){
     document.getElementById('m-product').style.display = 'none';
     document.getElementById('m-product-other').style.display = 'block';
     document.getElementById('m-engine-group').style.display = 'none';
   } else {
     document.getElementById('m-product').style.display = '';
     document.getElementById('m-product-other').style.display = 'none';
-    if(major==='閸斻劌濮忔稉搴濈炊閸斻劎閮寸紒? && sub==='閸欐垵濮╅張? && v==='瀵搫瀵?){
+    if(major==='动力与传动系统' && sub==='发动机' && v==='强化'){
       document.getElementById('m-engine-group').style.display = 'block';
     } else {
       document.getElementById('m-engine-group').style.display = 'none';
@@ -1651,7 +1671,7 @@ function buildModSearchIndex(){
     for(const sub of Object.keys(subs)){
       idx.push({ major, sub, label: major+' > '+sub, type:'category' });
       for(const part of subs[sub]){
-        if(part && part !== '閸忔湹绮?) idx.push({ major, sub, part, label: part+' ('+major+' > '+sub+')', type:'product' });
+        if(part && part !== '其他') idx.push({ major, sub, part, label: part+' ('+major+' > '+sub+')', type:'product' });
       }
     }
   }
@@ -1697,9 +1717,9 @@ document.getElementById('m-search-dd').addEventListener('click', function(e){
 // Open
 function openModModal(modId){
   modEditingId = modId || null;
-  document.getElementById('mod-modal-title').textContent = modId ? '缂傛牞绶弨纭咁棅娴? : '閺傛澘顤冮弨纭咁棅娴?;
+  document.getElementById('mod-modal-title').textContent = modId ? '编辑改装件 ': '新增改装件';
   document.getElementById('mod-delete-area').style.display = modId ? 'block' : 'none';
-  document.getElementById('mod-submit').textContent = modId ? '娣囨繂鐡ㄦ穱顔芥暭' : '閹绘劒姘?;
+  document.getElementById('mod-submit').textContent = modId ? '保存修改' : '提交';
   document.getElementById('m-search').value = '';
   document.getElementById('m-search-dd').style.display = 'none';
   document.getElementById('m-install-group').style.display = 'none';
@@ -1719,14 +1739,14 @@ function openModModal(modId){
       else { document.getElementById('m-product-other').style.display='block'; document.getElementById('m-product-other').value=m.product||''; }
       onProductChange();
     }, 60);
-    document.getElementById('m-spec').value = m.spec || '';
-    document.getElementById('m-engine-work').value = m.engineWork || '';
-    document.getElementById('m-position').value = m.position || '閸撳秷鐤?;
+    document.getElementById('m-spec').value = m.spec ||'';
+    document.getElementById('m-engine-work').value = m.engineWork ||'';
+    document.getElementById('m-position').value = m.position || '前轮';
     document.getElementById('m-consumable').checked = m.isConsumable;
     document.getElementById('m-install-group').style.display = m.isConsumable ? 'block' : 'none';
     document.getElementById('m-sync').checked = true;
     document.getElementById('m-remember').checked = autoSyncConsumables;
-    document.getElementById('m-install-date').value = m.installDate || '';
+    document.getElementById('m-install-date').value = m.installDate ||'';
     document.getElementById('m-sessions').value = m.sessionsUsed||0;
     document.getElementById('m-target-sessions').value = m.targetSessions||'';
     document.getElementById('m-price').value = m.price||'';
@@ -1734,10 +1754,10 @@ function openModModal(modId){
   } else {
     populateModVehicleSelect('m-vehicle', null);
     populateMajorSelect('');
-    document.getElementById('m-sub').innerHTML = '<option value="">閸忓牓鈧瀚ㄦ径褏琚?/option>';
-    document.getElementById('m-product').innerHTML = '<option value="">閸忓牓鈧瀚ㄧ紒鍡楀瀻</option>';
+    document.getElementById('m-sub').innerHTML = '<option value="">先选择大类</option>';
+    document.getElementById('m-product').innerHTML = '<option value="">先选择细分</option>';
     document.getElementById('m-product').style.display = '';
-    document.getElementById('m-position').value = '閸撳秷鐤?;
+    document.getElementById('m-position').value = '前轮';
     document.getElementById('m-consumable').checked = false;
     document.getElementById('m-install-date').value = '';
     document.getElementById('m-sessions').value = 0;
@@ -1769,7 +1789,7 @@ document.getElementById('mod-submit').addEventListener('click', ()=>{
   const majorCategory = document.getElementById('m-major').value;
   const subCategory = document.getElementById('m-sub').value;
   let product = document.getElementById('m-product').value;
-  if(product === '閸忔湹绮? || !product) product = document.getElementById('m-product-other').value.trim();
+  if(product === '其他' || !product) product = document.getElementById('m-product-other').value.trim();
   const spec = document.getElementById('m-spec').value.trim();
   const engineWork = document.getElementById('m-engine-group').style.display!=='none' ? document.getElementById('m-engine-work').value.trim() : '';
   const position = document.getElementById('m-pos-group').style.display !== 'none' ? document.getElementById('m-position').value : '';
@@ -1780,7 +1800,7 @@ document.getElementById('mod-submit').addEventListener('click', ()=>{
   const price = +document.getElementById('m-price').value||0;
   const date = document.getElementById('m-date').value || today();
 
-  if(!vehicleId || !majorCategory){ alert('鐠囩兘鈧瀚ㄦ潪锕佺窢閸滃苯銇囩猾?); return; }
+  if(!vehicleId || !majorCategory){ alert('请选择车辆和大赛'); return; }
 
   const record = { vehicleId, majorCategory, subCategory:'', product:'', spec:'', engineWork:'', position:'', isConsumable:false, installDate:'', sessionsUsed:0, targetSessions:0, price:0, date };
   if(subCategory) record.subCategory = subCategory;
@@ -1819,15 +1839,17 @@ document.getElementById('mod-submit').addEventListener('click', ()=>{
     closeModModal();
     renderMyVehicles();
     renderExpenses();
+    renderHome();
   }
 });
 
 document.getElementById('mod-delete-btn').addEventListener('click', ()=>{
-  if(modEditingId && confirm('绾喖鐣鹃崚鐘绘珟鐠囥儲鏁肩憗鍛閿?)){
+  if(modEditingId && confirm('确定删除该改件吗')){
     mods = mods.filter(x => x.id !== modEditingId);
     closeModModal();
     renderMyVehicles();
     renderExpenses();
+    renderHome();
   }
 });
 
@@ -1838,32 +1860,32 @@ let vehEditingId = null;
 function openVehicleAddModal(vehId){
   vehEditingId = vehId || null;
   const brandSel = document.getElementById('v-brand');
-  brandSel.innerHTML = '<option value="">闁瀚ㄩ崫浣哄</option>' + BRAND_LIST.map(b => '<option value="'+b+'">'+b+'</option>').join('');
+  brandSel.innerHTML = '<option value="">选择品牌</option>' + BRAND_LIST.map(b => '<option value="'+b+'">'+b+'</option>').join('');
 
   if(vehEditingId){
     const v = vehicles.find(x=>x.id===vehEditingId);
     if(!v){ openVehicleAddModal(); return; }
-    document.getElementById('veh-modal-title').textContent = '缂傛牞绶潪锕佺窢';
-    brandSel.value = v.brand || '';
+    document.getElementById('veh-modal-title').textContent = '编辑车辆';
+    brandSel.value = v.brand ||'';
     onBrandChange();
     setTimeout(()=>{
-      document.getElementById('v-model').value = v.model || '';
-      document.getElementById('v-name').value = v.name || '';
+      document.getElementById('v-model').value = v.model ||'';
+      document.getElementById('v-name').value = v.name ||'';
     }, 50);
-    document.getElementById('v-year').value = v.year || '';
-    document.getElementById('v-photo').value = v.photo || '';
+    document.getElementById('v-year').value = v.year ||'';
+    document.getElementById('v-photo').value = v.photo ||'';
     document.getElementById('v-default').parentElement.style.display = 'none';
-    document.getElementById('veh-submit').textContent = '娣囨繂鐡ㄦ穱顔芥暭';
+    document.getElementById('veh-submit').textContent = '保存修改';
   } else {
-    document.getElementById('veh-modal-title').textContent = '濞ｈ濮炴潪锕佺窢';
+    document.getElementById('veh-modal-title').textContent = '添加车辆';
     brandSel.value = '';
-    document.getElementById('v-model').innerHTML = '<option value="">閸忓牓鈧瀚ㄩ崫浣哄</option>';
+    document.getElementById('v-model').innerHTML = '<option value="">先选择品牌</option>';
     document.getElementById('v-year').value = '';
     document.getElementById('v-name').value = '';
     document.getElementById('v-photo').value = '';
     document.getElementById('v-default').checked = false;
     document.getElementById('v-default').parentElement.style.display = '';
-    document.getElementById('veh-submit').textContent = '閹绘劒姘?;
+    document.getElementById('veh-submit').textContent = '提交';
   }
   vehModal.classList.add('show');
 }
@@ -1871,9 +1893,9 @@ function openVehicleAddModal(vehId){
 function onBrandChange(){
   const brand = document.getElementById('v-brand').value;
   const modelSel = document.getElementById('v-model');
-  if(!brand){ modelSel.innerHTML = '<option value="">閸忓牓鈧瀚ㄩ崫浣哄</option>'; return; }
+  if(!brand){ modelSel.innerHTML = '<option value="">先选择品牌</option>'; return; }
   const models = Object.keys(BRAND_DB[brand] || {});
-  modelSel.innerHTML = '<option value="">闁瀚ㄦ潪锕€鐎?/option>' + models.map(m => '<option value="'+m+'">'+m+'</option>').join('');
+  modelSel.innerHTML = '<option value="">选择车型</option>' + models.map(m => '<option value="'+m+'">'+m+'</option>').join('');
   autoFillVehicleName();
 }
 document.getElementById('v-model').addEventListener('change', autoFillVehicleName);
@@ -1898,7 +1920,7 @@ document.getElementById('veh-submit').addEventListener('click', ()=>{
   let name = document.getElementById('v-name').value.trim();
   const photo = document.getElementById('v-photo').value.trim();
 
-  if(!brand || !model){ alert('鐠囩兘鈧瀚ㄩ崫浣哄閸滃矁婧呴崹?); return; }
+  if(!brand || !model){ alert('请选择品牌和车型'); return; }
   if(!name) name = brand + ' ' + model;
 
   if(vehEditingId){
@@ -1932,8 +1954,8 @@ let confirmCallback=null;
 let confirmCancelCallback=null;
 const confirmEl=document.getElementById('confirm');
 function showConfirm(id){
-  document.getElementById('confirm-msg').textContent='绾喖鐣鹃崚鐘绘珟鐠囥儱婀€闁喕顔囪ぐ鏇吹';
-  document.getElementById('confirm-ok').textContent='閸掔娀娅?;
+  document.getElementById('confirm-msg').textContent='确定删除该记录';
+  document.getElementById('confirm-ok').textContent='删除';
   document.getElementById('confirm-ok').className='confirm-btn danger';
   confirmCancelCallback=null;
   confirmEl.classList.add('show');
@@ -1941,8 +1963,8 @@ function showConfirm(id){
 }
 function showSyncConfirm(delta, count, onSync, onSkip){
   const sign = delta >= 0 ? '+' : '';
-  document.getElementById('confirm-msg').textContent='閸氬矁婧呴崗鏈电铂濞戝牐鈧鎼ч崥灞绢劄 '+sign+delta+' 閼哄偊绱礬n閿涘牆鍙?'+count+' 妞ょ櫢绱?;
-  document.getElementById('confirm-ok').textContent='閺勵垽绱濋崥灞绢劄';
+  document.getElementById('confirm-msg').textContent='同车其他消耗品同步'+sign+delta+'节，共'+count+'项';
+  document.getElementById('confirm-ok').textContent='是同步';
   document.getElementById('confirm-ok').className='confirm-btn danger';
   confirmCancelCallback=onSkip;
   confirmEl.classList.add('show');
@@ -1972,9 +1994,9 @@ let mvSelectedIdx=0;
 function renderMyVehicles(){
   if(!vehicles.length){
     document.getElementById('mv-switcher').innerHTML = '';
-    document.getElementById('mv-vehicle-card').innerHTML = '<div style="width:100%;text-align:center;padding:30px;color:#CCC;font-size:14px">閺嗗倹妫ゆ潪锕佺窢閿涘瞼鍋ｉ崙?+ 濞ｈ濮?/div>';
+    document.getElementById('mv-vehicle-card').innerHTML = '<div style="width:100%;text-align:center;padding:30px;color:#CCC;font-size:14px">暂无车辆</div>';
     document.getElementById('mv-mod-tags').innerHTML = '';
-    document.getElementById('mv-mod-list').innerHTML = '<div style="text-align:center;padding:30px;color:#CCC;font-size:13px">閺嗗倹妫ゆ潪锕佺窢</div>';
+    document.getElementById('mv-mod-list').innerHTML = '<div style="text-align:center;padding:30px;color:#CCC;font-size:13px">暂无其他</div>';
     return;
   }
   if(mvSelectedIdx>=vehicles.length)mvSelectedIdx=0;
@@ -1990,16 +2012,16 @@ function renderMyVehicles(){
 
   // Vehicle card
   const card=document.getElementById('mv-vehicle-card');
-  const photoHtml=v.photo?'<img src="'+v.photo+'" alt="'+v.name+'" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<div style=font-size:32px>棣冨冀閿?/div>\'">':'<div style="font-size:32px">棣冨冀閿?/div>';
+  const photoHtml=v.photo?'<img src="'+v.photo+'" alt="'+v.name+'" onerror="this.style.display=\'none\';this.parentElement.innerHTML=\'<div style=font-size:32px>🏍</div>\'">':'<div style="font-size:32px">🏍</div>';
   const isDefault = v.id === homeVehicleId || (!homeVehicleId && mvSelectedIdx === 0);
   card.innerHTML='<div class="mv-vehicle-photo">'+photoHtml+'</div>'
     +'<div class="mv-vehicle-info">'
-    +'<div class="mv-vehicle-name">'+v.name+(isDefault?'<span style="font-size:10px;background:#E60012;color:#fff;padding:1px 6px;border-radius:6px;margin-left:6px;font-weight:600;vertical-align:middle">姒涙顓?/span>':'')+'</div>'
-    +'<div class="mv-vehicle-detail">'+(v.brand||'閸濅胶澧?)+' 璺?'+(v.model||'鏉烇箑鐎?)+' 璺?<span>'+(v.year||'--')+'</span></div>'
+    +'<div class="mv-vehicle-name">'+v.name+(isDefault?'<span style="font-size:10px;background:#E60012;color:#fff;padding:1px 6px;border-radius:6px;margin-left:6px;font-weight:600;vertical-align:middle">默认</span>':'')+'</div>'
+    +'<div class="mv-vehicle-detail">'+(v.brand||'品牌')+'   '+(v.model||'车型')+'   <span>'+(v.year||'--')+'</span></div>'
     +'<div class="mv-vehicle-actions">'
-    +'<button class="mv-vehicle-btn default" data-action="edit-vehicle">缂傛牞绶?/button>'
-    +(!isDefault?'<button class="mv-vehicle-btn default" data-action="set-default">鐠佸彞璐熸妯款吇</button>':'')
-    +'<button class="mv-vehicle-btn danger" data-action="delete-vehicle">閸掔娀娅庢潪锕佺窢</button>'
+    +'<button class="mv-vehicle-btn default" data-action="edit-vehicle">编辑</button>'
+    +(!isDefault?'<button class="mv-vehicle-btn default" data-action="set-default">设为默认</button>':'')
+    +'<button class="mv-vehicle-btn danger" data-action="delete-vehicle">删除车辆</button>'
       +'</div>'
       +'</div>';
 
@@ -2017,7 +2039,7 @@ function renderMyVehicles(){
   });
   card.querySelector('[data-action="delete-vehicle"]')?.addEventListener('click', ()=>{
     const modCount = mods.filter(m => m.vehicleId === v.id).length;
-    if(!confirm(`绾喖鐣鹃崚鐘绘珟 "${v.name}"閿涚剫+(modCount?`鐠囥儴婧呴惃?${modCount} 閺夆剝鏁肩憗鍛邦唶瑜版洖鐨㈢悮顐㈡倱濮濄儱鍨归梽銈冣偓淇?''))) return;
+    if(!confirm(`确定删除 "${v.name}"` + (modCount ? `，该车有 ${modCount} 个改装件将被同步删除` : ''))) return;
     mods = mods.filter(m => m.vehicleId !== v.id);
     vehicles.splice(mvSelectedIdx, 1);
     if(vehicles.length && mvSelectedIdx >= vehicles.length) mvSelectedIdx = vehicles.length - 1;
@@ -2028,14 +2050,14 @@ function renderMyVehicles(){
   });
 
   // Mods filter tags
-  const FILTER_CATS = ['閸忋劑鍎?,'棣冩暉 濞戝牐鈧鎼?,'閸掔婧呯化鑽ょ埠','闁潡娓?,'閸斻劌濮忔稉搴濈炊閸斻劎閮寸紒?,'鏉烆喛鍎?,'婢舵牞顫囬崣濠囩崬鐞涘奔绗佺憴?,'閸忔湹绮?];
+  const FILTER_CATS = ['全部','🔥 消耗品','制动系统','避震','动力与传动系统','轮胎','外观及骑行三角','其他'];
   const filterTag=document.getElementById('mv-mod-tags');
-  const activeFilter=filterTag.dataset.filter||'閸忋劑鍎?;
+  const activeFilter=filterTag.dataset.filter||'全部';
   filterTag.innerHTML=FILTER_CATS.map(c=>{
     let cls = 'mv-mod-tag';
-    if(c==='閸忋劑鍎? && c===activeFilter) cls+=' active';
+    if(c==='全部' && c===activeFilter) cls+=' active';
     else if(c===activeFilter) cls+=' active';
-    if(c==='棣冩暉 濞戝牐鈧鎼?) cls+=' consumable';
+    if(c==='🔥 消耗品') cls+=' consumable';
     return '<span class="'+cls+'" data-cat="'+c+'">'+c+'</span>';
   }).join('');
   filterTag.querySelectorAll('.mv-mod-tag').forEach(el=>el.addEventListener('click',()=>{
@@ -2047,13 +2069,13 @@ function renderMyVehicles(){
   const list=document.getElementById('mv-mod-list');
   list.innerHTML='';
   let filtered=mods.filter(m=>m.vehicleId===v.id);
-  if(activeFilter==='棣冩暉 濞戝牐鈧鎼?){
+  if(activeFilter==='🔥 消耗品'){
     filtered=filtered.filter(m=>m.isConsumable);
-  } else if(activeFilter!=='閸忋劑鍎?){
+  } else if(activeFilter!=='全部'){
     filtered=filtered.filter(m=>m.majorCategory===activeFilter);
   }
   filtered.sort((a,b)=>b.date.localeCompare(a.date));
-  if(!filtered.length){ list.innerHTML='<div style="text-align:center;padding:30px;color:#CCC;font-size:13px">閺嗗倹妫ら弨纭咁棅閺勫海绮?/div>'; return; }
+  if(!filtered.length){ list.innerHTML='<div style="text-align:center;padding:30px;color:#CCC;font-size:13px">暂无改装明细</div>'; return; }
 
   // Group by (majorCategory, subCategory)
   const groups = {};
@@ -2068,20 +2090,20 @@ function renderMyVehicles(){
     const latest = items[0];
     const major = latest.majorCategory;
     const sub = latest.subCategory;
-    const majorIcons={'閸掔婧呯化鑽ょ埠':'棣冩磧','闁潡娓?:'棣冩暋','閸斻劌濮忔稉搴濈炊閸斻劎閮寸紒?:'閳?,'鏉烆喛鍎?:'棣冩礀','婢舵牞顫囬崣濠囩崬鐞涘奔绗佺憴?:'棣冨腹','閸忔湹绮?:'棣冩憹'};
+    const majorIcons={'制动系统':'🛃','避震':'🛡','动力与传动系统':'\uD83D\uDD27','轮胎':'🛞','外观及骑行三角':'🎹','其他':'📝'};
 
     list.innerHTML+='<div class="mv-mod-item" data-group="'+key+'">'
       +'<div class="mv-mod-left">'
-      +'<div class="mv-mod-icon">'+(majorIcons[major]||'棣冩憹')+'</div>'
+      +'<div class="mv-mod-icon">'+(majorIcons[major]||'📝')+'</div>'
       +'<div>'
-      +'<div class="mv-mod-name">'+sub+(latest.isConsumable?'<span class="mod-consumable-badge">濞戝牐鈧?/span>':'')+'</div>'
-      +'<div class="mv-mod-date">'+(latest.product||'閺堫亝瀵氱€规艾鎼ч悧?)+(latest.spec?' '+latest.spec:'')+' 璺?'+latest.date+'</div>'
+      +'<div class="mv-mod-name">'+sub+(latest.isConsumable?'<span class="mod-consumable-badge">消耗品</span>':'')+'</div>'
+      +'<div class="mv-mod-date">'+(latest.product||'未指定品牌')+(latest.spec?' '+latest.spec:'')+'   '+latest.date+'</div>'
       +'</div>'
       +'</div>'
       +'<div class="mv-mod-right"><span class="mv-mod-cat">'+major+'</span>'
       +'<div class="mv-mod-actions">'
-      +(items.length>1?'<button class="mod-expand-btn" data-group="'+key+'"><span class="count">'+items.length+'閺?/span></button>':'')
-      +'<button class="mv-mod-btn edit" data-mid="'+latest.id+'">閴?/button>'
+      +(items.length>1?'<button class="mod-expand-btn" data-group="'+key+'"><span class="count">'+items.length+'</span></button>':'')
+      +'<button class="mv-mod-btn edit" data-mid="'+latest.id+'">✎</button>'
       +'</div>'
       +'</div>'
       +'</div>';
@@ -2094,8 +2116,8 @@ function renderMyVehicles(){
       const level = t>0 ? (pct<50?'low':pct<80?'mid':'high') : '';
       list.innerHTML+='<div class="mod-usage" data-mid="'+latest.id+'">'
         +(t>0?'<div class="mod-usage-bar"><div class="mod-usage-fill '+level+'" style="width:'+pct+'%"></div></div>'+pct+'% | ':'')
-        +'<span class="mod-usage-clickable" data-field="sessionsUsed">瀹歌尙鏁?'+u+'閼?/span>'
-        +(t>0?' / <span class="mod-usage-clickable" data-field="targetSessions">閻╊喗鐖?'+t+'閼?/span>':' 璺?<span class="mod-usage-clickable" data-field="targetSessions">閻╊喗鐖ｉ張顏囶啎</span>')
+        +'<span class="mod-usage-clickable" data-field="sessionsUsed">已用'+u+'节</span>'
+        +(t>0?' / <span class="mod-usage-clickable" data-field="targetSessions">目标'+t+'节</span>':'   <span class="mod-usage-clickable" data-field="targetSessions">设置目标</span>')
         +'</div>';
     }
 
@@ -2106,10 +2128,10 @@ function renderMyVehicles(){
         list.innerHTML+='<div class="'+cls+'" data-group="'+key+'" style="display:none">'
           +'<div class="mod-history-left"><div style="font-weight:600">'+(m.product||'--')+(m.spec?' '+m.spec:'')+'</div><div style="font-size:10px;color:#999">'+m.date+'</div></div>'
           +'<div class="mod-history-right">'
-          +(m.isConsumable?'<span class="mod-consumable-badge" style="font-size:9px">濞戝牐鈧?/span>':'')
-          +(m.isConsumable?'<span style="font-size:10px;color:#888;margin-right:4px">'+m.sessionsUsed+'/'+(m.targetSessions||'?')+'閼?/span>':'')
-          +'<span style="font-size:11px;color:#888;margin-right:4px">妤?+m.price.toLocaleString()+'</span>'
-          +'<button class="mv-mod-btn edit" data-mid="'+m.id+'" style="font-size:11px">閴?/button>'
+          +(m.isConsumable?'<span class="mod-consumable-badge" style="font-size:9px">消耗品</span>':'')
+          +(m.isConsumable?'<span style="font-size:10px;color:#888;margin-right:4px">'+m.sessionsUsed+'/'+(m.targetSessions||'?')+'节</span>':'')
+          +'<span style="font-size:11px;color:#888;margin-right:4px">'+m.price.toLocaleString()+'</span>'
+          +'<button class="mv-mod-btn edit" data-mid="'+m.id+'" style="font-size:11px">✎</button>'
           +'</div>'
           +'</div>';
       });
@@ -2124,7 +2146,7 @@ function renderMyVehicles(){
       const rows = list.querySelectorAll('[data-group="'+key+'"].mod-history-item');
       const visible = rows[0]?.style.display !== 'none';
       rows.forEach(r=>r.style.display=visible?'none':'');
-      btn.querySelector('.count').textContent = visible ? itemsByKey(key)+'閺? : '閳?;
+      btn.querySelector('.count').textContent = visible ? itemsByKey(key)+' : ' : '';
     });
   });
   function itemsByKey(key){
@@ -2183,18 +2205,18 @@ document.getElementById('session-submit').addEventListener('click', ()=>{
 
 // ====== LEADERBOARD ======
 const LB_RIDERS = [
-  { name:'棣冨极 闁姐垽鎼ф笟?, avatar:'閳?, vehicle:'Yamaha R6' },
-  { name:'棣冨极 闂傤亞鏁告笟?, avatar:'棣冩暉', vehicle:'Kawasaki ZX-6R' },
-  { name:'棣冨极 鏉╀粙顥撻懓?, avatar:'棣冨皳', vehicle:'Honda CBR600RR' },
-  { name:'棣冨极 閺嬩線鈧喓濯?, avatar:'棣冩啱', vehicle:'Suzuki GSX-R600' },
-  { name:'棣冨极 瀵垶浜鹃悳?, avatar:'棣冩尞', vehicle:'Yamaha R6' },
-  { name:'棣冨极 閺冪姴濂栭幍?, avatar:'棣冩寽', vehicle:'Kawasaki ZX-6R' },
-  { name:'棣冨极 濠曞倻些鐢?, avatar:'棣冨瘧', vehicle:'Honda CBR600RR' },
-  { name:'棣冨极 鐠ф稖婧呮?, avatar:'棣冨季', vehicle:'Yamaha R6' },
+  { name:'🏁 钢铁侠', avatar:'🦾', vehicle:'Yamaha R6' },
+  { name:'🏁 闪电侠', avatar:'🔥', vehicle:'Kawasaki ZX-6R' },
+  { name:'🏁 无影手', avatar:'🎹', vehicle:'Honda CBR600RR' },
+  { name:'🏁 追风者', avatar:'🛞', vehicle:'Suzuki GSX-R600' },
+  { name:'🏁 弯道王', avatar:'🏍️', vehicle:'Yamaha R6' },
+  { name:'🏁 赛车魂', avatar:'📝', vehicle:'Kawasaki ZX-6R' },
+  { name:'🏁 漂移人', avatar:'🛃', vehicle:'Honda CBR600RR' },
+  { name:'🏁 极速王', avatar:'🛡', vehicle:'Yamaha R6' },
 ];
 function renderLeaderboard(){
   const trackSel=document.getElementById('lb-tracks');
-  const trackNames=['ZIC','鐎逛焦灏?,'婢垛晠鈹?,'婢垛晛绨?];
+  const trackNames=['ZIC','肇庆','天马','天府'];
   const lbTrack=trackSel.dataset.selected||'ZIC';
   trackSel.innerHTML=trackNames.map(t=>'<button class="lb-track-btn'+(t===lbTrack?' active':'')+'" data-track="'+t+'">'+t+'</button>').join('');
   trackSel.querySelectorAll('.lb-track-btn').forEach(b=>b.addEventListener('click',()=>{
@@ -2226,8 +2248,8 @@ function renderExpenses(){
   // Vehicle switcher
   const vsEl = document.getElementById('expense-vehicle-switcher');
   const activeVehId = vsEl.dataset.vehid || 'all';
-  vsEl.innerHTML = '<span class="mv-switch-tag'+(activeVehId==='all'?' active':'')+'" data-vid="all">閸忋劑鍎?/span>'+
-    vehicles.map(v=>'<span class="mv-switch-tag'+(''+v.id===activeVehId?' active':'')+'" data-vid="'+v.id+'">'+v.name+'</span>').join('');
+  vsEl.innerHTML = '<span class="mv-switch-tag'+(activeVehId==='all'?' active':'')+'" data-vid="all">全部</span>'+
+    vehicles.map(v=>'<span class="mv-switch-tag'+(String(v.id)===activeVehId?' active':'')+'" data-vid="'+v.id+'">'+v.name+'</span>').join('');
   vsEl.querySelectorAll('.mv-switch-tag').forEach(el=>el.addEventListener('click',()=>{
     vsEl.dataset.vehid = el.dataset.vid;
     renderExpenses();
@@ -2237,7 +2259,7 @@ function renderExpenses(){
   const filterEl = document.getElementById('expense-filter');
   const activeMode = filterEl.dataset.mode || 'year';
   const modes = ['year','month','custom'];
-  const modeLabels = { year:'娴犲﹤鍕?, month:'閺堫剚婀€', custom:'閼奉亜鐣炬稊? };
+  const modeLabels = { year:'今年', month:'本月', custom:'自定义' };
   filterEl.innerHTML = modes.map(m=>
     '<button class="expense-filter-btn'+(m===activeMode?' active':'')+'" data-mode="'+m+'">'+modeLabels[m]+'</button>'
   ).join('');
@@ -2250,8 +2272,8 @@ function renderExpenses(){
   const dateRangeEl = document.getElementById('expense-date-range');
   if(activeMode==='custom'){
     dateRangeEl.style.display = 'flex';
-    document.getElementById('expense-date-from').value = filterEl.dataset.from || '';
-    document.getElementById('expense-date-to').value = filterEl.dataset.to || '';
+    document.getElementById('expense-date-from').value = filterEl.dataset.from ||'';
+    document.getElementById('expense-date-to').value = filterEl.dataset.to ||'';
   } else {
     dateRangeEl.style.display = 'none';
   }
@@ -2263,14 +2285,14 @@ function renderExpenses(){
   }
   const now = new Date();
   if(activeMode==='year'){
-    const y = ''+now.getFullYear();
+    const y = now.getFullYear();
     filtered = filtered.filter(m=>m.date.startsWith(y));
   } else if(activeMode==='month'){
     const ym = now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
     filtered = filtered.filter(m=>m.date.startsWith(ym));
   } else if(activeMode==='custom'){
-    const from = filterEl.dataset.from || '';
-    const to = filterEl.dataset.to || '';
+    const from = filterEl.dataset.from ||'';
+    const to = filterEl.dataset.to ||'';
     if(from) filtered = filtered.filter(m=>m.date >= from);
     if(to) filtered = filtered.filter(m=>m.date <= to);
   }
@@ -2283,16 +2305,16 @@ function renderExpenses(){
   const avg = uniqueMonths.length ? Math.round(total/uniqueMonths.length) : 0;
 
   document.getElementById('expense-summary').innerHTML =
-    '<div class="expense-stat"><div class="num">妤?+total.toLocaleString()+'</div><div class="label">閹槒濮抽柨鈧?/div></div>'+
-    '<div class="expense-stat"><div class="num">妤?+avg.toLocaleString()+'</div><div class="label">閺堝牆娼?/div></div>'+
-    '<div class="expense-stat"><div class="num">'+count+'</div><div class="label">缁楁梹鏆?/div></div>';
+    '<div class="expense-stat"><div class="num">' + total.toLocaleString()+'</div><div class="label">总花费</div></div>'+
+    '<div class="expense-stat"><div class="num">' + avg.toLocaleString()+'</div><div class="label">月均</div></div>'+
+    '<div class="expense-stat"><div class="num">'+count+'</div><div class="label">笔数</div></div>';
 
   // Category breakdown
   const catTotal = {};
   filtered.forEach(m=>{ catTotal[m.majorCategory] = (catTotal[m.majorCategory]||0)+m.price; });
-  const catOrder = ['閸掔婧呯化鑽ょ埠','闁潡娓?,'閸斻劌濮忔稉搴濈炊閸斻劎閮寸紒?,'鏉烆喛鍎?,'婢舵牞顫囬崣濠囩崬鐞涘奔绗佺憴?,'閸忔湹绮?];
-  const catColors = { '閸掔婧呯化鑽ょ埠':'#E60012','闁潡娓?:'#1A1A1A','閸斻劌濮忔稉搴濈炊閸斻劎閮寸紒?:'#FF6B00','鏉烆喛鍎?:'#4A90D9','婢舵牞顫囬崣濠囩崬鐞涘奔绗佺憴?:'#888','閸忔湹绮?:'#AAA' };
-  const catIcon2 = { '閸掔婧呯化鑽ょ埠':'棣冩磧','闁潡娓?:'棣冩暋','閸斻劌濮忔稉搴濈炊閸斻劎閮寸紒?:'閳?,'鏉烆喛鍎?:'棣冩礀','婢舵牞顫囬崣濠囩崬鐞涘奔绗佺憴?:'棣冨腹','閸忔湹绮?:'棣冩憹' };
+  const catOrder = ['制动系统','避震','动力与传动系统','轮胎','外观及骑行三角','其他'];
+  const catColors = { '制动系统':'#E60012','避震':'#1A1A1A','动力与传动系统':'#FF6B00','轮胎':'#4A90D9','外观及骑行三角':'#888','其他':'#AAA' };
+  const catIcon2 = { '制动系统':'🛃','避震':'🛡','动力与传动系统':'\uD83D\uDD27','轮胎':'🛞','外观及骑行三角':'🎹','其他':'📝' };
 
   // Pie
   let pieParts = '';
@@ -2303,7 +2325,7 @@ function renderExpenses(){
     return { cat:c, start, end:cum, color:catColors[c] };
   });
   if(entries.length){
-    pieParts = entries.map(e=>e.color+' '+Math.round(e.start*360)+'deg '+Math.round(e.end*360)+'deg').join(', ');
+    pieParts = entries.map(e=>e.color+' '+Math.round(e.start*360)+'deg '+Math.round(e.end*360)+'deg').join(',');
   } else {
     pieParts = '#EEE 0% 100%';
   }
@@ -2311,21 +2333,21 @@ function renderExpenses(){
 
   // Legend
   document.getElementById('expense-legend').innerHTML = entries.length ?
-    entries.map(e=>'<div style="font-size:12px;margin-bottom:6px"><span style="color:'+e.color+'">閳?/span> '+e.cat+' <strong>'+Math.round((e.end-e.start)*100)+'%</strong></div>').join('') :
-    '<div style="font-size:12px;color:#CCC">閺嗗倹妫ら弨纭咁棅閼洪亶鏀?/div>';
+    entries.map(e=>'<div style="font-size:12px;margin-bottom:6px"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+e.color+';vertical-align:middle"></span> '+e.cat+' <strong>'+Math.round((e.end-e.start)*100)+'%</strong></div>').join('') :
+    '<div style="font-size:12px;color:#CCC">暂无改装花销</div>';
 
   // List
   const listEl = document.getElementById('expense-list');
   if(!filtered.length){
-    listEl.innerHTML = '<div style="text-align:center;padding:20px;color:#CCC;font-size:13px">閺嗗倹妫ょ拋鏉跨秿</div>';
+    listEl.innerHTML = '<div style="text-align:center;padding:20px;color:#CCC;font-size:13px">暂无记录</div>';
   } else {
     listEl.innerHTML = filtered.map(m=>
       '<div class="expense-item">'+
       '<div class="expense-left">'+
-      '<div class="expense-icon">'+(catIcon2[m.majorCategory]||'棣冩憹')+'</div>'+
-      '<div><div class="expense-name">'+m.subCategory+(m.product?' 璺?'+m.product+(m.spec?' '+m.spec:''):'')+'</div><div class="expense-date">'+m.date+'</div></div>'+
+      '<div class="expense-icon">'+(catIcon2[m.majorCategory]||'📝')+'</div>'+
+      '<div><div class="expense-name">'+m.subCategory+(m.product?'   '+m.product+(m.spec?' '+m.spec:''):'')+'</div><div class="expense-date">'+m.date+'</div></div>'+
       '</div>'+
-      '<div class="expense-amount">妤?+m.price.toLocaleString()+'</div>'+
+      '<div class="expense-amount">' + m.price.toLocaleString()+'</div>'+
       '</div>'
     ).join('');
   }
@@ -2344,7 +2366,7 @@ document.getElementById('expense-date-apply').addEventListener('click', ()=>{
   const filterEl = document.getElementById('expense-filter');
   const from = document.getElementById('expense-date-from').value;
   const to = document.getElementById('expense-date-to').value;
-  if(from && to && from > to){ alert('鐠у嘲顫愰弮銉︽埂娑撳秷鍏橀弲姘艾缂佹挻娼弮銉︽埂'); return; }
+  if(from && to && from > to){ alert('起始日期不能晚于结束日期'); return; }
   filterEl.dataset.from = from;
   filterEl.dataset.to = to;
   renderExpenses();
@@ -2359,7 +2381,7 @@ let fabMenuOpen = false;
 function showFabMenu(){
   fabMenu.classList.add('show');
   fabOverlay.classList.add('show');
-  fab.textContent = '閴?;
+  fab.textContent = '+';
   fab.style.transform = 'rotate(45deg)';
   fabMenuOpen = true;
 }
